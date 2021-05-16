@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Card.module.scss';
 
-const Card = () => (
+const Card = (props) => (
   <div className={styles.Card}>
-    Card Component
+    {props.children}
   </div>
 );
 

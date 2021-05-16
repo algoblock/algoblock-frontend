@@ -1,0 +1,23 @@
+@import "../../utilities/colors";
+@import "../../utilities/fonts";
+
+.InvertedButton {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	font-size: 14px;
+	cursor: pointer;
+	width: fit-content;
+	color: $primary;
+	background: $transparent;
+	box-sizing: border-box;
+	border: 2px solid $primary;
+	transition: background 0.3s ease 0s;
+	border-radius: 5px;
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.InvertedButton:hover {
+	color: $white;
+	background: $primary;
+}

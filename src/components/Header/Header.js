@@ -3,7 +3,7 @@ import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {LinkBar, SignInLink, Button, Logo, ScrollingDivider} from '../';
 import {useScrollPosition} from '../../utilities/useScrollPosition';
-import algoblock from '../../img/algoblock.png';
+import {AlgoblockPng} from '../../img';
 import styles from './Header.module.scss';
 
 

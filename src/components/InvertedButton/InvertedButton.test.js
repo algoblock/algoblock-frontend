@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import BackgroundGraph from './BackgroundGraph';
+import InvertedButton from './InvertedButton';
 
-describe('<BackgroundGraph />', () => {
+describe('<InvertedButton />', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<BackgroundGraph />);
+    component = shallow(<InvertedButton />);
   });
 
   test('It should mount', () => {

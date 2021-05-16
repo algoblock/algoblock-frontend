@@ -14,6 +14,7 @@ import Row from './Row/Row';
 import Column from './Column/Column';
 import LandingPage from './LandingPage/LandingPage';
 import Card from './Card/Card';
+import InvertedButton from './InvertedButton/InvertedButton';
 
 export {
 	BackgroundGraph,
@@ -31,4 +32,6 @@ export {
 	Row,
 	Column,
 	LandingPage,
+	Card,
+	InvertedButton,
 }
