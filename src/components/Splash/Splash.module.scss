@@ -1,0 +1,39 @@
+@import "../../utilities/colors";
+@import "../../utilities/fonts";
+
+.Splash {
+	margin: 85px;
+	flex-direction: row;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Title {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	font-size: 50px;
+	text-align: left;
+	color: $dark;
+	margin-bottom: 11px;
+}
+
+.Subtitle {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	font-size: 30px;
+	text-align: left;
+	color: $primary;
+	margin-bottom: 27px;
+}
+
+.Left {
+	margin-left: 23px;
+	text-align: left;
+}
+
+.Right {
+	display: flex;
+	flex: 1 2 0%;
+	max-width: 40%;
+}

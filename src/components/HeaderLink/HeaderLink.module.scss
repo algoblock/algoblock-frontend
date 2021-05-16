@@ -1,0 +1,28 @@
+@import "../../utilities/colors";
+@import "../../utilities/fonts";
+
+.HeaderLink {
+	cursor: pointer;
+	color: $dark;
+	width: fit-content;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.HeaderLink:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: -3px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: $dark;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  border-radius: 2px;
+  width: 0;
+}
+
+.HeaderLink:hover:after { 
+  width: 100%; 
+  left: 0; 
+}

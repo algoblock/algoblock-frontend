@@ -1,0 +1,33 @@
+@import "../../utilities/colors";
+@import "../../utilities/fonts";
+
+.LandingPage {
+	font-family: 'Montserrat', sans-serif;
+	color: $dark;
+}
+
+.Title {
+	color: $accent;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	font-size: 40px;
+	text-align: left;
+	margin-bottom: 24px;
+}
+
+.Subtitle {
+	color: $dark;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	font-size: 15px;
+	text-align: left;
+}
+
+.Row {
+	margin: 85px;
+	margin-top: 500px;
+}
+
+.Column {
+	max-width: 500px;
+}

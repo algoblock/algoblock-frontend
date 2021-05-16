@@ -1,0 +1,40 @@
+@import "../../utilities/colors";
+@import "../../utilities/fonts";
+
+.Header {
+	position: sticky;
+	top: 0;
+	background-color: $white;
+}
+
+.HeaderContents {
+	align-items: center;
+	margin: 23px;
+	transition: margin 0.1s ease 0s;
+
+	padding: 20px;
+	display: flex;
+	flex-direction: row;
+}
+
+.HeaderSection {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	flex: 2 1 0%;
+}
+
+.LogoWrapper {
+	display: flex;
+	justify-content: flex-start;
+	flex: 2 1 0%;
+}
+
+.LinkBarWrapper {
+	flex: 6 1 0%;
+}
+
+.ButtonWrapper {
+	margin: 0px 10px;
+}

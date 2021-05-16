@@ -1,0 +1,12 @@
+@import "../../utilities/colors";
+@import "../../utilities/fonts";
+
+.SignInLink {
+	color: $dark;
+	transition: color 0.3s ease 0s;
+	cursor: pointer;
+}
+
+.SignInLink:hover {
+	color: $primary;
+}
