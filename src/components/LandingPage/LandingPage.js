@@ -18,7 +18,7 @@ const LandingPage = () => (
 							</div>
 							<Card>
 								<div className={styles.CardTitle}>No need to code a single line</div>
-								<div className={styles.CardContent}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel condimentum tellus. Sed scelerisque quam libero, et pulvinar mauris interdum vel. Integer consequat orci non ante hendrerit, a luctus orci sollicitudin.</div>
+								<div className={styles.CardContent}>This is a test. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel condimentum tellus. Sed scelerisque quam libero, et pulvinar mauris interdum vel. Integer consequat orci non ante hendrerit, a luctus orci sollicitudin.</div>
 							</Card>
 							<div className={styles.ColumnSpacer}/>
 							<Card>
