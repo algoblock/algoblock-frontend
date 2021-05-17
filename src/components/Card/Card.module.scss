@@ -10,7 +10,9 @@
 	padding: 66px 42px;
 	box-sizing: border-box;
 	transition: 0.3s;
-	position: relative;
+	display: flex;
+	flex-direction: column;
+
 }
 
 .Card:hover {

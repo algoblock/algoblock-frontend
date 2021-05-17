@@ -17,17 +17,13 @@ const LandingPage = () => (
 								<div className={styles.Subtitle}>Automate your trading strategies</div>
 							</div>
 							<Card>
-								<div className={styles.CardTitle}>No need to code a single line</div>
-								<div className={styles.CardContent}>This is a test. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel condimentum tellus. Sed scelerisque quam libero, et pulvinar mauris interdum vel. Integer consequat orci non ante hendrerit, a luctus orci sollicitudin.</div>
+								<div className={styles.CardTitle}>No need to write code</div>
+								<div className={styles.CardContent}>Drag and drop blocks to create your customized strategy.</div>
 							</Card>
 							<div className={styles.ColumnSpacer}/>
 							<Card>
-								<div className={styles.CardTitle}>
-									Mix and match.
-									<br/>
-									Create your own parameters.
-								</div>
-								<div className={styles.CardContent}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed aliquam dolor, a vehicula justo. Vivamus semper sit amet quam id molestie. Donec molestie orci in massa convallis, nec dictum ex maximus. </div>
+								<div className={styles.CardTitle}>Investing on autopilot</div>
+								<div className={styles.CardContent}>Your trading strategy will keep working – even while you’re not.</div>
 							</Card>
 						</div>
 					</Column>
@@ -37,16 +33,16 @@ const LandingPage = () => (
 							<Card>
 								<div className={styles.CardTitle}>Community for all investors</div>
 								<div className={styles.CardContent}>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque ligula id porttitor molestie. Suspendisse viverra quam elit, in elementum mi tristique eget. Integer eu urna ligula.
-									<img src={WalletPng} className={styles.WalletImage}/>
+									Test, implement, share, and discuss your trading ideas.
+									<img src={WalletPng} className={styles.CardImage}/>
 								</div>
 							</Card>
 							<div className={styles.ColumnSpacer}/>
 							<Card>
 								<div className={styles.CardTitle}>Comprehensive Platform</div>
 								<div className={styles.CardContent}>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras urna felis, interdum vitae condimentum ut, consectetur pulvinar sem. Donec rhoncus sapien sed urna feugiat, a dictum orci porttitor. Curabitur malesuada maximus augue, sed accumsan sapien blandit vitae.
-									<img src={RevenuePng} className={styles.WalletImage}/>
+									The simplest way to invest in any assets, from crypto to stocks.
+									<img src={RevenuePng} className={styles.CardImage}/>
 								</div>
 							</Card>
 							<div className={styles.ColumnFoot}>
