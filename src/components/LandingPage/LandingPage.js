@@ -39,7 +39,7 @@ const LandingPage = () => (
 							</Card>
 							<div className={styles.ColumnSpacer}/>
 							<Card>
-								<div className={styles.CardTitle}>Comprehensive Platform</div>
+								<div className={styles.CardTitle}>Comprehensive platform</div>
 								<div className={styles.CardContent}>
 									The simplest way to invest in any assets, from crypto to stocks.
 									<img src={RevenuePng} className={styles.CardImage}/>
