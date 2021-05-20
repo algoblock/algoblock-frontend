@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Logo.module.scss';
-import {AlgoblockSvg} from '../../img';
+import {AlgoblockNoOverlapSvg} from '../../img';
 
 const Logo = () => (
-  <img className={styles.Logo} src={AlgoblockSvg} width={120}/>
+  <img className={styles.Logo} src={AlgoblockNoOverlapSvg} width={120}/>
 );
 
 Logo.propTypes = {};
