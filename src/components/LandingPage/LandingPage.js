@@ -49,7 +49,7 @@ const LandingPage = () => (
 								<Row align="right">
 									<BigButton text="Get Started"/>
 									<div className={styles.ButtonSpacer}/>
-									<InvertedButton text="Demo" padding="20px 16px 20px 16px"/>
+									<InvertedButton text="Demo" style={{padding: "18px 22px"}}/>
 								</Row>
 							</div>
 						</div>
