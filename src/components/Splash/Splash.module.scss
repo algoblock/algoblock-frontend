@@ -2,38 +2,71 @@
 @import "../../utilities/fonts";
 
 .Splash {
-	margin: 85px;
+	width: 80vw;
+	height: 70vh;
+	padding: 20px;
+	margin: auto;
+	background-color: $primary-light;
+	border-radius: 25px;
 	flex-direction: row;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
+.Highlight {
+	color: $primary;
+}
+
 .Title {
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 700;
+	font-family: 'Poppins', sans-serif;
+	font-weight: bolder;
+	font-style: normal;
+	line-height: 75px;
 	font-size: 50px;
 	text-align: left;
+	letter-spacing: 0.05em;
 	color: $dark;
 	margin-bottom: 11px;
 }
 
 .Subtitle {
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 700;
-	font-size: 30px;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 30px;
+	letter-spacing: 0.05em;
+	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
 	text-align: left;
 	color: $primary;
 	margin-bottom: 27px;
 }
 
+.Line {
+	display: inline-block;
+}
+
 .Left {
-	margin-left: 23px;
-	text-align: left;
+	margin-left: 12%;
+	max-width: 30vw;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .Right {
 	display: flex;
 	flex: 1 2 0%;
-	max-width: 40%;
+	justify-content: center;
+	width: 30vw;
+	margin-top: -5%;
+	margin-right: 9%;
+	margin-left: -5%;
+}
+
+.SplashImage {
+	filter: drop-shadow(6px 8px 23px rgba(0, 0, 0, 0.25));
+	// transform: rotate(-11.53deg);
 }

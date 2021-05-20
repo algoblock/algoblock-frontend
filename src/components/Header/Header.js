@@ -8,25 +8,10 @@ import styles from './Header.module.scss';
 
 
 const Header = () => {
-	const [margin, setMargin] = useState(true);
-
-	useScrollPosition(({ prevPos, currPos }) => {
-		if (currPos.y < prevPos.y) {
-			const newMargin = Math.min(Math.max(currPos.y + 23.0, 0), 23);
-		  if (newMargin !== margin) {
-		  	setMargin(newMargin);
-		  }
-		} else if (currPos.y === 23) {
-			setMargin(23);
-			window.scrollTo(0, 0)
-		}
-	  
-	}, [margin])
-
 
 	return (
 		<div className={styles.Header}>
-			<div className={styles.HeaderContents} style={{marginLeft: margin, marginRight: margin, marginBottom: margin}}>
+			<div className={styles.HeaderContents}>
 				<div className={styles.LogoWrapper}>
 					<Logo/>
 				</div>
@@ -34,7 +19,7 @@ const Header = () => {
 					<LinkBar/>
 				</div>
 				<div className={styles.HeaderSection}>
-					<SignInLink text="Sign In"/>
+					<SignInLink text="Log In"/>
 					<div className={styles.ButtonWrapper}>
 						<Button text="Get Started"/>
 					</div>

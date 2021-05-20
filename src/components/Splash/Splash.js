@@ -2,23 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {BigButton} from '../';
 import styles from './Splash.module.scss';
-import {SplashArtPng} from '../../img';
+import {RocketPng} from '../../img';
 
 
 const Splash = () => (
 	<div className={styles.Splash}>
 		<div className={styles.Left}>
 			<div className={styles.Title}>
-				Build your <br/>
-				own algorithm
+				<span className={styles.Highlight}>Build.</span><br/>
+				Test.<br/>
+				and Launch.
 			</div>
 			<div className={styles.Subtitle}>
-				It's easy as 1, 2, 3
+				See your ideas come to life in <span className={styles.Line}>3, 2, 1</span>
 			</div>
 			<BigButton text="Get Started"/>
 		</div>
 		<div className={styles.Right}>
-			<img src={SplashArtPng} width={"100%"}/>
+			<img src={RocketPng} width={"100%"} className={styles.SplashImage}/>
 		</div>
 	</div>
 );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
 const Button = (props) => (
-  <div className={styles.Button} style={{padding: props.padding || "12px 7px 12px 7px"}}>
+  <div className={styles.Button} style={props.style}>
     {props.text}
   </div>
 );
