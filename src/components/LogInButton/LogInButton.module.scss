@@ -1,24 +1,24 @@
 @import "../../utilities/_colors";
 @import "../../utilities/_fonts";
 
-.Button {
+.LogInButton {
 	font-family: $Poppins, sans-serif;
 	font-weight: 600;
 	font-size: 16px;
 	cursor: pointer;
 	width: fit-content;
 	color: $white;
-	background: $primary;
+	background: $accent;
 	box-sizing: border-box;
-	border: 2px solid $primary;
+	border: 2px solid $accent;
 	transition: background 0.3s ease 0s;
-	border-radius: 5px;
+	border-radius: 10px;
 	display: inline-block;
 	white-space: nowrap;
-	padding: 8px 15px 8px 15px;
+	padding: 21px 61px;
 }
 
-.Button:hover {
-	color: $primary;
+.LogInButton:hover {
+	color: $accent;
 	background: $transparent;
 }

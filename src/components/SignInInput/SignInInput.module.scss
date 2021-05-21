@@ -1,0 +1,67 @@
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
+
+.SignInInput {
+	color: $dark;
+	font-family: Poppins;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	border: none;
+	width: 100%;
+}
+
+.SignInInput:focus-visible {
+	outline: none;
+}
+
+.SignInInput.Active ~ .Label {
+	top: 6px;
+	left: 34px;
+	font-size: 11px;
+	opacity: 1;
+}
+
+
+.SignInInput.Active ~ .Label {
+	top: 6px;
+	left: 34px;
+	font-size: 11px;
+	opacity: 1;
+}
+
+.Wrapper {
+	width: 500px;
+	height: 64px;
+	padding: 18px 4px 18px 32px;
+	position: relative;
+	background: $white;
+	border: 0.5px solid $border;
+	box-sizing: border-box;
+	border-radius: 10px;
+	transition: 0.3s ease border;
+	cursor: text;
+}
+
+.Wrapper:hover {
+	border: 0.5px solid $grey;
+	border-radius: 10px;
+}
+
+.Wrapper:focus-within {
+	border: 0.5px solid $dark;
+	border-radius: 10px;
+}
+
+.Label {
+	font-family: Poppins;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	position: absolute;
+	pointer-events: none;
+	color: $grey;
+	left: 34px;
+	top: 19px;
+	transition: 0.3s ease all;
+}

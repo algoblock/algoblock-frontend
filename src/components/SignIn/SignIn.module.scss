@@ -1,0 +1,85 @@
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
+
+.SignIn {
+	position: absolute;
+	width: 506px;
+	height: 629px;
+	background-color: $light;
+	box-shadow: 2px 2px 15px rgba(191, 192, 211, 0.7);
+	border-radius: 20px;
+	padding: 70px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.Title {
+	font-family: Poppins, sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 35px;
+	line-height: 52px;
+	color: $primary;
+	text-align: center;
+}
+
+.Login {
+	width: 500px;
+}
+
+.InputSpacer {
+	height: 7px;
+}
+
+.ForgotPasswordSpacer {
+	height: 10px;
+}
+
+.LogInSpacer {
+	height: 5px;
+}
+
+.ForgotPassword {
+	font-family: Poppins, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 24px;
+	text-decoration-line: underline;
+	color: $grey;
+}
+
+.ForgotPassword:active {
+	color: $dark;
+}
+
+.ButtonWrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.OrDivider {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: space-evenly;
+    align-items: center;
+}
+
+.Divider {
+	flex: auto;
+	border-bottom: 1px solid $grey;
+}
+
+.Or {
+	margin: 32px;
+	color: $grey;
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+}

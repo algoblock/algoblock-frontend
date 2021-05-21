@@ -6,14 +6,16 @@ import Divider from './Divider/Divider';
 import Header from './Header/Header';
 import HeaderLink from './HeaderLink/HeaderLink';
 import InvertedButton from './InvertedButton/InvertedButton';
-import LandingPage from './LandingPage/LandingPage';
 import Link from './Link/Link';
 import LinkBar from './LinkBar/LinkBar';
 import Logo from './Logo/Logo';
 import Row from './Row/Row';
 import ScrollingDivider from './ScrollingDivider/ScrollingDivider';
 import SignInLink from './SignInLink/SignInLink';
+import SignIn from './SignIn/SignIn';
 import Splash from './Splash/Splash';
+import SignInInput from './SignInInput/SignInInput';
+import LogInButton from './LogInButton/LogInButton';
 
 export {
 	BigButton,
@@ -24,12 +26,14 @@ export {
 	Header,
 	HeaderLink,
 	InvertedButton,
-	LandingPage,
-	Link,
 	LinkBar,
+	Link,
 	Logo,
 	Row,
 	ScrollingDivider,
+	SignIn,
 	SignInLink,
 	Splash,
+	SignInInput,
+	LogInButton,
 }

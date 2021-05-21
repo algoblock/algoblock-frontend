@@ -4,7 +4,7 @@ import styles from './InvertedButton.module.scss';
 
 const InvertedButton = (props) => (
   <div className={styles.InvertedButton} style={props.style}>
-    {props.text}
+    {props.children}
   </div>
 );
 

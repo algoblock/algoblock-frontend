@@ -1,8 +1,8 @@
-@import "../../utilities/colors";
-@import "../../utilities/fonts";
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
 
 .LandingPage {
-	font-family: 'Montserrat', sans-serif;
+	font-family: $Poppins;
 	color: $dark;
 	background-image: url('../../img/vector/bg.svg');
 	background-repeat: no-repeat;

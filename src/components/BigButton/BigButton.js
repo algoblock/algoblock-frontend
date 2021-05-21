@@ -4,9 +4,11 @@ import {Button} from '../';
 import styles from './BigButton.module.scss';
 
 const BigButton = (props) => (
-  <div className={styles.BigButton}>
-    <Button text={props.text} style={{padding: "18px 22px", fontSize: "12px"}}/>
-  </div>
+	<div className={styles.BigButton}>
+		<Button style={{...{padding: "18px 22px", fontSize: "12px"}, ...props.style}}>
+			{props.children}
+		</Button>
+	</div>
 );
 
 BigButton.propTypes = {};

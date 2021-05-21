@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Row from './Row';
+import GoogleSignInButton from './GoogleSignInButton';
 
-describe('<Row />', () => {
+describe('<GoogleSignInButton />', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<Row />);
+    component = shallow(<GoogleSignInButton />);
   });
 
   test('It should mount', () => {

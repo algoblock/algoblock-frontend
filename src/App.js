@@ -1,12 +1,26 @@
-import {LandingPage} from './components';
+import {LandingPage, SignInPage} from './pages';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+} from "react-router-dom";
+
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <LandingPage/>
-    </div>
-  );
+	return (
+		<Router>
+			
+			<Switch>
+				<Route path="/login">
+					<SignInPage/>
+				</Route>
+				<Route path="/">
+					<LandingPage/>
+				</Route>
+			</Switch>
+		</Router>
+	);
 }
 
 export default App;

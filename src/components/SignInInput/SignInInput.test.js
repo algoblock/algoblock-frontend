@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Row from './Row';
+import SignInInput from './SignInInput';
 
-describe('<Row />', () => {
+describe('<SignInInput />', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<Row />);
+    component = shallow(<SignInInput />);
   });
 
   test('It should mount', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import PropTypes from 'prop-types';
-import {LinkBar, SignInLink, Button, Logo, ScrollingDivider} from '../';
+import {LinkBar, SignInLink, Button, Logo, ScrollingDivider, Link} from '../';
 import {useScrollPosition} from '../../utilities/useScrollPosition';
 import {AlgoblockPng} from '../../img';
 import styles from './Header.module.scss';
@@ -13,15 +13,22 @@ const Header = () => {
 		<div className={styles.Header}>
 			<div className={styles.HeaderContents}>
 				<div className={styles.LogoWrapper}>
-					<Logo/>
+					<Link to="/">
+						<Logo/>
+					</Link>
+					<div className={styles.LogoSpacer}/>
 				</div>
 				<div className={styles.LinkBarWrapper}>
 					<LinkBar/>
 				</div>
 				<div className={styles.HeaderSection}>
-					<SignInLink text="Log In"/>
+					<SignInLink>
+						Log In
+					</SignInLink>
 					<div className={styles.ButtonWrapper}>
-						<Button text="Get Started"/>
+						<Button>
+							Get Started
+						</Button>
 					</div>
 				</div>
 			</div>

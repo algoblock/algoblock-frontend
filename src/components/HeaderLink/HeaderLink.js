@@ -4,9 +4,11 @@ import {Link} from '../';
 import styles from './HeaderLink.module.scss';
 
 const HeaderLink = (props) => (
-  <div className={styles.HeaderLink}>
-    <Link text={props.text}/>
-  </div>
+	<Link className={styles.NoUnderline}>
+		<div className={styles.HeaderLink}>
+			{props.children}
+		</div>
+	</Link>
 );
 
 HeaderLink.propTypes = {};

@@ -1,0 +1,17 @@
+@import "./_colors";
+
+:export {
+	test: #fff;
+	primary: $primary;
+	primaryLight: $primary-light;
+	primaryDarker: $primary-darker;
+	accent: $accent;
+	cardBg: $card-bg;
+	white: $white;
+	dark: $dark;
+	light: $light;
+	border: $border;
+	black: $black;
+	grey: $grey;
+	transparent: $transparent;
+}

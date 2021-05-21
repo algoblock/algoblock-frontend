@@ -5,13 +5,13 @@ import styles from './LinkBar.module.scss';
 
 const LinkBar = () => (
 	<div className={styles.LinkBar}>
-		<HeaderLink text="Price"/>
+		<HeaderLink>Price</HeaderLink>
 		<div className={styles.LinkWrapper}/>
-		<HeaderLink text="Learn"/>
+		<HeaderLink>Learn</HeaderLink>
 		<div className={styles.LinkWrapper}/>
-		<HeaderLink text="Company"/>
+		<HeaderLink>Company</HeaderLink>
 		<div className={styles.LinkWrapper}/>
-		<HeaderLink text="Community"/>
+		<HeaderLink>Community</HeaderLink>
 	</div>
 );
 

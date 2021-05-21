@@ -1,5 +1,5 @@
-@import "../../utilities/colors";
-@import "../../utilities/fonts";
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
 
 .Header {
 	position: sticky;
@@ -13,7 +13,7 @@
 	margin: 0px 16vw 0px 16vw;
 	transition: margin 0.1s ease 0s;
 
-	padding: 20px;
+	padding: 12px;
 	display: flex;
 	flex-direction: row;
 }
@@ -38,4 +38,8 @@
 
 .ButtonWrapper {
 	margin: 0px 10px;
+}
+
+.LogoSpacer {
+	width: 4vw;
 }

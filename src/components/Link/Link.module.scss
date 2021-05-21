@@ -1,13 +1,10 @@
-@import "../../utilities/colors";
-@import "../../utilities/fonts";
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
 
 .Link {
-	font-family: 'Poppins', sans-serif;
-	font-weight: 600;
-	font-size: 16px;
+	text-decoration: none;
 	cursor: pointer;
 	width: fit-content;
-	margin: 10px;
-	white-space: nowrap;
+	display: inherit;
 }
 

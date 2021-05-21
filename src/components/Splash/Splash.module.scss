@@ -1,5 +1,5 @@
-@import "../../utilities/colors";
-@import "../../utilities/fonts";
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
 
 .Splash {
 	width: 80vw;
@@ -19,7 +19,7 @@
 }
 
 .Title {
-	font-family: 'Poppins', sans-serif;
+	font-family: $Poppins, sans-serif;
 	font-weight: bolder;
 	font-style: normal;
 	line-height: 75px;
@@ -35,7 +35,7 @@
 	font-weight: bold;
 	line-height: 30px;
 	letter-spacing: 0.05em;
-	font-family: 'Poppins', sans-serif;
+	font-family: $Poppins, sans-serif;
 	font-size: 20px;
 	text-align: left;
 	color: $primary;

@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link as RouterLink} from 'react-router-dom';
 import styles from './Link.module.scss';
 
 const Link = (props) => (
-  <div className={styles.Link}>
-    {props.text}
-  </div>
+  <RouterLink to={props.to} className={styles.Link}>
+    {props.children}
+  </RouterLink>
 );
 
 Link.propTypes = {};

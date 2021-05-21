@@ -1,5 +1,5 @@
-@import "../../utilities/colors";
-@import "../../utilities/fonts";
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
 
 .LinkBar {
 	width: 100%;
@@ -9,7 +9,7 @@
 }
 
 .LinkWrapper {
-	max-width: 57px;
+	max-width: 3%;
 	display: inline-block;
 	width: 100%;
 }

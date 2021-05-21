@@ -4,9 +4,11 @@ import {Link} from '../';
 import styles from './SignInLink.module.scss';
 
 const SignInLink = (props) => (
-  <div className={styles.SignInLink}>
-    <Link text={props.text}/>
-  </div>
+  <Link to="/login">
+    <div className={styles.SignInLink}>
+    	{props.children}
+  	</div>
+  </Link>
 );
 
 SignInLink.propTypes = {};
