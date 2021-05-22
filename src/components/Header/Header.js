@@ -26,9 +26,11 @@ const Header = () => {
 						Log In
 					</SignInLink>
 					<div className={styles.ButtonWrapper}>
-						<Button>
-							Get Started
-						</Button>
+						<Link to="/signup">
+							<Button>
+								Get Started
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</div>

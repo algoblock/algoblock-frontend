@@ -1,26 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { GoogleLogin } from 'react-google-login';
-import styles from './SignIn.module.scss';
+import styles from './SignUp.module.scss';
 import {SignInInput, Link, LogInButton, Button, GoogleSignInButton} from '../';
 import {AlgoblockOnelineSvg} from '../../img';
 
-const SignIn = () => (
-  <div className={styles.SignIn}>
+const SignUp = () => (
+  <div className={styles.SignUp}>
     <img src={AlgoblockOnelineSvg} width={230}/>
-    <div className={styles.Title}>Welcome back!</div>
+    <div className={styles.Title}>Let's get started</div>
     <div className={styles.Login}>
     	<SignInInput type="email" placeholder="Email"/>
     	<div className={styles.InputSpacer}/>
     	<SignInInput type="password" placeholder="Password"/>
     	<div className={styles.ForgotPasswordSpacer}/>
-    	<Link>
-	    	<span className={styles.ForgotPassword}>Forgot password?</span>
-	    </Link>
 	    <div className={styles.LogInSpacer}/>
 	    <div className={styles.CenterWrapper}>
 		    <LogInButton>
-		    	Log In
+		    	Sign Up
 		    </LogInButton>
 	    </div>
 	    <div className={styles.OrDivider}>
@@ -31,7 +28,7 @@ const SignIn = () => (
 	    <div className={styles.CenterWrapper}>
 		    <GoogleLogin
 			    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-			    render={() => (<GoogleSignInButton>Sign in with Google</GoogleSignInButton>)}
+			    render={() => (<GoogleSignInButton>Sign up with Google</GoogleSignInButton>)}
 			    buttonText="Sign in with Google"
 			    disabled={false}
 			    onSuccess={() => {}}
@@ -42,14 +39,14 @@ const SignIn = () => (
     </div>
     <div className={styles.CenterWrapper}>
 		<div className={styles.SignUpText}>
-			Don't have an account?&nbsp;<Link to="/signup"><span className={styles.SignUpLink}>Sign up</span></Link>
+			Already have an account?&nbsp;<Link to="/login"><span className={styles.SignUpLink}>Log in</span></Link>
 		</div>
 	</div>
   </div>
 );
 
-SignIn.propTypes = {};
+SignUp.propTypes = {};
 
-SignIn.defaultProps = {};
+SignUp.defaultProps = {};
 
-export default SignIn;
+export default SignUp;
