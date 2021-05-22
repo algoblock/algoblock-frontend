@@ -16,6 +16,7 @@ import SignIn from './SignIn/SignIn';
 import Splash from './Splash/Splash';
 import SignInInput from './SignInInput/SignInInput';
 import LogInButton from './LogInButton/LogInButton';
+import GoogleSignInButton from './GoogleSignInButton/GoogleSignInButton';
 
 export {
 	BigButton,
@@ -36,4 +37,5 @@ export {
 	Splash,
 	SignInInput,
 	LogInButton,
+	GoogleSignInButton,
 }

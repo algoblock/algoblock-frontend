@@ -1,1 +1,43 @@
-.GoogleSignInButton {}
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
+
+.GoogleSignInButton {
+	width: 100%;
+	padding: 8px;
+	height: 64px;
+	border-radius: 10px;
+	box-sizing: border-box;
+	border: 1px solid $grey;
+	cursor: pointer;
+	position: relative;
+	display: flex;
+	align-items: center;
+	background-color: $white;
+	transition: 0.3s ease background-color;
+}
+
+.GoogleSignInButton:active {
+	background-color: $light-grey;
+}
+
+.GoogleSignInButton:hover > .SignInText {
+	color: $dark;
+}
+
+.GoogleLogo {
+	width: 37px;
+	height: 37px;
+	position: absolute;
+	top: 12px;
+	left: 24px;
+}
+
+.SignInText {
+	text-align: center;
+	width: 100%;
+	font-family: $Roboto;
+	font-weight: 600;
+	font-size: 16px;
+	color: $grey;
+	transition: 0.3s ease color
+}
