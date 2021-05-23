@@ -3,13 +3,15 @@
 
 .SignUpPage {
 	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .SignUpWrapper {
 	display: flex;
 	justify-content: flex-start;
 	margin-top: 20px;
-	height: 100%;
+	flex: 1 1 auto;
     flex-direction: column;
     align-items: center;
 }
