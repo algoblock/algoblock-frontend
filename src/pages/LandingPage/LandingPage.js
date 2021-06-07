@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Splash, BackgroundGraph, Divider, Row, Column, Card, BigButton, InvertedButton} from '../../components';
+import {Header, Splash, BackgroundGraph, Divider, Row, Column, Card, BigButton, InvertedButton, Squiggle} from '../../components';
 import PropTypes from 'prop-types';
 import styles from './LandingPage.module.scss';
 import {WalletPng, RevenuePng} from '../../img';
@@ -8,7 +8,8 @@ const LandingPage = () => (
 	<div className={styles.LandingPage}>
 		<Header/>
 		<Splash/>
-		<div className={styles.Row}>
+		<Squiggle/>
+		{/*<div className={styles.Row}>
 			<Row>
 				<Column>
 					<div className={styles.Column}>
@@ -59,7 +60,7 @@ const LandingPage = () => (
 					</div>
 				</Column>
 			</Row>
-		</div>
+		</div>*/}
 	</div>
 );
 

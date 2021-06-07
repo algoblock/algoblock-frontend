@@ -18,6 +18,7 @@ import SignInInput from './SignInInput/SignInInput';
 import LogInButton from './LogInButton/LogInButton';
 import GoogleSignInButton from './GoogleSignInButton/GoogleSignInButton';
 import SignUp from './SignUp/SignUp';
+import Squiggle from './Squiggle/Squiggle';
 
 export {
 	BigButton,
@@ -40,4 +41,5 @@ export {
 	LogInButton,
 	GoogleSignInButton,
 	SignUp,
+	Squiggle,
 }
