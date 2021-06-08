@@ -1,62 +1,94 @@
 import React from 'react';
-import {useRef, useEffect, useState} from 'react';
+import {useRef, useEffect, useState, createRef} from 'react';
 import PropTypes from 'prop-types';
-import * as d3 from 'd3';
+// import * as d3 from 'd3';
 import styles from './Squiggle.module.scss';
 import colors from '../../utilities/_export.module.scss';
 
+function plotSine(ctx, xOffset, yOffset) {
+    var width = ctx.canvas.width;
+    var height = ctx.canvas.height;
+    var scale = 1;
+
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgb(0,0,0)";
+    ctx.fillStyle = colors.primary;
+
+    // console.log("Drawing point...");
+    // drawPoint(ctx, yOffset+step);
+    
+    var x = 4;
+    var y = height/2 + amplitude * Math.sin((x+xOffset)/frequency);
+    var amplitude = 100;
+    var frequency = 200;
+    //ctx.moveTo(x, y);
+    ctx.moveTo(x, y);
+    while (x < width) {
+        y = height/2 + amplitude * Math.sin((x+xOffset)/frequency) - x/20 + 50;
+        ctx.lineTo(x, y);
+        x++;
+        // console.log("x="+x+" y="+y);
+    }
+    ctx.stroke();
+    
+
+    // console.log("Drawing point at y=" + y);
+    const d = 1920 / 6;
+    for (let i=0; i < 7; i++) {
+      ctx.beginPath();
+      ctx.arc(d * i, height/2 + amplitude * Math.sin((d * i+xOffset)/frequency) - d * i/20 + 50, 12, 0, 2 * Math.PI);
+      // ctx.stroke();
+      
+      ctx.fill();
+    }
+    
+    ctx.save();
+    ctx.restore();
+
+} 
+
 const Squiggle = () => {
-  const ref = useRef(null);
+  const ref = useRef();
+  const [count, setCount] = React.useState(0)
   // const [points, setPoints] = useState([]);
   // const [links, setLinks] = useState([]);
-  useEffect(() => {
-    // const nodeData = [];
-    const host = d3.select(ref.current);
-    const points = [];
-    for (let i=0; i < 7; i++) {
-      points.push({"id": i, "position": [1920 / 6 * i, 480 - 75 * i], "parentPosition": [1920 / 6 * Math.max(i - 1, 0), 480 - 75 * Math.max(i - 1, 0)]})
-      // const point = host.append("circle").attr("r", 3).attr("cx", 50 * i).attr("cy", 90).attr("fill", colors.primary);
-      
-      // points.push(point);
-      // if (i > 0) {
-      //   // console.log(points[i].attr("cx"));
-      //   let link = d3.linkVertical().target([points[i].attr("cx"), points[i].attr("cx")]).source([points[i - 1].attr("cx"), points[i - 1].attr("cx")]);
-      //   host.append("path").attr("d", link);
-      // }
-    }
-    var link = d3.linkHorizontal()
-        .source( d => [d.position[0], d.position[1]] )
-        .target( d => [d.parentPosition[0], d.parentPosition[1]] );
-    console.log(points);
-    host.selectAll("path").data(points).join("path").attr("d", link).attr("stroke", colors.black).attr("stroke-width", 1).attr("fill", "none");
-    host.selectAll("circle").data(points).join("circle").attr("cx", d => d.position[0]).attr("cy", d => d.position[1]).attr("r", 12.5).attr("fill", colors.primary).classed("circle", true);
+  const requestRef = useRef();
+  const previousTimeRef = useRef();
 
-    const updatePoints = () => {
-      for (let i=0; i < 7; i++) {
-        points[i]["position"][1] = Math.min(Math.max(Math.floor(Math.random() * 120) - 60 + points[i]["position"][1], 20), 480);
-        points[i]["parentPosition"][1] = points[Math.max(i - 1, 0)]["position"][1];
-        // const point = host.append("circle").attr("r", 3).attr("cx", 50 * i).attr("cy", 90).attr("fill", colors.primary);
-        
-        // points.push(point);
-        // if (i > 0) {
-        //   // console.log(points[i].attr("cx"));
-        //   let link = d3.linkVertical().target([points[i].attr("cx"), points[i].attr("cx")]).source([points[i - 1].attr("cx"), points[i - 1].attr("cx")]);
-        //   host.append("path").attr("d", link);
-        // }
-      }
-      host.selectAll("path").data(points).join("path").transition().ease(d3.easeLinear).duration(4000).attr("d", link );
-      host.selectAll("circle").data(points).join("circle").transition().ease(d3.easeLinear).duration(4000).attr("cy", d => d.position[1]);
-      setTimeout(() => updatePoints(), 4000);
+  const draw = (canvas, step) => {
+    console.log(step);
+    var context = canvas.getContext("2d");
+
+    context.clearRect(0, 0, 1920, 350);
+    context.save();            
+    
+    plotSine(context, step, 50);
+    context.restore();
+    
+}
+
+  const animate = time => {
+    if (previousTimeRef.current != undefined) {
+      const deltaTime = time - previousTimeRef.current;
+      
+      // Pass on a function to the setter of the state
+      // to make sure we always have the latest state
+      setCount(prevCount => {
+        draw(ref.current, prevCount);
+        return prevCount + deltaTime / 10;
+      });
     }
-    
-    updatePoints();
-    
-  }, []);
-  const viewBoxWidth = 1920;
-  const viewBoxHeight = 500;
+    previousTimeRef.current = time;
+    requestRef.current = requestAnimationFrame(animate);
+  }
+  
+  React.useEffect(() => {
+    requestRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(requestRef.current);
+  }, []); // Make sure the effect runs only once
   return (
-    <svg ref={ref} width="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}>
-    </svg>
+    <canvas className={styles.Squiggle} ref={ref} width="1920" height="350"></canvas>
   )
 };
 
