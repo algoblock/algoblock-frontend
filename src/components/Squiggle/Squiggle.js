@@ -19,15 +19,37 @@ function plotSine(ctx, xOffset, yOffset) {
     // drawPoint(ctx, yOffset+step);
     
     var x = 4;
-    var y = height/2 + amplitude * Math.sin((x+xOffset)/frequency);
-    var amplitude = 100;
+    var y = height/2 + -500 * Math.sin((x+xOffset)/frequency);
+    var setPoints = [
+      [0, -500],
+      [600, -250],
+      [900, -100],
+      [1250, 110],
+      [1700, 275],
+      [1920, 550],
+    ];
+    var amplitudes = [];
+    for (let i=0; i < setPoints.length - 1; i++) {
+      let m = (setPoints[i + 1][1] - setPoints[i][1]) / (setPoints[i + 1][0] - setPoints[i][0]);
+      amplitudes.push({
+        start: setPoints[i][0],
+        end: setPoints[i + 1][0],
+        m: m,
+        b: setPoints[i][1] - m * setPoints[i][0],
+      })
+    }
     var frequency = 200;
     //ctx.moveTo(x, y);
     ctx.moveTo(x, y);
     while (x < width) {
-        y = height/2 + amplitude * Math.sin((x+xOffset)/frequency) - x/20 + 50;
-        ctx.lineTo(x, y);
-        x++;
+        for (let a of amplitudes) {
+          if (x >= a.start && x <= a.end) {
+            y = height/2 - (a.m * x + a.b) / 2 * Math.sin((x+xOffset)/frequency);
+            ctx.lineTo(x, y);
+            x++;
+            break;
+          }
+        }
         // console.log("x="+x+" y="+y);
     }
     ctx.stroke();
@@ -35,9 +57,10 @@ function plotSine(ctx, xOffset, yOffset) {
 
     // console.log("Drawing point at y=" + y);
     const d = 1920 / 6;
-    for (let i=0; i < 7; i++) {
+    for (let p of setPoints) {
+
       ctx.beginPath();
-      ctx.arc(d * i, height/2 + amplitude * Math.sin((d * i+xOffset)/frequency) - d * i/20 + 50, 12, 0, 2 * Math.PI);
+      ctx.arc(p[0], height/2 - p[1] / 2 * Math.sin((p[0]+xOffset)/frequency), 12, 0, 2 * Math.PI);
       // ctx.stroke();
       
       ctx.fill();
@@ -60,7 +83,7 @@ const Squiggle = () => {
     console.log(step);
     var context = canvas.getContext("2d");
 
-    context.clearRect(0, 0, 1920, 350);
+    context.clearRect(0, 0, 1920, 600);
     context.save();            
     
     plotSine(context, step, 50);
@@ -88,7 +111,7 @@ const Squiggle = () => {
     return () => cancelAnimationFrame(requestRef.current);
   }, []); // Make sure the effect runs only once
   return (
-    <canvas className={styles.Squiggle} ref={ref} width="1920" height="350"></canvas>
+    <canvas className={styles.Squiggle} ref={ref} width="1920" height="600"></canvas>
   )
 };
 
