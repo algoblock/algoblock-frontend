@@ -2,12 +2,11 @@
 @import "../../utilities/_fonts";
 
 .Card {
-	max-width: 500px;
-	min-height: 500px;
-	height: fit-content;
-	border-radius: 5px;
-	background-color: $card-bg;
-	padding: 66px 42px;
+	width: 472px;
+	height: 502px;
+	border-radius: 20px;
+	background-color: $primary-light;
+	padding: 68px 46px;
 	box-sizing: border-box;
 	transition: 0.3s;
 	display: flex;
@@ -16,5 +15,6 @@
 }
 
 .Card:hover {
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));	
+	filter: drop-shadow(0px 4px 12px #BFC0D3);
+	background-color: $card-bg;
 }

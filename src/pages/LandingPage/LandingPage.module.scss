@@ -9,7 +9,7 @@
 	// background-size: 100%;
 	// background-position: 0 100vh;
 	// background-clip: border-box;
-	overflow-x: hidden;
+	// overflow-x: hidden;
 	padding-bottom: 85px;
 }
 
@@ -33,7 +33,17 @@
 .Row {
 	margin-left: 85px;
 	margin-right: 85px;
-	margin-top: 500px;
+	margin-top: 400px;
+}
+
+.RowTitle {
+	text-align: center;
+	font-family: $Poppins;
+	color: $primary;
+	font-size: 35px;
+	font-weight: 700;
+	margin-bottom: 100px;
+	text-shadow: 0 0 10px #ffffff88;
 }
 
 .Column {
@@ -69,19 +79,20 @@
 }
 
 .CardTitle {
-	color: $white;
-	font-family: 'Montserrat', sans-serif;
+	color: $primary;
+	font-family: $Poppins;
 	font-weight: 600;
 	font-size: 30px;
 	text-align: left;
 	margin-bottom: 30px;
+	width: 242px;
 }
 
 .CardContent {
-	color: $white;
-	font-family: 'Montserrat', sans-serif;
+	color: $dark-grey;
+	font-family: $Poppins;
 	font-weight: 600;
-	font-size: 15px;
+	font-size: 16px;
 	text-align: left;
 	position: relative;
 	flex: 1;
@@ -89,9 +100,49 @@
 	flex-direction: column;
 }
 
-.CardImage {
-	width: 50%;
+.CardText {
+	width: 242px;
+}
+
+.LearnMore {
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	bottom: -8px;
+	font-size: 12px;
+	color: $dark;
+	font-family: $Poppins;
+}
+
+.HandsPng {
+	width: 100%;
+	position: absolute;
+	bottom: -100px;
+	right: -60px;
+}
+
+.HandPng {
+	width: 66%;
+	position: absolute;
+	bottom: -68px;
+	right: -50px;
+}
+
+.BotPng {
+	width: 80%;
+	position: absolute;
+	bottom: -50px;
+	right: -100px;
+}
+
+.WalkPng {
+	width: 66%;
+	position: absolute;
+	bottom: -50px;
+	right: -50px;
+}
+
+.Squiggle {
+	position: sticky;
+	top: 10vh;
+	z-index: -1;
+	height: 0;
 }

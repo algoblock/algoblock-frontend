@@ -19,14 +19,14 @@ function plotSine(ctx, xOffset, yOffset) {
     // drawPoint(ctx, yOffset+step);
     
     var x = 4;
-    var y = height/2 + -500 * Math.sin((x+xOffset)/frequency);
+    var y = height/2 - (5/6 * height) * Math.sin((x+xOffset)/frequency);
     var setPoints = [
-      [0, -500],
-      [600, -250],
-      [900, -100],
-      [1250, 110],
-      [1700, 275],
-      [1920, 550],
+      [0, -500/600 * height],
+      [600, -250/600 * height],
+      [900, -100/600 * height],
+      [1250, 110/600 * height],
+      [1700, 275/600 * height],
+      [1920, 550/600 * height],
     ];
     var amplitudes = [];
     for (let i=0; i < setPoints.length - 1; i++) {
@@ -83,7 +83,7 @@ const Squiggle = () => {
     console.log(step);
     var context = canvas.getContext("2d");
 
-    context.clearRect(0, 0, 1920, 600);
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     context.save();            
     
     plotSine(context, step, 50);
@@ -111,7 +111,7 @@ const Squiggle = () => {
     return () => cancelAnimationFrame(requestRef.current);
   }, []); // Make sure the effect runs only once
   return (
-    <canvas className={styles.Squiggle} ref={ref} width="1920" height="600"></canvas>
+    <canvas className={styles.Squiggle} ref={ref} width="1920" height="550"></canvas>
   )
 };
 

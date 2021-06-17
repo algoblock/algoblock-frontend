@@ -8,6 +8,10 @@ import RevenuePng from './raster/revenue.png';
 import SplashArtPng from './raster/splashart.png';
 import WalletPng from './raster/wallet.png';
 import RocketPng from './raster/rocket.png';
+import HandsPng from './raster/hands.png';
+import HandPng from './raster/hand.png';
+import BotPng from './raster/bot.png';
+import WalkPng from './raster/walk.png';
 
 export {
 	AlgoblockPng,
@@ -20,4 +24,8 @@ export {
 	SplashArtPng,
 	WalletPng,
 	RocketPng,
+	HandsPng,
+	HandPng,
+	BotPng,
+	WalkPng,
 }
