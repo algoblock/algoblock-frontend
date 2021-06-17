@@ -81,17 +81,6 @@ const LandingPage = () => (
 								</Link>
 							</div>
 						</Card>
-						<div className={styles.ColumnFoot}>
-							<Row align="right">
-								<BigButton>
-									Get Started
-								</BigButton>
-								<div className={styles.ButtonSpacer}/>
-								<InvertedButton style={{padding: "18px 22px"}}>
-									Demo
-								</InvertedButton>
-							</Row>
-						</div>
 					</div>
 				</Column>
 			</Row>
