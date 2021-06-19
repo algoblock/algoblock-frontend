@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {BigButton} from '../';
+import {BigButton, Link} from '../';
 import styles from './Splash.module.scss';
-import {RocketPng} from '../../img';
+import {RocketSmallerPng} from '../../img';
 
 
 const Splash = () => (
@@ -16,12 +16,14 @@ const Splash = () => (
 			<div className={styles.Subtitle}>
 				See your ideas come to life in <span className={styles.Line}>3, 2, 1</span>
 			</div>
-			<BigButton>
-				Get Started
-			</BigButton>
+			<Link to="/signup">
+				<BigButton>
+					Get Started
+				</BigButton>
+			</Link>
 		</div>
 		<div className={styles.Right}>
-			<img src={RocketPng} width={"100%"} className={styles.SplashImage}/>
+			<img src={RocketSmallerPng} width={"100%"} className={styles.SplashImage}/>
 		</div>
 	</div>
 );
