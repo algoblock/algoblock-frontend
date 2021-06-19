@@ -7,25 +7,34 @@ import colors from '../../utilities/_export.module.scss';
 
 function plotSine(ctx, xOffset, yOffset) {
     var width = ctx.canvas.width;
-    var height = ctx.canvas.height;
+    var height = ctx.canvas.height / 2;
     var scale = 1;
+
+    let grd = ctx.createLinearGradient(0, 0, 0, height * 1.5);
+    grd.addColorStop(0, "#F5F2FE");
+    grd.addColorStop(1, "white");
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, width, height * 1.5);
+
 
     ctx.beginPath();
     ctx.lineWidth = 1;
-    ctx.strokeStyle = "rgb(0,0,0)";
-    ctx.fillStyle = colors.primary;
+    
+    // ctx.fillStyle = "#907be8";
+    ctx.strokeStyle = "#ffffff"; 
+    ctx.fillStyle = "#ffffff";
 
     // console.log("Drawing point...");
     // drawPoint(ctx, yOffset+step);
     
-    var x = 4;
+    var x = 0;
     var y = height/2 - (5/6 * height) * Math.sin((x+xOffset)/frequency);
     var setPoints = [
       [0, -500/600 * height],
       [600, -250/600 * height],
       [900, -100/600 * height],
       [1250, 110/600 * height],
-      [1700, 275/600 * height],
+      [1600, 275/600 * height],
       [1920, 550/600 * height],
     ];
     var amplitudes = [];
@@ -39,13 +48,39 @@ function plotSine(ctx, xOffset, yOffset) {
       })
     }
     var frequency = 200;
-    //ctx.moveTo(x, y);
-    ctx.moveTo(x, y);
+
     while (x < width) {
         for (let a of amplitudes) {
           if (x >= a.start && x <= a.end) {
             y = height/2 - (a.m * x + a.b) / 2 * Math.sin((x+xOffset)/frequency);
             ctx.lineTo(x, y);
+            // ctx.strokeStyle = "#F5F2FE";
+            ctx.lineTo(x, 0);
+            // ctx.strokeStyle = "#907be8";
+            ctx.moveTo(x, y);
+            x += 0.5;
+            break;
+          }
+        }
+        // console.log("x="+x+" y="+y);
+    }
+    ctx.stroke();
+    x = 4;
+    y = height/2 + (5/6 * height) / 2 * Math.sin((x+xOffset)/frequency);
+    //ctx.moveTo(x, y);
+    ctx.strokeStyle = "#907be8";
+    ctx.beginPath()
+    ctx.moveTo(x, y);
+
+    while (x < width) {
+        for (let a of amplitudes) {
+          if (x >= a.start && x <= a.end) {
+            y = height/2 - (a.m * x + a.b) / 2 * Math.sin((x+xOffset)/frequency);
+            ctx.lineTo(x, y);
+            // ctx.strokeStyle = "#F5F2FE";
+            // ctx.lineTo(x, height);
+            // ctx.strokeStyle = "#907be8";
+            // ctx.moveTo(x, y);
             x++;
             break;
           }
@@ -53,15 +88,18 @@ function plotSine(ctx, xOffset, yOffset) {
         // console.log("x="+x+" y="+y);
     }
     ctx.stroke();
+    // ctx.moveTo(x, y);
     
 
+    ctx.strokeStyle = "#907be8";
     // console.log("Drawing point at y=" + y);
     const d = 1920 / 6;
     for (let p of setPoints) {
 
       ctx.beginPath();
+      ctx.lineWidth = 2;
       ctx.arc(p[0], height/2 - p[1] / 2 * Math.sin((p[0]+xOffset)/frequency), 12, 0, 2 * Math.PI);
-      // ctx.stroke();
+      ctx.stroke();
       
       ctx.fill();
     }
@@ -73,14 +111,17 @@ function plotSine(ctx, xOffset, yOffset) {
 
 const Squiggle = () => {
   const ref = useRef();
-  const [count, setCount] = React.useState(0)
+  const containerRef = useRef();
+  const [count, setCount] = React.useState(0);
   // const [points, setPoints] = useState([]);
   // const [links, setLinks] = useState([]);
   const requestRef = useRef();
   const previousTimeRef = useRef();
+  // const width = 1920;
+  // const height = 
 
   const draw = (canvas, step) => {
-    console.log(step);
+    // console.log(step);
     var context = canvas.getContext("2d");
 
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
@@ -89,7 +130,7 @@ const Squiggle = () => {
     plotSine(context, step, 50);
     context.restore();
     
-}
+  }
 
   const animate = time => {
     if (previousTimeRef.current != undefined) {
@@ -99,7 +140,7 @@ const Squiggle = () => {
       // to make sure we always have the latest state
       setCount(prevCount => {
         draw(ref.current, prevCount);
-        return prevCount + deltaTime / 10;
+        return prevCount + deltaTime / 20;
       });
     }
     previousTimeRef.current = time;
@@ -110,8 +151,13 @@ const Squiggle = () => {
     requestRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(requestRef.current);
   }, []); // Make sure the effect runs only once
+  // if (ref.current) {
+  //   console.log(ref.current.offsetWidth);
+  // }
   return (
-    <canvas className={styles.Squiggle} ref={ref} width="1920" height="550"></canvas>
+    <div className={styles.Container} ref={containerRef} style={{height: (ref.current ? ref.current.offsetWidth : 1920) / 1920 * 550}}>
+      <canvas className={styles.Squiggle} ref={ref} width="1920" height="825"></canvas>
+    </div>
   )
 };
 

@@ -31,15 +31,18 @@
 }
 
 .Row {
-	margin-left: 85px;
-	margin-right: 85px;
-	margin-top: 400px;
+	// margin-left: 85px;
+	// margin-right: 85px;
+	// z-index: 2;
+	// margin-top: -50px;
+	// background: linear-gradient(0deg, transparent, #FAF8FF);
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 }
 
 .RowTitle {
+	z-index: 2;
 	text-align: center;
 	font-family: $Poppins;
 	color: $primary;
@@ -49,13 +52,14 @@
 	padding: 20px;
 	border-radius: 20px;
 	animation: filter 0.3s ease 0s;
-	filter: drop-shadow(0px 0px 8px #BFC0D388);
-	background-color: $primary-light;
+	// filter: drop-shadow(0px 0px 8px #BFC0D388);
+	// background-color: $primary-light;
 	// text-shadow: 0 0 10px #ffffff88;
 }
 
 .Column {
 	max-width: 500px;
+	z-index: 2;
 }
 
 .RowSpacer {
@@ -147,11 +151,4 @@
 	position: absolute;
 	bottom: -50px;
 	right: -50px;
-}
-
-.Squiggle {
-	position: sticky;
-	top: 10vh;
-	z-index: -1;
-	height: 0;
 }

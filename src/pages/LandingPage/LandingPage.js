@@ -8,9 +8,7 @@ const LandingPage = () => (
 	<div className={styles.LandingPage}>
 		<Header/>
 		<Splash/>
-		<div className={styles.Squiggle}>
-			<Squiggle/>
-		</div>
+		<Squiggle/>
 		<div className={styles.Row}>
 			<div className={styles.RowTitle}>
 				Why use AlgoBlock to invest?
@@ -84,6 +82,9 @@ const LandingPage = () => (
 					</div>
 				</Column>
 			</Row>
+		</div>
+		<div className={styles.Squiggle}>
+			<Squiggle/>
 		</div>
 	</div>
 );
