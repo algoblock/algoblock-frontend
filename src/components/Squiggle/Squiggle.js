@@ -97,11 +97,11 @@ function plotSine(ctx, xOffset, yOffset) {
     for (let p of setPoints) {
 
       ctx.beginPath();
-      ctx.lineWidth = 2;
       ctx.arc(p[0], height/2 - p[1] / 2 * Math.sin((p[0]+xOffset)/frequency), 12, 0, 2 * Math.PI);
-      ctx.stroke();
+      
       
       ctx.fill();
+      ctx.stroke();
     }
     
     ctx.save();
