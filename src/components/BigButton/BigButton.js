@@ -5,7 +5,7 @@ import styles from './BigButton.module.scss';
 
 const BigButton = (props) => (
 	<div className={styles.BigButton}>
-		<Button style={{...{padding: "18px 22px", fontSize: "12px"}, ...props.style}}>
+		<Button style={{...{padding: "18px 22px", fontSize: "18px", "minWidth": "169px"}, ...props.style}}>
 			{props.children}
 		</Button>
 	</div>

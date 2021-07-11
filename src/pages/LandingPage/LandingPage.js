@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Splash, BackgroundGraph, Divider, Row, Column, Card, BigButton, InvertedButton, Squiggle, Link} from '../../components';
+import {Header, Splash, BackgroundGraph, Divider, Row, Column, Card, BigButton, InvertedButton, Squiggle, Link, LandingTitle, Demo} from '../../components';
 import PropTypes from 'prop-types';
 import styles from './LandingPage.module.scss';
 import {HandsPng, HandPng, BotPng, WalkPng} from '../../img';
@@ -8,11 +8,11 @@ const LandingPage = () => (
 	<div className={styles.LandingPage}>
 		<Header/>
 		<Splash/>
-		<Squiggle/>
+		<Squiggle start={"#F5F2FE"} end={"#FFFFFF"} gradientHeight={1.5}/>
 		<div className={styles.Row}>
-			<div className={styles.RowTitle}>
+			<LandingTitle>
 				Why use AlgoBlock to invest?
-			</div>
+			</LandingTitle>
 			<Row>
 				<Column>
 					<div className={styles.Column}>
@@ -83,9 +83,8 @@ const LandingPage = () => (
 				</Column>
 			</Row>
 		</div>
-		<div className={styles.Squiggle}>
-			<Squiggle/>
-		</div>
+		<Squiggle start={"#F5F2FE"} end={"#F5F2FE"} gradientHeight={1}/>
+		<Demo/>
 	</div>
 );
 

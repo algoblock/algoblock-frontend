@@ -13,6 +13,7 @@ import HandsPng from './raster/hands.png';
 import HandPng from './raster/hand.png';
 import BotPng from './raster/bot.png';
 import WalkPng from './raster/walk.png';
+import PlaceholderPng from './raster/placeholder.png';
 
 export {
 	AlgoblockPng,
@@ -30,4 +31,5 @@ export {
 	BotPng,
 	WalkPng,
 	RocketSmallerPng,
+	PlaceholderPng,
 }

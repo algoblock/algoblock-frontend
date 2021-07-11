@@ -10,7 +10,7 @@
 	// background-position: 0 100vh;
 	// background-clip: border-box;
 	// overflow-x: hidden;
-	padding-bottom: 85px;
+	// padding-bottom: 85px;
 }
 
 .Title {
@@ -34,27 +34,11 @@
 	// margin-left: 85px;
 	// margin-right: 85px;
 	// z-index: 2;
-	// margin-top: -50px;
+	margin-top: -50px;
 	// background: linear-gradient(0deg, transparent, #FAF8FF);
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-}
-
-.RowTitle {
-	z-index: 2;
-	text-align: center;
-	font-family: $Poppins;
-	color: $primary;
-	font-size: 35px;
-	font-weight: 700;
-	margin-bottom: 100px;
-	padding: 20px;
-	border-radius: 20px;
-	animation: filter 0.3s ease 0s;
-	// filter: drop-shadow(0px 0px 8px #BFC0D388);
-	// background-color: $primary-light;
-	// text-shadow: 0 0 10px #ffffff88;
 }
 
 .Column {

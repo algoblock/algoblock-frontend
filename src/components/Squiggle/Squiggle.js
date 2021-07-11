@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 import styles from './Squiggle.module.scss';
 import colors from '../../utilities/_export.module.scss';
 
-function plotSine(ctx, xOffset, yOffset) {
+function plotSine(ctx, xOffset, yOffset, startColour, endColour, gradientHeightMultiplier) {
     var width = ctx.canvas.width;
-    var height = ctx.canvas.height / 2;
+    var height = ctx.canvas.height / gradientHeightMultiplier;
     var scale = 1;
 
-    let grd = ctx.createLinearGradient(0, 0, 0, height * 1.5);
-    grd.addColorStop(0, "#F5F2FE");
-    grd.addColorStop(1, "white");
+    let grd = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+    grd.addColorStop(0, startColour);
+    grd.addColorStop(1, endColour);
     ctx.fillStyle = grd;
-    ctx.fillRect(0, 0, width, height * 1.5);
+    ctx.fillRect(0, 0, width, ctx.canvas.height);
 
 
     ctx.beginPath();
@@ -109,7 +109,7 @@ function plotSine(ctx, xOffset, yOffset) {
 
 } 
 
-const Squiggle = () => {
+const Squiggle = (props) => {
   const ref = useRef();
   const containerRef = useRef();
   const [count, setCount] = React.useState(0);
@@ -127,7 +127,7 @@ const Squiggle = () => {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     context.save();            
     
-    plotSine(context, step, 50);
+    plotSine(context, step, 50, props.start, props.end, props.gradientHeight);
     context.restore();
     
   }
@@ -155,8 +155,8 @@ const Squiggle = () => {
   //   console.log(ref.current.offsetWidth);
   // }
   return (
-    <div className={styles.Container} ref={containerRef} style={{height: (ref.current ? ref.current.offsetWidth : 1920) / 1920 * 550}}>
-      <canvas className={styles.Squiggle} ref={ref} width="1920" height="825"></canvas>
+    <div className={styles.Container} ref={containerRef} style={{height: (ref.current ? ref.current.offsetWidth : 1920) / 1920 * (412 * props.gradientHeight)}}>
+      <canvas className={styles.Squiggle} ref={ref} width="1920" height={412 * props.gradientHeight}></canvas>
     </div>
   )
 };

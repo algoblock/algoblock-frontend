@@ -1,0 +1,32 @@
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
+
+
+.Demo {
+	width: 100%;
+	background-color: $primary-light;
+	// padding-top: 82px;
+	// margin-top: -82px;
+	z-index: 2;
+	padding-bottom: 82px;
+}
+
+.Title {
+	font-family: $Poppins;
+	font-size: 30px;
+	font-weight: 600;
+	width: 456px;
+	color: $dark-grey;
+}
+
+.Body {
+	font-family: $Poppins;
+	font-size: 20px;
+	font-weight: 600;
+	width: 556px;
+	color: $dark-grey;
+}
+
+.RowSpacer {
+	width: 176px;
+}

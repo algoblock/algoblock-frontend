@@ -19,6 +19,8 @@ import LogInButton from './LogInButton/LogInButton';
 import GoogleSignInButton from './GoogleSignInButton/GoogleSignInButton';
 import SignUp from './SignUp/SignUp';
 import Squiggle from './Squiggle/Squiggle';
+import LandingTitle from './LandingTitle/LandingTitle';
+import Demo from './Demo/Demo';
 
 export {
 	BigButton,
@@ -42,4 +44,6 @@ export {
 	GoogleSignInButton,
 	SignUp,
 	Squiggle,
+	LandingTitle,
+	Demo,
 }
