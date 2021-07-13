@@ -7,7 +7,7 @@ import {AlgoblockPng} from '../../img';
 import styles from './Header.module.scss';
 
 
-const Header = () => {
+const Header = (props) => {
 
 	return (
 		<div className={styles.Header}>
@@ -19,7 +19,7 @@ const Header = () => {
 					<div className={styles.LogoSpacer}/>
 				</div>
 				<div className={styles.LinkBarWrapper}>
-					<LinkBar/>
+					<LinkBar loggedIn={props.loggedIn || false}/>
 				</div>
 				<div className={styles.HeaderSection}>
 					<SignInLink>

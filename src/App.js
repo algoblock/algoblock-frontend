@@ -1,4 +1,4 @@
-import {LandingPage, SignInPage, SignUpPage} from './pages';
+import {LandingPage, SignInPage, SignUpPage, DashboardPage} from './pages';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -12,6 +12,9 @@ function App() {
 		<Router>
 			
 			<Switch>
+				<Route path="/dashboard">
+					<DashboardPage/>
+				</Route>
 				<Route path="/login">
 					<SignInPage/>
 				</Route>

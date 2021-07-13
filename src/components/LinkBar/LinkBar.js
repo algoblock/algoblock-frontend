@@ -3,17 +3,26 @@ import PropTypes from 'prop-types';
 import {HeaderLink} from '../';
 import styles from './LinkBar.module.scss';
 
-const LinkBar = () => (
-	<div className={styles.LinkBar}>
-		<HeaderLink>Price</HeaderLink>
-		<div className={styles.LinkWrapper}/>
-		<HeaderLink>Learn</HeaderLink>
-		<div className={styles.LinkWrapper}/>
-		<HeaderLink>Company</HeaderLink>
-		<div className={styles.LinkWrapper}/>
-		<HeaderLink>Community</HeaderLink>
-	</div>
-);
+const LinkBar = (props) => {
+	var links = [];
+	
+	if (!props.loggedIn) {
+		var linkTitles = ["Price", "Learn", "Company", "Community"];
+	} else {
+		var linkTitles = ["Dashboard", "Editor", "Community"];
+	}
+	for (var i=0; i < linkTitles.length - 1; i++) {
+		links.push(<HeaderLink key={2 * i} selected={linkTitles[i] == props.selected}>{linkTitles[i]}</HeaderLink>);
+		links.push(<div key={2 * i + 1} className={styles.LinkWrapper}/>);
+	}
+	var i = linkTitles.length - 1;
+	links.push(<HeaderLink key={2 * i} selected={linkTitles[i] == props.selected}>{linkTitles[i]}</HeaderLink>);
+	return (
+		<div className={styles.LinkBar}>
+			{links}
+		</div>
+	);
+};
 
 LinkBar.propTypes = {};
 
