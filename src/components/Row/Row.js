@@ -16,7 +16,7 @@ const Row = (props) => {
 			break;
 	}
 	return (
-		<div className={styles.Row} style={{justifyContent: justifyContent}}>
+		<div className={styles.Row} style={{justifyContent: justifyContent, alignItems: props.alignItems || "center"}}>
 			{props.children}
 		</div>
 	)

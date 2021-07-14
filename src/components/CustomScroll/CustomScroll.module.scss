@@ -1,0 +1,45 @@
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
+
+
+.Scrollhost::-webkit-scrollbar {
+  display: none;
+}
+
+.ScrollhostContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.Scrollhost {
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
+  width: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+}
+
+.ScrollBar {
+  height: 10px;
+  width: 95%;
+  left: 2.5%;
+  bottom: 0px;
+  position: absolute;
+  border-radius: 7px;
+  background-color: $light-grey;
+  transition: opacity 0.3s ease 0s;
+}
+
+.ScrollThumb {
+  width: 20px;
+  height: 8px;
+  margin-left: 1px;
+  position: absolute;
+  border-radius: 7px;
+  opacity: 1;
+  bottom: 0;
+  background-color: $primary;
+  transition: opacity 0.3s ease 0s;
+}

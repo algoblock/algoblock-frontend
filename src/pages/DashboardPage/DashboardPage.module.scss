@@ -4,6 +4,9 @@
 .DashboardPage {
 	font-family: $Poppins;
 	color: $dark;
+	background-color: $light-grey;
+	min-height: 100vh;
+
 	// background-image: url('../../img/vector/bg.svg');
 	// background-repeat: no-repeat;
 	// background-size: 100%;
@@ -11,4 +14,89 @@
 	// background-clip: border-box;
 	// overflow-x: hidden;
 	// padding-bottom: 85px;
+}
+
+.UserName {
+	font-weight: 600;
+}
+
+.UserFooter {
+	font-size: 14px;
+	color: $grey;
+}
+
+.Container {
+	padding-top: 32px;
+	padding-bottom: 32px;
+	margin-left: 331px;
+	margin-right: 331px;
+}
+
+.ColSpacer {
+	width: 17px;
+}
+
+.RowSpacer {
+	height: 17px;
+}
+
+.TopRow {
+	height: 225px;
+}
+
+.Positive {
+	color: green;
+}
+
+.Negative {
+	color: red;
+}
+
+.PanelContainer {
+	padding-top: 16px;
+	padding-bottom: 16px;
+	padding-left: 48px;
+	padding-right: 48px;
+}
+
+
+.Notifications {
+	// overflow-y: auto;
+	margin: 12px;
+	margin-bottom: 0px;
+}
+
+.Underline {
+	height: 1px;
+	background-color: $border;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+.ScrollRow {
+	height: 360px;
+}
+
+.TimeStamp {
+	font-family: $SourceCodePro;
+}
+
+.Notification {
+
+}
+
+.ScrollContainer {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding-left: 25px;
+	padding-right: 25px;
+	height: calc(100% - 50px);
+	width: fit-content;
+}
+
+.NotificationLink {
+	color: $primary;
 }

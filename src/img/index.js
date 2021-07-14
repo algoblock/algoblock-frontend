@@ -14,6 +14,8 @@ import HandPng from './raster/hand.png';
 import BotPng from './raster/bot.png';
 import WalkPng from './raster/walk.png';
 import PlaceholderPng from './raster/placeholder.png';
+import ProfileSvg from './vector/profile.svg';
+import HeadshotPng from './raster/headshot.png';
 
 export {
 	AlgoblockPng,
@@ -32,4 +34,6 @@ export {
 	WalkPng,
 	RocketSmallerPng,
 	PlaceholderPng,
+	ProfileSvg,
+	HeadshotPng,
 }

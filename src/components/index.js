@@ -21,6 +21,9 @@ import SignUp from './SignUp/SignUp';
 import Squiggle from './Squiggle/Squiggle';
 import LandingTitle from './LandingTitle/LandingTitle';
 import Demo from './Demo/Demo';
+import DashboardPanel from './DashboardPanel/DashboardPanel';
+import WideColumn from './WideColumn/WideColumn';
+import CustomScroll from './CustomScroll/CustomScroll';
 
 export {
 	BigButton,
@@ -46,4 +49,7 @@ export {
 	Squiggle,
 	LandingTitle,
 	Demo,
+	DashboardPanel,
+	WideColumn,
+	CustomScroll,
 }

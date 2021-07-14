@@ -35,3 +35,34 @@
 .NoUnderline {
   text-decoration: none;
 }
+
+.Selected {
+  font-family: $Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  white-space: nowrap;
+  color: $dark;
+  width: fit-content;
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0)); /* This drop shadow is invisible, but removing it breaks the on-hover underline effect so leaving it here until we can find a fix */
+}
+
+.Selected:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: -8px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0%;
+  position: absolute;
+  background: $primary;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s, background 0.3s ease 0s;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.Selected:hover:after { 
+  width: 50%;
+  left: 25%;
+}
