@@ -31,7 +31,7 @@ const CustomScroll = ({ children, ...restProps }) => {
 
   const handleDocumentMouseUp = useCallback(
     e => {
-      console.log("e2");
+      // console.log("e2");
       if (isDragging) {
         e.preventDefault();
         setDragging(false);
@@ -48,45 +48,47 @@ const CustomScroll = ({ children, ...restProps }) => {
     e => {
       
       if (isDragging) {
-        console.log("e1");
+        // console.log("e1");
         e.preventDefault();
         e.stopPropagation();
         const scrollHostElement = scrollHostRef.current;
         let { scrollWidth, offsetWidth } = scrollHostElement;
-        let deltaX = (e.clientX - lastScrollThumbPosition);
+        
         scrollWidth = scrollWidth * 0.95;
         offsetWidth = offsetWidth * 0.95;
         let maxWidth = (offsetWidth - scrollBoxWidth) / 0.95;
-        console.log(scrollBoxTop);
+        // console.log(maxWidth);
+        let deltaX = (e.clientX - lastScrollThumbPosition);
+        // console.log(scrollBoxTop);
         if (!overshoot) {
-          console.log("deltaX: " + deltaX + " lastThumb: " + lastScrollThumbPosition);
+          // console.log("deltaX: " + deltaX + " lastThumb: " + lastScrollThumbPosition);
           if (scrollBoxTop + deltaX > maxWidth && scrollBoxTop <= maxWidth) {
-            console.log("too far");
+            // console.log("too far");
             setOvershoot(true);
             let offset = scrollBoxTop - (offsetWidth - scrollBoxWidth) / 0.95;
             // console.log(offset);
             setScrollThumbPosition(e.clientX + offset);
           } else if (scrollBoxTop + deltaX < 0 && scrollBoxTop >= 0) {
-            console.log("too close");
+            // console.log("too close");
             setOvershoot(true);
             let offset = scrollBoxTop;
             // console.log(offset);
             setScrollThumbPosition(e.clientX + offset);
           } else if (scrollBoxTop + deltaX >= 0 && scrollBoxTop + deltaX <= maxWidth) {
-            console.log("we good");
+            // console.log("we good");
             setScrollThumbPosition(e.clientX);
           }
         } else {
           if (scrollBoxTop + deltaX >= 0 && scrollBoxTop + deltaX <= maxWidth) {
-            console.log("we aren't overshooting anymore");
-            console.log("deltaX: " + deltaX + " lastThumb: " + lastScrollThumbPosition);
+            // console.log("we aren't overshooting anymore");
+            // console.log("deltaX: " + deltaX + " lastThumb: " + lastScrollThumbPosition);
             setOvershoot(false);
             setScrollThumbPosition(e.clientX);
           }
         }
           
           
-        var percentage = deltaX * (scrollWidth / offsetWidth) / 0.95;
+        var percentage = deltaX * (scrollWidth / offsetWidth);
         
         setScrollBoxTop(
           Math.min(
@@ -112,11 +114,11 @@ const CustomScroll = ({ children, ...restProps }) => {
     e.stopPropagation();
     setScrollThumbPosition(e.clientX);
     setDragging(true);
-    console.log("handleScrollThumbMouseDown");
+    // console.log("handleScrollThumbMouseDown");
   }, []);
 
   const handleScroll = useCallback(() => {
-    console.log("handleScroll");
+    // console.log("handleScroll");
     if (!scrollHostRef) {
       return;
     }
@@ -137,14 +139,14 @@ const CustomScroll = ({ children, ...restProps }) => {
   useEffect(() => {
     const scrollHostElement = scrollHostRef.current;
     const { clientWidth, scrollWidth } = scrollHostElement;
-    console.log(clientWidth);
-    console.log(scrollWidth);
+    // console.log(clientWidth);
+    // console.log(scrollWidth);
     const scrollThumbPercentage = clientWidth / scrollWidth;
     const scrollThumbWidth = Math.max(
       scrollThumbPercentage * clientWidth * 0.95,
       SCROLL_BOX_MIN_WIDTH
     );
-    console.log(scrollThumbWidth);
+    // console.log(scrollThumbWidth);
     setScrollBoxWidth(scrollThumbWidth);
     scrollHostElement.addEventListener("scroll", handleScroll, true);
     return function cleanup() {
