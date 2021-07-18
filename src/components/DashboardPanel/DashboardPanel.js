@@ -5,6 +5,7 @@ import styles from './DashboardPanel.module.scss';
 const DashboardPanel = (props) => (
   <div className={styles.DashboardPanel}>
     <div className={styles.Title}>
+      <div className={styles.Icon}/>
       <div className={styles.TitleInner}>
         {props.title}
       </div>

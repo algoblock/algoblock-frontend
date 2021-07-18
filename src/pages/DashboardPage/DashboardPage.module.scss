@@ -4,7 +4,7 @@
 .DashboardPage {
 	font-family: $Poppins;
 	color: $dark;
-	background-color: $light-grey;
+	background-color: $dashboard-bg;
 	min-height: 100vh;
 
 	// background-image: url('../../img/vector/bg.svg');
@@ -16,87 +16,51 @@
 	// padding-bottom: 85px;
 }
 
-.UserName {
-	font-weight: 600;
-}
-
-.UserFooter {
-	font-size: 14px;
-	color: $grey;
-}
-
 .Container {
-	padding-top: 32px;
-	padding-bottom: 32px;
-	margin-left: 331px;
-	margin-right: 331px;
+	width: 100%;
+	padding-top: 71px;
+	padding-bottom: 71px;
+	padding-left: 331px;
+	padding-right: 331px;
+	box-sizing: border-box;
+}
+
+.Hello {
+	font-family: $Poppins;
+	font-size: 35px;
+	font-weight: 600;
+	color: $primary;
+}
+
+.HelloName {
+	font-weight: 500;
+	color: $dark;
+}
+
+.Spacer {
+	height: 36px;
 }
 
 .ColSpacer {
-	width: 17px;
+	width: 36px;
+}
+
+.EditButton {
+	font-size: 16px;
 }
 
 .RowSpacer {
-	height: 17px;
+	height: 43px;
 }
 
-.TopRow {
-	height: 225px;
+.Bold {
+	color: $dark-grey;
+	font-weight: 600;
+	font-size: 20px;
 }
 
-.Positive {
-	color: green;
-}
-
-.Negative {
-	color: red;
-}
-
-.PanelContainer {
-	padding-top: 16px;
-	padding-bottom: 16px;
-	padding-left: 48px;
-	padding-right: 48px;
-}
-
-
-.Notifications {
-	// overflow-y: auto;
-	margin: 12px;
-	margin-bottom: 0px;
-}
-
-.Underline {
-	height: 1px;
-	background-color: $border;
-	margin-top: 7px;
-	margin-bottom: 7px;
-}
-
-.ScrollRow {
-	height: 360px;
-}
-
-.TimeStamp {
-	font-family: $SourceCodePro;
-}
-
-.Notification {
-
-}
-
-.ScrollContainer {
-	display: flex;
-	flex: 1;
-	align-items: center;
-	margin-top: 25px;
-	margin-bottom: 25px;
-	padding-left: 25px;
-	padding-right: 25px;
-	height: calc(100% - 50px);
-	width: fit-content;
-}
-
-.NotificationLink {
-	color: $primary;
+.Description {
+	color: $grey;
+	font-weight: 600;
+	font-size: 20px;
 }
