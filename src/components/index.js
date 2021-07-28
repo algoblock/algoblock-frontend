@@ -24,6 +24,7 @@ import Demo from './Demo/Demo';
 import DashboardPanel from './DashboardPanel/DashboardPanel';
 import WideColumn from './WideColumn/WideColumn';
 import CustomScroll from './CustomScroll/CustomScroll';
+import DashboardCard from './DashboardCard/DashboardCard';
 
 export {
 	BigButton,
@@ -52,4 +53,5 @@ export {
 	DashboardPanel,
 	WideColumn,
 	CustomScroll,
+	DashboardCard,
 }

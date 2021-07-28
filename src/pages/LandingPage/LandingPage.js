@@ -13,7 +13,7 @@ const LandingPage = () => (
 			<LandingTitle>
 				Why use AlgoBlock to invest?
 			</LandingTitle>
-			<Row>
+			<Row style={{justifyContent: "center"}}>
 				<Column>
 					<div className={styles.Column}>
 						<Card>

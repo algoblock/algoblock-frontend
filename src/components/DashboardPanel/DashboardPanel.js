@@ -10,8 +10,10 @@ const DashboardPanel = (props) => (
         {props.title}
       </div>
     </div>
-    <div className={styles.Contents} style={{...props.contentStyle}}>
-      {props.children}
+    <div className={styles.Container}>
+      <div className={styles.Contents} style={{...props.contentStyle}}>
+        {props.children}
+      </div>
     </div>
   </div>
 );

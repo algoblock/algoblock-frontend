@@ -45,6 +45,11 @@
 	width: 36px;
 }
 
+.GridSpacer {
+	width: 24px;
+	height: 24px;
+}
+
 .EditButton {
 	font-size: 16px;
 }
@@ -63,4 +68,22 @@
 	color: $grey;
 	font-weight: 600;
 	font-size: 20px;
+}
+
+.Card {
+	flex: 1;
+	height: 100%;
+	background-color: $primary;
+	border-radius: 4px;
+}
+
+.Card:before {
+    content:'';
+    float:left;
+    padding-top:100%;
+}
+
+.InvisibleCard {
+	flex: 1;
+	height: 100%;
 }

@@ -10,7 +10,7 @@ const Demo = () => (
       Try it out Risk-Free
     </LandingTitle>
     <div className={styles.Row}>
-      <Row>
+      <Row style={{justifyContent: "center"}}>
         <Column>
           <img src={PlaceholderPng} width={817}/>
         </Column>
