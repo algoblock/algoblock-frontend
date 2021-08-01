@@ -73,14 +73,22 @@
 .Card {
 	flex: 1;
 	height: 100%;
-	background-color: $primary;
+	background-color: $card-bg;
 	border-radius: 4px;
+	border: 2px solid $light-purple;
+	transition: filter 0.3s ease;
+	filter: drop-shadow(0px 1px 1px #9980ff);
 }
 
 .Card:before {
     content:'';
     float:left;
     padding-top:100%;
+}
+
+.Card:hover {
+	cursor: pointer;
+	filter: drop-shadow(0px 6px 4px #BFC0D3);
 }
 
 .InvisibleCard {

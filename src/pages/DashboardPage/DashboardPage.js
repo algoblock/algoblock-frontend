@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 // import { Scrollbars } from 'react-custom-scrollbars';
-import {Header, Row, DashboardPanel, Column, InvertedButton, WideColumn, Link, DashboardCard} from '../../components';
+import {Header, Row, DashboardPanel, Column, InvertedButton, WideColumn, Link, DashboardCard, MiniChart} from '../../components';
 import PropTypes from 'prop-types';
 import styles from './DashboardPage.module.scss';
 import {HeadshotPng} from '../../img';
@@ -43,6 +43,7 @@ const DashboardPage = () => {
 				cards.push(
 					<div key={2 * j} className={styles.Card}>
 						<DashboardCard data={backtests[3 * i + j]}/>
+						<MiniChart/>
 					</div>
 				);
 			}
@@ -67,6 +68,7 @@ const DashboardPage = () => {
 				cards.push(
 					<div key={2 * j} className={styles.Card}>
 						<DashboardCard data={projects[3 * i + j]}/>
+						<MiniChart/>
 					</div>
 				);
 			}
@@ -116,17 +118,17 @@ const DashboardPage = () => {
 					<div className={styles.Spacer}/>
 					<div className={styles.Spacer}/>
 					<Row>
-						<DashboardPanel title="Backtests" contentStyle={{padding: "80px"}}>
+						<DashboardPanel title="Backtests" contentStyle={{padding: "40px"}}>
 							<Column style={{alignItems: "center", width: "100%"}}>
 								{backtestTable}
 								{backtestRows < maxBacktestRows ? 
-									(<InvertedButton onClick={() => setBacktestRows(Math.min(backtestRows + 1, maxBacktestRows))} style={{marginBottom: "-49px", marginTop: "49px"}}>
+									(<InvertedButton onClick={() => setBacktestRows(Math.min(backtestRows + 1, maxBacktestRows))} style={{marginBottom: "-20px", marginTop: "20px"}}>
 										<div className={styles.EditButton}>
 											Load more
 										</div>
 									</InvertedButton>)
 									:
-									(<InvertedButton onClick={() => setBacktestRows(1)} style={{marginBottom: "-49px", marginTop: "49px"}}>
+									(<InvertedButton onClick={() => setBacktestRows(1)} style={{marginBottom: "-20px", marginTop: "20px"}}>
 										<div className={styles.EditButton}>
 											Hide
 										</div>
@@ -137,17 +139,17 @@ const DashboardPage = () => {
 						</DashboardPanel>
 						<div className={styles.ColSpacer}/>
 						<div className={styles.ColSpacer}/>
-						<DashboardPanel title="Projects" contentStyle={{padding: "80px"}}>
+						<DashboardPanel title="Projects" contentStyle={{padding: "40px"}}>
 							<Column style={{alignItems: "center", width: "100%"}}>
 								{projectTable}
 								{projectRows < maxProjectRows ? 
-									(<InvertedButton onClick={() => setProjectRows(Math.min(projectRows + 1, maxProjectRows))} style={{marginBottom: "-49px", marginTop: "49px"}}>
+									(<InvertedButton onClick={() => setProjectRows(Math.min(projectRows + 1, maxProjectRows))} style={{marginBottom: "-20px", marginTop: "20px"}}>
 										<div className={styles.EditButton}>
 											Load more
 										</div>
 									</InvertedButton>)
 									:
-									(<InvertedButton onClick={() => setProjectRows(1)} style={{marginBottom: "-49px", marginTop: "49px"}}>
+									(<InvertedButton onClick={() => setProjectRows(1)} style={{marginBottom: "-20px", marginTop: "20px"}}>
 										<div className={styles.EditButton}>
 											Hide
 										</div>

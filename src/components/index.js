@@ -25,6 +25,7 @@ import DashboardPanel from './DashboardPanel/DashboardPanel';
 import WideColumn from './WideColumn/WideColumn';
 import CustomScroll from './CustomScroll/CustomScroll';
 import DashboardCard from './DashboardCard/DashboardCard';
+import MiniChart from './MiniChart/MiniChart';
 
 export {
 	BigButton,
@@ -54,4 +55,5 @@ export {
 	WideColumn,
 	CustomScroll,
 	DashboardCard,
+	MiniChart,
 }

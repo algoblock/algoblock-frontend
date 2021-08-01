@@ -8,6 +8,9 @@ const DashboardCard = (props) => {
   return (
     <div className={styles.DashboardCard}>
       <div className={props.data.active ? styles.RunningIndicator : styles.StoppedIndicator}/>
+      <div className={styles.ProjectName}>
+        {props.data.name || "Project Name"}
+      </div>
       <div className={styles.CardData}>
         {props.data.pnl < 0 ? "-" : ""}${Math.round(Math.abs(props.data.pnl) * 100) / 100}
       </div>
