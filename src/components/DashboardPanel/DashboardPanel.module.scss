@@ -2,8 +2,8 @@
 @import "../../utilities/_fonts";
 
 .DashboardPanel {
-	// background-color: $white;
-	// border-radius: 10px;
+	background-color: $dashboard-bg;
+	border-radius: 30px;
 	// outline: 3px solid $primary;
 	box-sizing: border-box;
 	width: 100%;
@@ -12,6 +12,7 @@
 	// transition: filter 0.3s ease 0s;
 	display: flex;
 	flex-direction: column;
+	padding: 37px 50px 37px 50px;
 
 }
 
@@ -19,40 +20,40 @@
 // 	filter: drop-shadow(0px 2px 4px #BFC0D3);
 // }
 
-.Icon {
-	width: 24px;
-	height: 24px;
+.TotalCount {
+	width: 86px;
+	height: 86px;
 	background-color: $primary;
-	border-radius: 2px;
-	margin-right: 24px;
+	border-radius: 20px;
+	margin-right: 42px;
+	color: $white;
+	font-size: 35px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .Title {
 	// border-radius: 10px 10px;
-	font-size: 30px;
+	font-size: 22px;
 	font-weight: 600;
 	// background-color: $dark;
 	// outline: 6px solid $primary;
 	// outline-offset: -6px;
 	// border-top-left-radius: 10px;
 	// border-top-right-radius: 10px;
-	color: $dark;
+	color: $black;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin-bottom: 35px;
-}
-
-
-.Container {
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-bottom: 18px;
 }
 
 .Contents {
-	background-color: $white;
+	// background-color: $white;
 	width: 100%;
-	border-radius: 10px;
+	// border-radius: 10px;
 	box-sizing: border-box;
 	// margin-left: 10px;
 	// margin-right: 10px;

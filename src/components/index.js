@@ -26,6 +26,7 @@ import WideColumn from './WideColumn/WideColumn';
 import CustomScroll from './CustomScroll/CustomScroll';
 import DashboardCard from './DashboardCard/DashboardCard';
 import MiniChart from './MiniChart/MiniChart';
+import Toggle from './Toggle/Toggle';
 
 export {
 	BigButton,
@@ -56,4 +57,5 @@ export {
 	CustomScroll,
 	DashboardCard,
 	MiniChart,
+	Toggle,
 }

@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './InvertedButton.module.scss';
 
-const InvertedButton = (props) => (
-  <div onClick={props.onClick} className={styles.InvertedButton} style={props.style}>
-    {props.children}
-  </div>
-);
+const InvertedButton = (props) => {
+  let className = `${styles.InvertedButton}`;
+  className += props.variant === "ViewAll" ? ` ${styles.ViewAll}` : "";
+  return (
+    <div onClick={props.onClick} className={className} style={props.style}>
+      {props.children}
+    </div>
+  )
+};
 
 InvertedButton.propTypes = {};
 

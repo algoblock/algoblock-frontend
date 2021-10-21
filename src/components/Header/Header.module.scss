@@ -44,3 +44,22 @@
 .LogoSpacer {
 	width: 4vw;
 }
+
+.DownArrow {
+	margin-left: 8px;
+}
+
+.UserProfile {
+	height: 50px;
+	width: 50px;
+	text-align: center;
+	background-color: $primary;
+	color: $white;
+	border-radius: 10px;
+	font-size: 18px;
+	line-height: 27px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

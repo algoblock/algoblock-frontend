@@ -1,9 +1,9 @@
 import React from 'react';
 import {useState} from 'react';
 import PropTypes from 'prop-types';
-import {LinkBar, SignInLink, Button, Logo, ScrollingDivider, Link} from '../';
+import {LinkBar, SignInLink, Button, Logo, ScrollingDivider, Link, Row} from '../';
 import {useScrollPosition} from '../../utilities/useScrollPosition';
-import {AlgoblockPng, ProfileSvg} from '../../img';
+import {AlgoblockPng, ProfileSvg, DownArrowSvg} from '../../img';
 import styles from './Header.module.scss';
 
 
@@ -12,7 +12,10 @@ const Header = (props) => {
 	if (props.loggedIn) {
 		var headerRight = (
 			<Link to="profile">
-				<img src={ProfileSvg} height={40}/>
+				<Row style={{alignItems: "center"}}>
+					<div className={styles.UserProfile}>JS</div>
+					<img className={styles.DownArrow} src={DownArrowSvg} height={12}/>
+				</Row>
 			</Link>
 		);
 	} else {

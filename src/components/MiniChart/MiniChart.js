@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
-import {curveNatural} from '@visx/curve';
+import {curveLinear} from '@visx/curve';
 import { Group } from '@visx/group';
 import { LinePath } from '@visx/shape';
 import { scaleLinear } from '@visx/scale';
@@ -48,16 +48,16 @@ console.log(Math.min(...scaledData.map(y)))
 
 const MiniChart = (props) => {
   return (
-    <svg className={styles.MiniChart} viewBox="0 -125 500 125">
+    <svg className={styles.MiniChart} viewBox="0 -38 500 38">
       <Group key={`line`}>
   
         <LinePath
-          curve={curveNatural}
+          curve={curveLinear}
           data={scaledData}
           x={d => x(d)}
           y={d => y(d)}
-          stroke="#3100F5"
-          strokeWidth={2}
+          stroke="#000"
+          strokeWidth={6}
           strokeOpacity={1}
           // shapeRendering="geometricPrecision"
         />

@@ -4,7 +4,6 @@
 .DashboardPage {
 	font-family: $Poppins;
 	color: $dark;
-	background-color: $dashboard-bg;
 	min-height: 100vh;
 
 	// background-image: url('../../img/vector/bg.svg');
@@ -20,78 +19,44 @@
 	width: 100%;
 	padding-top: 71px;
 	padding-bottom: 71px;
-	padding-left: 331px;
-	padding-right: 331px;
+	padding-left: 210px;
+	padding-right: 210px;
 	box-sizing: border-box;
 }
 
-.Hello {
+.WelcomeContainer {
+	font-family: $Poppins;
+	font-size: 35px;
+	font-weight: 400;
+	background-color: $dashboard-bg;
+	width: 100%;
+	padding: 40px;
+	padding-right: 75px;
+	border-radius: 30px;
+	box-sizing: border-box;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+
+}
+
+.Welcome {
 	font-family: $Poppins;
 	font-size: 35px;
 	font-weight: 600;
-	color: $primary;
 }
 
-.HelloName {
-	font-weight: 500;
-	color: $dark;
+.NewProject {
+    display: inline;
 }
 
-.Spacer {
-	height: 36px;
-}
-
-.ColSpacer {
-	width: 36px;
-}
-
-.GridSpacer {
-	width: 24px;
-	height: 24px;
-}
-
-.EditButton {
-	font-size: 16px;
-}
-
-.RowSpacer {
-	height: 43px;
-}
-
-.Bold {
-	color: $dark-grey;
+.Project {
+	margin-bottom: 12px;
+	padding: 16px;
+	background-color: $white;
+	border-radius: 10px;
+	font-size: 18px;
 	font-weight: 600;
-	font-size: 20px;
-}
-
-.Description {
-	color: $grey;
-	font-weight: 600;
-	font-size: 20px;
-}
-
-.Card {
-	flex: 1;
-	height: 100%;
-	background-color: $card-bg;
-	border-radius: 4px;
-	border: 2px solid $light-purple;
-	transition: filter 0.3s ease;
-	filter: drop-shadow(0px 1px 1px #9980ff);
-}
-
-.Card:before {
-    content:'';
-    float:left;
-    padding-top:100%;
-}
-
-.Card:hover {
-	cursor: pointer;
-	filter: drop-shadow(0px 6px 4px #BFC0D3);
-}
-
-.InvisibleCard {
-	flex: 1;
-	height: 100%;
 }

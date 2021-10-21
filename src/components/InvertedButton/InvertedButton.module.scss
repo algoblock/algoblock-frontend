@@ -19,6 +19,16 @@
 }
 
 .InvertedButton:hover {
-	color: $white;
+	color: $white;	
 	background: $primary;
+}
+
+.ViewAll {
+	color: $black;
+	border-color: $black;
+}
+
+.ViewAll:hover {
+	color: $white;
+	background-color: $black;
 }
