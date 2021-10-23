@@ -1,5 +1,5 @@
-@import "../../utilities/_colors";
-@import "../../utilities/_fonts";
+@import "../../../utilities/_colors";
+@import "../../../utilities/_fonts";
 
 .InvertedButton {
 	font-family: $Poppins;
@@ -23,12 +23,12 @@
 	background: $primary;
 }
 
-.ViewAll {
+.Black {
 	color: $black;
 	border-color: $black;
 }
 
-.ViewAll:hover {
+.Black:hover {
 	color: $white;
 	background-color: $black;
 }

@@ -1,0 +1,18 @@
+@import "../../../utilities/_colors";
+@import "../../../utilities/_fonts";
+
+.MessageButton {
+	background: $dark;
+	border-radius: 30px;
+	padding: 4px 13px 4px 13px;
+	color: $white;
+	font-size: 15px;
+	font-weight: 600;
+	font-family: $Poppins;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+}
+
+.MessageButton:hover {
+	background: $black;
+}

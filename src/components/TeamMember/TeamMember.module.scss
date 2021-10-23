@@ -1,0 +1,53 @@
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
+
+.TeamMember {
+}
+
+.Row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	justify-content: flex-start;
+	position: relative;
+}
+
+.ProfileIcon {
+	height: 50px;
+	width: 50px;
+	min-width: 50px;
+	text-align: center;
+	background-color: $primary;
+	color: $white;
+	border-radius: 10px;
+	font-size: 18px;
+	line-height: 27px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.Active {
+	background-color: $active;
+	width: 15px;
+	height: 15px;
+	border-radius: 15px;
+	position: absolute;
+	top: -5px;
+	left: -5px;
+}
+
+.Name {
+	color: $dark;
+	font-size: 20px;
+	font-weight: 600;
+	font-family: $Poppins;
+	margin-left: 24px;
+	margin-right: 120px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

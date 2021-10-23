@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 // import { Scrollbars } from 'react-custom-scrollbars';
-import {Header, Row, DashboardPanel, Column, InvertedButton, WideColumn, Link, DashboardCard, MiniChart, Button} from '../../components';
+import {Header, Row, DashboardPanel, Column, InvertedButton, WideColumn, Link, DashboardCard, MiniChart, Button, TeamMember} from '../../components';
 import PropTypes from 'prop-types';
 import styles from './DashboardPage.module.scss';
 import {HeadshotPng} from '../../img';
@@ -148,6 +148,34 @@ const DashboardPage = () => {
 	        "period": 4
 	    }
 	];
+	const users = [
+		{
+			id: 0,
+			name: 'John Doe',
+			active: true,
+		},
+		{
+			id: 1,
+			name: 'Jane Doe',
+			active: false,
+		},
+		{
+			id: 2,
+			name: 'John Smith',
+			active: true,
+		},
+		{
+			id: 3,
+			name: 'Jane Smith',
+			active: false,
+		},
+		{
+			id: 4,
+			name: 'Johnny Longname',
+			active: true,
+		}
+	];
+
 	const [backtests, setBacktests] = useState(initialBacktests);
 	const [projects, setProjects] = useState(initialProjects);
 
@@ -188,6 +216,17 @@ const DashboardPage = () => {
 					<DashboardPanel style={{marginTop: "45px"}} title="Backtests">
 						{backtestCards}
 					</DashboardPanel>
+					<Row style={{marginTop: "47px"}}>
+						<div className={styles.TeamPanel}>
+							<Column style={{width: "100%"}}>
+								<div className={styles.Title}>Team</div>
+								{users.map((user, index) => (<TeamMember style={{marginTop: "16px"}} key={index} {...user}/>))}
+							</Column>
+						</div>
+						<div className={styles.FollowingPanel}>
+							<div className={styles.Title}>Following</div>
+						</div>
+					</Row>
 					
 				</Column>
 			</div>

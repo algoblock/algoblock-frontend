@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
 const Button = (props) => (
-  <div className={styles.Button} style={props.style}>
+  <div onClick={props.onClick || undefined} className={styles.Button} style={props.style}>
     {props.children}
   </div>
 );
