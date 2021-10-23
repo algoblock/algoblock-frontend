@@ -24,6 +24,7 @@ import DashboardCard from './DashboardCard/DashboardCard';
 import MiniChart from './MiniChart/MiniChart';
 import Toggle from './Toggle/Toggle';
 import TeamMember from './TeamMember/TeamMember';
+import CurrencyTable from './CurrencyTable/CurrencyTable';
 
 export {
 	BigButton,
@@ -57,4 +58,5 @@ export {
 	Toggle,
 	TeamMember,
 	MessageButton,
+	CurrencyTable,
 }

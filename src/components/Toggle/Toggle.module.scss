@@ -2,7 +2,9 @@
 @import "../../utilities/_fonts";
 
 .Toggle {
+	box-sizing: border-box;
 	width: 64px;
+	min-width: 64px;
 	height: 32px;
 	border-radius: 16px;
 	position: relative;

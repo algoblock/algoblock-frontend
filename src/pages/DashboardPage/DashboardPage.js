@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 // import { Scrollbars } from 'react-custom-scrollbars';
-import {Header, Row, DashboardPanel, Column, InvertedButton, WideColumn, Link, DashboardCard, MiniChart, Button, TeamMember} from '../../components';
+import {Header, Row, DashboardPanel, Column, InvertedButton, WideColumn, Link, DashboardCard, MiniChart, Button, TeamMember, CurrencyTable} from '../../components';
 import PropTypes from 'prop-types';
 import styles from './DashboardPage.module.scss';
 import {HeadshotPng} from '../../img';
@@ -176,6 +176,30 @@ const DashboardPage = () => {
 		}
 	];
 
+	const followingCurrencies = [
+		{
+			currency: 'Bitcoin',
+			symbol: 'BTC',
+			price: 9497,
+			lastDayChange: -0.55,
+			lastWeekChange: 0.55,
+		},
+		{
+			currency: 'Ethereum',
+			symbol: 'ETH',
+			price: 210.93,
+			lastDayChange: 2.3,
+			lastWeekChange: -2.3,
+		},
+		{
+			currency: 'Bitcoin Cash',
+			symbol: 'BCH',
+			price: 305.14,
+			lastDayChange: -1.92,
+			lastWeekChange: 1.92,
+		}
+	]
+
 	const [backtests, setBacktests] = useState(initialBacktests);
 	const [projects, setProjects] = useState(initialProjects);
 
@@ -224,7 +248,10 @@ const DashboardPage = () => {
 							</Column>
 						</div>
 						<div className={styles.FollowingPanel}>
-							<div className={styles.Title}>Following</div>
+							<Column style={{width: "100%"}}>
+								<div className={styles.Title}>Following</div>
+								<CurrencyTable data={followingCurrencies}/>
+							</Column>
 						</div>
 					</Row>
 					

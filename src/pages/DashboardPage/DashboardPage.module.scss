@@ -19,8 +19,8 @@
 	width: 100%;
 	padding-top: 71px;
 	padding-bottom: 71px;
-	padding-left: 210px;
-	padding-right: 210px;
+	padding-left: 190px;
+	padding-right: 190px;
 	box-sizing: border-box;
 }
 
@@ -66,9 +66,9 @@
 	font-family: $Poppins;
 	background-color: $dashboard-bg;
 	color: $black;
-	width: 33%;
+	width: 35%;
 	margin-right: 25px;
-	padding: 30px 30px 30px 30px;
+	padding: 30px 60px 30px 60px;
 	border-radius: 30px;
 	box-sizing: border-box;
 	position: relative;
@@ -76,21 +76,23 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	height: fit-content;
 }
 
 .FollowingPanel {
 	font-family: $Poppins;
 	background-color: $dashboard-bg;
 	color: $black;
-	width: 67%;
-	padding: 30px 30px 30px 30px;
+	width: 65%;
+	padding: 30px 60px 30px 60px;
 	border-radius: 30px;
 	box-sizing: border-box;
 	position: relative;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
+	height: fit-content;
 }
 
 .Title {
