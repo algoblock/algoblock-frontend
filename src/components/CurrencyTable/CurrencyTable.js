@@ -31,10 +31,10 @@ const CurrencyTable = ({data}) => {
             ${currency.price.toLocaleString('en-US', {minimumFractionDigits: 2})}
           </div>
           <div className={currency.lastDayChange >= 0 ? styles.LastDay : `${styles.LastDay} ${styles.Negative}`}>
-            {currency.lastDayChange}%
+            {(currency.lastDayChange >= 0 ? "+" : "") + currency.lastDayChange}%
           </div>
           <div className={currency.lastWeekChange >= 0 ? styles.LastWeek : `${styles.LastWeek} ${styles.Negative}`}>
-            {currency.lastWeekChange}%
+            {(currency.lastWeekChange >= 0 ? "+" : "") + currency.lastWeekChange}%
           </div>
         </div>  
       ))}
