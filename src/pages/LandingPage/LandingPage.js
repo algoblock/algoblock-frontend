@@ -1,92 +1,93 @@
 import React from 'react';
+import { useContext } from 'react';
+import { Context } from '../../App';
 import {Header, Splash, BackgroundGraph, Divider, Row, Column, Card, BigButton, InvertedButton, Squiggle, Link, LandingTitle, Demo} from '../../components';
 import PropTypes from 'prop-types';
 import styles from './LandingPage.module.scss';
 import {HandsPng, HandPng, BotPng, WalkPng} from '../../img';
 
-const LandingPage = () => (
-	<div className={styles.LandingPage}>
-		<Header/>
-		<Splash/>
-		<Squiggle start={"#F5F2FE"} end={"#FFFFFF"} gradientHeight={1.5}/>
-		<div className={styles.Row}>
-			<LandingTitle>
-				Why use AlgoBlock to invest?
-			</LandingTitle>
-			<Row style={{justifyContent: "center"}}>
-				<Column>
-					<div className={styles.Column}>
-						<Card>
-							<div className={styles.CardTitle}>No need to write code</div>
-							<div className={styles.CardContent}>
-								<div className={styles.CardText}>
-									Drag and drop blocks to create your customized strategy.
-								</div>
-								<img src={HandPng} className={styles.HandPng}/>
-								<Link>
-									<div className={styles.LearnMore}>
-										Learn More >
+const LandingPage = () => {
+	const {state} = useContext(Context);
+	return (
+		<div className={styles.LandingPage}>
+			<Header/>
+			<Splash/>
+			<div className={styles.Row}>
+				<Row style={{justifyContent: "center"}}>
+					<Column>
+						<div className={styles.Column}>
+							<Card topLeft className={styles.Card}>
+								<div className={styles.CardTitleLight}>No need to write code</div>
+								<div className={styles.CardContentLight}>
+									<div className={styles.CardText}>
+										Drag and drop blocks to create your customized strategy.
 									</div>
-								</Link>
-							</div>
-						</Card>
-						<div className={styles.ColumnSpacer}/>
-						<Card>
-							<div className={styles.CardTitle}>Investing on autopilot</div>
-							<div className={styles.CardContent}>
-								<div className={styles.CardText}>
-									Your trading strategy will keep working – even while you’re not.
+									<img src={HandPng} className={styles.HandPng}/>
+									<Link>
+										<div className={styles.LearnMoreLight}>
+											Learn More <span className={styles.Caret}>></span>
+										</div>
+									</Link>
 								</div>
-								<img src={BotPng} className={styles.BotPng}/>
-								<Link>
-									<div className={styles.LearnMore}>
-										Learn More >
+							</Card>
+							<div className={styles.ColumnSpacer}/>
+							<Card bottomLeft className={styles.Card}>
+								<div className={styles.CardTitleLight}>Investing on autopilot</div>
+								<div className={styles.CardContentLight}>
+									<div className={styles.CardText}>
+										Your trading strategy will keep working – even while you’re not.
 									</div>
-								</Link>
-							</div>
-						</Card>
-					</div>
-				</Column>
-				<div className={styles.RowSpacer}/>
-				<Column>
-					<div className={styles.Column}>
-						<Card>
-							<div className={styles.CardTitle}>Community for all investors</div>
-							<div className={styles.CardContent}>
-								<div className={styles.CardText}>
-									Test, implement, share, and discuss your trading ideas.
+									<img src={BotPng} className={styles.BotPng}/>
+									<Link>
+										<div className={styles.LearnMoreLight}>
+											Learn More <span className={styles.Caret}>></span>
+										</div>
+									</Link>
 								</div>
-								<img src={HandsPng} className={styles.HandsPng}/>
-								<Link>
-									<div className={styles.LearnMore}>
-										Learn More >
+							</Card>
+						</div>
+					</Column>
+					<div className={styles.RowSpacer}/>
+					<Column>
+						<div className={styles.Column}>
+							<Card topRight className={styles.Card}>
+								<div className={styles.CardTitleLight}>Community for all investors</div>
+								<div className={styles.CardContentLight}>
+									<div className={styles.CardText}>
+										Test, implement, share, and discuss your trading ideas.
 									</div>
-								</Link>
-							</div>
-						</Card>
-						<div className={styles.ColumnSpacer}/>
-						<Card>
-							<div className={styles.CardTitle}>Comprehensive platform</div>
-							<div className={styles.CardContent}>
-								<div className={styles.CardText}>
-									The simplest way to invest in any assets, from crypto to stocks.
+									<img src={HandsPng} className={styles.HandsPng}/>
+									<Link>
+										<div className={styles.LearnMoreLight}>
+											Learn More <span className={styles.Caret}>></span>
+										</div>
+									</Link>
 								</div>
-								<img src={WalkPng} className={styles.WalkPng}/>
-								<Link>
-									<div className={styles.LearnMore}>
-										Learn More >
+							</Card>
+							<div className={styles.ColumnSpacer}/>
+							<Card bottomRight className={styles.Card}>
+								<div className={styles.CardTitleDark}>Comprehensive platform</div>
+								<div className={styles.CardContentDark}>
+									<div className={styles.CardText}>
+										The simplest way to invest in any assets, from crypto to stocks.
 									</div>
-								</Link>
-							</div>
-						</Card>
-					</div>
-				</Column>
-			</Row>
+									<img src={WalkPng} className={styles.WalkPng}/>
+									<Link>
+										<div className={styles.LearnMoreDark}>
+											Learn More <span className={styles.Caret}>></span>
+										</div>
+									</Link>
+								</div>
+							</Card>
+						</div>
+					</Column>
+				</Row>
+			</div>
+			<Squiggle start={"#F5F2FE"} end={"#F5F2FE"} gradientHeight={1}/>
+			<Demo/>
 		</div>
-		<Squiggle start={"#F5F2FE"} end={"#F5F2FE"} gradientHeight={1}/>
-		<Demo/>
-	</div>
-);
+	)
+};
 
 LandingPage.propTypes = {};
 

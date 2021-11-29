@@ -2,11 +2,11 @@
 @import "../../utilities/_fonts";
 
 .Card {
-	width: 472px;
-	height: 502px;
-	border-radius: 20px;
+	width: 600px;
+	height: 400px;
+	// border-radius: 20px;
 	background-color: $primary-light;
-	padding: 68px 46px;
+	
 	box-sizing: border-box;
 	transition: 0.3s ease;
 	display: flex;
@@ -16,5 +16,28 @@
 
 .Card:hover {
 	filter: drop-shadow(0px 4px 12px #BFC0D3);
-	background-color: $card-bg;
+}
+
+.TopLeft {
+	border-top-left-radius: 50px;
+	background-color: $lavender-indigo;
+	padding: 70px 80px 50px 100px;
+}
+
+.TopRight {
+	border-top-right-radius: 50px;
+	background-color: $marjorelle-blue;
+	padding: 70px 100px 50px 80px;
+}
+
+.BottomLeft {
+	border-bottom-left-radius: 50px;
+	background-color: $orange-soda;
+	padding: 50px 80px 70px 100px;
+}
+
+.BottomRight {
+	border-bottom-right-radius: 50px;
+	background-color: $lavender-mist;
+	padding: 50px 100px 70px 80px;
 }

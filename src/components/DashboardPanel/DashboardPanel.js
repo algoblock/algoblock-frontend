@@ -18,7 +18,7 @@ const DashboardPanel = (props) => {
             {props.title}
           </div>
         </Row>
-        <InvertedButton onClick={() => setViewAll(!viewAll)} variant="black">
+        <InvertedButton onClick={() => setViewAll(!viewAll)} black>
           {viewAll ? "Hide" : "View All"}
         </InvertedButton>
       </div>
