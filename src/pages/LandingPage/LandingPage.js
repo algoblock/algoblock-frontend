@@ -83,8 +83,6 @@ const LandingPage = () => {
 					</Column>
 				</Row>
 			</div>
-			<Squiggle start={"#F5F2FE"} end={"#F5F2FE"} gradientHeight={1}/>
-			<Demo/>
 		</div>
 	)
 };

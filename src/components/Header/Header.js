@@ -1,14 +1,17 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {LinkBar, SignInLink, Button, Logo, ScrollingDivider, Link, Row} from '../';
 import {useScrollPosition} from '../../utilities/useScrollPosition';
 import {AlgoblockPng, ProfileSvg, DownArrowSvg} from '../../img';
 import styles from './Header.module.scss';
+import { Context } from '../../App';
+import { DarkMode, LightMode } from '@mui/icons-material';
 
 
 const Header = (props) => {
 	console.log(props);
+	const {state, dispatch} = useContext(Context);
 	if (props.loggedIn) {
 		var headerRight = (
 			<Link to="profile">
@@ -48,6 +51,11 @@ const Header = (props) => {
 					<LinkBar selected={props.selected} loggedIn={props.loggedIn || false}/>
 				</div>
 				{headerRight}
+				<div className={styles.DarkMode} onClick={() => dispatch({type: "DARKMODE", payload: {darkMode: !state.darkMode}})}>
+					{state.darkMode ? (
+						<LightMode/>) : (
+						<DarkMode/>)}
+				</div>
 			</div>
 			<ScrollingDivider/>
 		</div>

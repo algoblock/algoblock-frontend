@@ -11,16 +11,16 @@ import './App.css';
 export const Context = createContext();
 
 const initialState = {
-  darkmode: localStorage.getItem('darkmode') || false,
+  darkMode: localStorage.getItem('darkMode') || false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "DARKMODE":
-      localStorage.setItem("darkmode", action.payload.darkmode);
+      localStorage.setItem("darkMode", action.payload.darkMode);
       return {
         ...state,
-        darkmode: action.payload.darkmode
+        darkMode: action.payload.darkMode
       };
     default:
       return state;
