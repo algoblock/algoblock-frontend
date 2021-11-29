@@ -4,7 +4,8 @@ import styles from './InvertedButton.module.scss';
 
 const InvertedButton = (props) => {
   let className = `${styles.InvertedButton}`;
-  className += props.black ? ` ${styles.Black}` : "";
+  className += props.dark ? ` ${styles.Dark}` : "";
+  className += props.white ? ` ${styles.White}` : "";
   className += props.big ? ` ${styles.Big}` : "";
   return (
     <div onClick={props.onClick || undefined} className={className} style={props.style}>

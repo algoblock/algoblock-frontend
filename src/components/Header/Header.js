@@ -4,27 +4,31 @@ import PropTypes from 'prop-types';
 import {LinkBar, SignInLink, Button, Logo, ScrollingDivider, Link, Row} from '../';
 import {useScrollPosition} from '../../utilities/useScrollPosition';
 import {AlgoblockPng, ProfileSvg, DownArrowSvg} from '../../img';
-import styles from './Header.module.scss';
+import lightModestyles from './Header.module.scss';
+import darkModeStyles from './HeaderDark.module.scss';
 import { Context } from '../../App';
-import { DarkMode, LightMode } from '@mui/icons-material';
+import { DarkMode, LightMode, ExpandMore } from '@mui/icons-material';
+import colors from '../../utilities/_export.module.scss';
 
 
 const Header = (props) => {
 	console.log(props);
+
 	const {state, dispatch} = useContext(Context);
+	let styles = state.darkMode ? darkModeStyles : lightModestyles;
 	if (props.loggedIn) {
 		var headerRight = (
 			<Link to="profile">
 				<Row style={{alignItems: "center"}}>
 					<div className={styles.UserProfile}>JS</div>
-					<img className={styles.DownArrow} src={DownArrowSvg} height={12}/>
+					<ExpandMore sx={{fontSize: 24, color: state.darkMode ? colors.white : colors.dark}}/>
 				</Row>
 			</Link>
 		);
 	} else {
 		var headerRight = (
 			<div className={styles.HeaderSection}>
-				<SignInLink>
+				<SignInLink darkMode={state.darkMode}>
 					Log In
 				</SignInLink>
 				<div className={styles.ButtonWrapper}>
@@ -43,7 +47,7 @@ const Header = (props) => {
 			<div className={styles.HeaderContents}>
 				<div className={styles.LogoWrapper}>
 					<Link to="/">
-						<Logo/>
+						<Logo darkMode={state.darkMode}/>
 					</Link>
 					<div className={styles.LogoSpacer}/>
 				</div>
@@ -53,8 +57,8 @@ const Header = (props) => {
 				{headerRight}
 				<div className={styles.DarkMode} onClick={() => dispatch({type: "DARKMODE", payload: {darkMode: !state.darkMode}})}>
 					{state.darkMode ? (
-						<LightMode/>) : (
-						<DarkMode/>)}
+						<LightMode sx={{color: colors.white}}/>) : (
+						<DarkMode sx={{color: colors.dark}}/>)}
 				</div>
 			</div>
 			<ScrollingDivider/>

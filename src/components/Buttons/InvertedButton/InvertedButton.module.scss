@@ -23,14 +23,24 @@
 	background: $primary;
 }
 
-.Black {
-	color: $black;
-	border-color: $black;
+.Dark {
+	color: $dark;
+	border-color: $dark;
 }
 
-.Black:hover {
+.Dark:hover {
 	color: $white;
-	background-color: $black;
+	background-color: $dark;
+}
+
+.White {
+	color: $white;
+	border-color: $white;
+}
+
+.White:hover {
+	color: $dark;
+	background-color: $white;
 }
 
 .Big {

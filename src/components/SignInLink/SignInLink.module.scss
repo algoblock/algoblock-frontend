@@ -14,3 +14,17 @@
 .SignInLink:hover {
 	color: $primary;
 }
+
+.SignInLinkDark {
+	font-family: $Poppins, sans-serif;
+	font-weight: 600;
+	font-size: 16px;
+	color: $white;
+	transition: color 0.3s ease 0s;
+	cursor: pointer;
+	margin: 10px;
+}
+
+.SignInLinkDark:hover {
+	color: $primary;
+}

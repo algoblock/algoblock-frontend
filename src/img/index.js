@@ -1,6 +1,7 @@
 import AlgoblockPng from './raster/algoblock.png';
 import AlgoblockSvg from './vector/algoblock.svg';
 import AlgoblockNoOverlapSvg from './vector/algoblock-no-overlap.svg';
+import AlgoblockNoOverlapDarkmodeSvg from './vector/algoblock-no-overlap-darkmode.svg';
 import AlgoblockOnelineSvg from './vector/algoblock-oneline.svg';
 import BgPng from './raster/bg.png';
 import BgSvg from './vector/bg.svg';
@@ -22,6 +23,7 @@ export {
 	AlgoblockPng,
 	AlgoblockSvg,
 	AlgoblockNoOverlapSvg,
+	AlgoblockNoOverlapDarkmodeSvg,
 	AlgoblockOnelineSvg,
 	BgPng,
 	BgSvg,

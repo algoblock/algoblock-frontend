@@ -3,11 +3,13 @@ import { useContext } from 'react';
 import { Context } from '../../App';
 import {Header, Splash, BackgroundGraph, Divider, Row, Column, Card, BigButton, InvertedButton, Squiggle, Link, LandingTitle, Demo} from '../../components';
 import PropTypes from 'prop-types';
-import styles from './LandingPage.module.scss';
+import lightModeStyles from './LandingPage.module.scss';
+import darkModeStyles from './LandingPageDark.module.scss';
 import {HandsPng, HandPng, BotPng, WalkPng} from '../../img';
 
 const LandingPage = () => {
 	const {state} = useContext(Context);
+	let styles = state.darkMode ? darkModeStyles : lightModeStyles;
 	return (
 		<div className={styles.LandingPage}>
 			<Header/>
