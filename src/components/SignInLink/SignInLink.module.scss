@@ -23,8 +23,25 @@
 	transition: color 0.3s ease 0s;
 	cursor: pointer;
 	margin: 10px;
+	filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
 }
 
-.SignInLinkDark:hover {
-	color: $primary;
+
+.SignInLinkDark:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: -8px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: $white;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  border-radius: 2px;
+  width: 0;
+}
+
+.SignInLinkDark:hover:after { 
+  width: 100%; 
+  left: 0; 
 }

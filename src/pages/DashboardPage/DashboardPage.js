@@ -1,14 +1,18 @@
 import React from 'react';
-import {useState} from 'react';
+import { useState, useContext } from 'react';
+import { Context } from '../../App';
 // import { Scrollbars } from 'react-custom-scrollbars';
 import {Header, Row, DashboardPanel, Column, InvertedButton, WideColumn, Link, DashboardCard, MiniChart, Button, TeamMember, CurrencyTable} from '../../components';
 import PropTypes from 'prop-types';
-import styles from './DashboardPage.module.scss';
+import lightModeStyles from './DashboardPage.module.scss';
+import darkModeStyles from './DashboardPageDark.module.scss';
 import {HeadshotPng} from '../../img';
 import colors from '../../utilities/_export.module.scss';
 
 
 const DashboardPage = () => {
+	const {state} = useContext(Context);
+	let styles = state.darkMode ? darkModeStyles : lightModeStyles;
 	const initialBacktests = [
 	    {
 	        "id": 0,
@@ -230,27 +234,27 @@ const DashboardPage = () => {
 					<div className={styles.WelcomeContainer}>
 						<div><span className={styles.Welcome}>Welcome</span> to your Dashboard</div>
 						<div className={styles.NewProject}>
-							<Button style={{paddingLeft: "40px", "paddingRight": "40px", borderRadius: "10px"}}>New Project</Button>
+							<Button dark={state.darkMode} style={{paddingLeft: "40px", "paddingRight": "40px", borderRadius: "10px"}}>New Project</Button>
 						</div>
 					</div>
-					<DashboardPanel style={{marginTop: "45px"}} title="Projects">
+					<DashboardPanel darkMode={state.darkMode} style={{marginTop: "45px"}} title="Projects">
 						{projectCards}
 					</DashboardPanel>
 
-					<DashboardPanel style={{marginTop: "45px"}} title="Backtests">
+					<DashboardPanel darkMode={state.darkMode} style={{marginTop: "45px"}} title="Backtests">
 						{backtestCards}
 					</DashboardPanel>
 					<Row style={{marginTop: "47px"}}>
 						<div className={styles.TeamPanel}>
 							<Column style={{width: "100%"}}>
 								<div className={styles.Title}>Team</div>
-								{users.map((user, index) => (<TeamMember style={{marginTop: "16px"}} key={index} {...user}/>))}
+								{users.map((user, index) => (<TeamMember darkMode={state.darkMode} style={{marginTop: "16px"}} key={index} {...user}/>))}
 							</Column>
 						</div>
 						<div className={styles.FollowingPanel}>
 							<Column style={{width: "100%"}}>
 								<div className={styles.Title}>Following</div>
-								<CurrencyTable data={followingCurrencies}/>
+								<CurrencyTable darkMode={state.darkMode} data={followingCurrencies}/>
 							</Column>
 						</div>
 					</Row>

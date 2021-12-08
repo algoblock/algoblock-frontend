@@ -2,11 +2,12 @@ import React from 'react';
 import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {InvertedButton, Row} from '../';
-import styles from './DashboardPanel.module.scss';
+import lightModestyles from './DashboardPanel.module.scss';
+import darkModeStyles from './DashboardPanelDark.module.scss';
 
 const DashboardPanel = (props) => {
   const [viewAll, setViewAll] = useState(false);
-
+  let styles = props.darkMode ? darkModeStyles : lightModestyles;
   return (
     <div className={styles.DashboardPanel} style={props.style}>
       <div className={styles.Title}>
@@ -18,7 +19,7 @@ const DashboardPanel = (props) => {
             {props.title}
           </div>
         </Row>
-        <InvertedButton onClick={() => setViewAll(!viewAll)} black>
+        <InvertedButton onClick={() => setViewAll(!viewAll)} dark={!props.darkMode} white={props.darkMode}>
           {viewAll ? "Hide" : "View All"}
         </InvertedButton>
       </div>

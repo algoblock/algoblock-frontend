@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {MessageButton} from '../';
 import styles from './TeamMember.module.scss';
 
-const TeamMember = ({name, active, style}) => {
+const TeamMember = ({name, active, style, darkMode}) => {
   const initials = name.split(' ').map(word => word[0]).join('');
   return (
     <div className={styles.Row} style={style}>
@@ -11,7 +11,7 @@ const TeamMember = ({name, active, style}) => {
         {initials}
         {active && <div className={styles.Active}/>}
       </div>
-      <div className={styles.Name}>{name}</div>
+      <div className={`${styles.Name} ${darkMode ? styles.Dark : null}`}>{name}</div>
       <MessageButton style={{position: "absolute", right: "0px"}}/>
     </div>
   );

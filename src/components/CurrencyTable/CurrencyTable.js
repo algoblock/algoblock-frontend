@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './CurrencyTable.module.scss';
+import lightModestyles from './CurrencyTable.module.scss';
+import darkModeStyles from './CurrencyTableDark.module.scss';
 
-const CurrencyTable = ({data}) => {
+const CurrencyTable = ({data, darkMode}) => {
+  let styles = darkMode ? darkModeStyles : lightModestyles;
   return (
     <div className={styles.Column}>
       <div className={styles.HeaderRow}>

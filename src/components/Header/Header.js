@@ -33,7 +33,7 @@ const Header = (props) => {
 				</SignInLink>
 				<div className={styles.ButtonWrapper}>
 					<Link to="/signup">
-						<Button>
+						<Button dark={state.darkMode}>
 							Get Started
 						</Button>
 					</Link>

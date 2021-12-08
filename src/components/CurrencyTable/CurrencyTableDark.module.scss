@@ -1,0 +1,92 @@
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
+
+.Column {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.Row {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background: $white;
+	border-radius: 20px;
+	margin-top: 9px;
+	padding: 13px 26px 13px 26px;
+	box-sizing: border-box;
+}
+
+.HeaderRow {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	color: $white;
+	font-size: 16px;
+	font-family: $Poppins;
+	font-weight: 500;
+	padding: 0px 26px 0px 26px;
+	box-sizing: border-box;
+}
+
+.HeaderRow > .HeaderName {
+	width: calc(200% / 5);
+}
+
+.HeaderRow > .HeaderTitle {
+	width: calc(100% / 5);
+	text-align: center;
+}
+
+.Row > .Price {
+	width: calc(100% / 5);
+	text-align: center;
+}
+
+.Row > .LastDay, .LastWeek {
+	width: calc(100% / 5);
+	text-align: center;
+}
+
+.Price {
+	color: $black;
+	font-size: 18px;
+	font-family: $Poppins;
+	font-weight: 500;
+	text-align: center;
+}
+
+.LastDay {
+	color: $primary;
+	font-size: 18px;
+	font-family: $Poppins;
+	font-weight: 500;
+	text-align: center;
+}
+
+.LastWeek {
+	color: $primary;
+	font-size: 18px;
+	font-family: $Poppins;
+	font-weight: 500;
+	text-align: center;
+}
+
+.Row > .Name {
+	width: calc(300% / 10);
+	color: $black;
+	font-size: 18px;
+	font-family: $Poppins;
+	font-weight: 600;
+}
+
+.Row > .Symbol {
+	width: calc(100% / 10);
+	color: $dark-grey;
+	font-size: 18px;
+	font-family: $Poppins;
+	font-weight: 600;
+}
