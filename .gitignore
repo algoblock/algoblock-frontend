@@ -45,3 +45,12 @@ amplifytools.xcconfig
 #amplify-do-not-edit-end
 
 .vscode
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
