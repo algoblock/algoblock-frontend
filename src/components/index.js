@@ -25,6 +25,7 @@ import MiniChart from './MiniChart/MiniChart';
 import Toggle from './Toggle/Toggle';
 import TeamMember from './TeamMember/TeamMember';
 import CurrencyTable from './CurrencyTable/CurrencyTable';
+import VerticalStepper from './VerticalStepper/VerticalStepper';
 
 export {
 	BigButton,
@@ -59,4 +60,5 @@ export {
 	TeamMember,
 	MessageButton,
 	CurrencyTable,
+	VerticalStepper,
 }
