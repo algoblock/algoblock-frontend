@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import {LandingPage, SignInPage, SignUpPage, DashboardPage} from './pages';
+import {LandingPage, SignInPage, SignUpPage, DashboardPage, EditorPage} from './pages';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -40,6 +40,9 @@ function App() {
 			<Router>
 				
 				<Switch>
+          <Route path="/editor">
+            <EditorPage/>
+          </Route>
 					<Route path="/dashboard">
 						<DashboardPage/>
 					</Route>
