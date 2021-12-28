@@ -7,7 +7,7 @@ const EditorPage = (props) => {
   return (
     <div className={styles.EditorPage}>
       <Header selected={"Editor"} loggedIn={true}/>
-      <VerticalStepper selected={"Symbols"}/>
+      <VerticalStepper selected={"Event"} currentCompleted={false}/>
     </div>
   );
 };
