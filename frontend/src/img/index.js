@@ -18,6 +18,7 @@ import PlaceholderPng from './raster/placeholder.png';
 import ProfileSvg from './vector/profile.svg';
 import HeadshotPng from './raster/headshot.png';
 import DownArrowSvg from './vector/down-arrow.svg';
+import CheckSvg from './vector/check.svg';
 
 export {
 	AlgoblockPng,
@@ -40,4 +41,5 @@ export {
 	ProfileSvg,
 	HeadshotPng,
 	DownArrowSvg,
+	CheckSvg,
 }
