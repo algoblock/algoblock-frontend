@@ -4,6 +4,7 @@ import InvertedButton from './InvertedButton/InvertedButton';
 import LogInButton from './LogInButton/LogInButton';
 import GoogleSignInButton from './GoogleSignInButton/GoogleSignInButton';
 import MessageButton from './MessageButton/MessageButton';
+import StepNextButton from './StepNextButton/StepNextButton';
 
 export {
 	BigButton,
@@ -12,4 +13,5 @@ export {
 	LogInButton,
 	GoogleSignInButton,
 	MessageButton,
+	StepNextButton,
 }

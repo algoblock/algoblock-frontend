@@ -1,10 +1,15 @@
 import React from 'react';
+import {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {Row, Column} from '../';
 import {CheckSvg} from '../../img';
-import styles from './VerticalStepper.module.scss';
+import lightModeStyles from './VerticalStepper.module.scss';
+import darkModeStyles from './VerticalStepperDark.module.scss';
+import { Context } from '../../App';
 
 const VerticalStepper = (props) => {
+  const {state} = useContext(Context);
+  let styles = state.darkMode ? darkModeStyles : lightModeStyles;
   const stepNames = ["Symbols", "Event", "Quantity limit", "Frequency", "Results"];
   const steps = [];
   let postSelected = false;

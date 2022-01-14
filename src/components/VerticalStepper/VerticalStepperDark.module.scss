@@ -2,7 +2,7 @@
 @import "../../utilities/_fonts";
 
 .StepName {
-	color: $dark;
+	color: $white;
 	font-family: $Poppins;
 	font-size: 16px;
 	text-align: right;
@@ -11,7 +11,7 @@
 }
 
 .Selected {
-	color: $dark;
+	color: $white;
 	font-family: $Poppins;
 	font-size: 16px;
 	text-align: right;
@@ -23,7 +23,7 @@
 	width: 30px;
 	box-sizing: border-box;
 	height: 10vh;
-	border-left: 2px solid $dark;
+	border-left: 2px solid $white;
 	margin-top: 6px;
 	margin-bottom: 6px;
 }
@@ -32,7 +32,7 @@
 	width: 20px;
 	min-height: 20px;
 	box-sizing: border-box;
-	border: 2px solid $dark;
+	border: 2px solid $white;
 	border-radius: 20px;
 }
 
@@ -40,7 +40,7 @@
 	width: 57px;
 	min-height: 57px;
 	box-sizing: border-box;
-	border: 2px solid $dark;
+	border: 2px solid $white;
 	border-radius: 57px;
 }
 

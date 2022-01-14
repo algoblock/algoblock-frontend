@@ -1,0 +1,39 @@
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
+
+.StepContainer {
+	font-family: $Poppins;
+	color: $dark;
+	border: 2px solid $white;
+	border-radius: 30px;
+	width: 50vw;
+	height: 75vh;
+	box-sizing: border-box;
+	margin-left: 5vw;
+	padding-top: 75px;
+	padding-bottom: 75px;
+	padding-left: 100px;
+	padding-right: 100px;
+	position: relative;
+}
+
+.Number {
+	width: 71px;
+	height: 71px;
+	border-radius: 71px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $primary;
+	color: $white;
+	font-family: $Poppins;
+	font-size: 22px;
+	font-weight: 600;
+}
+
+.Title {
+	color: $white;
+	margin-left: 40px;
+	font-weight: 700px;
+	font-size: 28px;
+}

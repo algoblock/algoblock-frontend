@@ -1,0 +1,28 @@
+@import "../../../utilities/_colors";
+@import "../../../utilities/_fonts";
+
+.StepNextButton {
+	background: $lavender-mist;
+	border-radius: 10px;
+	padding: 16px 106px 16px 106px;
+	color: $black;
+	font-size: 22px;
+	font-weight: 600;
+	font-family: $Poppins;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+}
+
+.StepNextButton:hover {
+	background: $white;
+}
+
+.Disabled {
+	color: $chinese-silver;
+	background: $ghost-white;
+}
+
+.Disabled:hover {
+	background: $ghost-white;
+	cursor: default;
+}

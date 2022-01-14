@@ -1,0 +1,11 @@
+@import "../../../utilities/_colors";
+@import "../../../utilities/_fonts";
+
+.SymbolsStep {
+	font-family: $Poppins;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 15vh;
+	flex-direction: column;
+}

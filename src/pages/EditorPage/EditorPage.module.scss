@@ -1,0 +1,16 @@
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
+
+.EditorPage {
+	font-family: $Poppins;
+	color: $dark;
+	min-height: 100vh;
+
+	// background-image: url('../../img/vector/bg.svg');
+	// background-repeat: no-repeat;
+	// background-size: 100%;
+	// background-position: 0 100vh;
+	// background-clip: border-box;
+	// overflow-x: hidden;
+	// padding-bottom: 85px;
+}

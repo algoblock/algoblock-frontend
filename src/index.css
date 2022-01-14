@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.simplebar-scrollbar::before {
+  background-color: white !important;
+  opacity: 1.0 !important;
+  transition: all 0.3s ease-in-out;
+}
