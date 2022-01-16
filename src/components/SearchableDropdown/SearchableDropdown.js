@@ -46,7 +46,7 @@ const SearchableDropdown = ({choices, text, setText}) => {
         <span className={styles.AutoComplete}>{first}</span>
       </div>
       {focused && 
-        <SimpleBarReact autoHide={false} style={{ maxHeight: 160 }}>
+        <SimpleBarReact autoHide={false} style={{ maxHeight: 160, position: "absolute", top: "65px", left: "0px", width: "100%" }}>
           {filtered.map((item) => (<div onClick={(e) => {
             setText(item);
             setFocused(false);
