@@ -10,33 +10,33 @@ import { Context } from '../../App';
 const VerticalStepper = (props) => {
   const {state} = useContext(Context);
   let styles = state.darkMode ? darkModeStyles : lightModeStyles;
-  const stepNames = ["Symbols", "Event", "Quantity limit", "Frequency", "Results"];
+  let stepNames = props.stepNames;
   const steps = [];
   let postSelected = false;
 
-  for (let stepName of stepNames) {
+  for (let i=0; i < stepNames.length; i++) {
+    let stepName = stepNames[i];
     if (stepName !== stepNames[0]) {
       steps.push(<Row style={{alignItems: "center", justifyContent: "flex-end"}}><div className={styles.Line}/></Row>);
     }
-    let step = [<div className={props.selected === stepName ? styles.Selected : styles.StepName}>{stepName}</div>];
+    let step = [<div className={props.step === i ? styles.Selected : styles.StepName}>{stepName}</div>];
 
 
     
-    if (postSelected) {
+    if (i > props.latest) {
       step.push(<div className={styles.CircleContainer}><div className={styles.SmallCircle}/></div>);
-    } else if (props.selected === stepName) {
-      postSelected = true;
-      if (props.currentCompleted) {
+      steps.push(<Row style={{alignItems: "center", justifyContent: "flex-end"}}>{step}</Row>);
+    } else {
+      if (props.completed[i]) {
         step.push(<div className={styles.CheckedCircle}><img src={CheckSvg}/></div>);
       } else {
         step.push(<div className={styles.LargeCircle}/>);
       }
-    } else {
-      step.push(<div className={styles.CheckedCircle}><img src={CheckSvg}/></div>);
+      steps.push(<div onClick={() => {props.setStep(i)}} className={styles.Clickable}><Row style={{alignItems: "center", justifyContent: "flex-end"}}>{step}</Row></div>);
     }
     
 
-    steps.push(<Row style={{alignItems: "center", justifyContent: "flex-end"}}>{step}</Row>);
+    
   }
 
 

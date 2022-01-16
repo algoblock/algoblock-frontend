@@ -4,7 +4,7 @@ import styles from './StepNextButton.module.scss';
 
 const StepNextButton = ({onClick, style, disabled}) => {
   return (
-    <div style={style} onClick={onClick || undefined} className={`${styles.StepNextButton} ${disabled ? styles.Disabled : ''}`}>
+    <div style={style} onClick={disabled ? null : onClick} className={`${styles.StepNextButton} ${disabled ? styles.Disabled : ''}`}>
       Next
     </div>
   );
