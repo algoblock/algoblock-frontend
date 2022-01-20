@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Context } from '../../App';
+import { UserContext } from '../../providers/UserProvider';
 // import { Scrollbars } from 'react-custom-scrollbars';
 import {Header, Row, DashboardPanel, Column, InvertedButton, WideColumn, Link, DashboardCard, MiniChart, Button, TeamMember, CurrencyTable} from '../../components';
 import PropTypes from 'prop-types';
@@ -207,6 +208,18 @@ const DashboardPage = () => {
 	const [backtests, setBacktests] = useState(initialBacktests);
 	const [projects, setProjects] = useState(initialProjects);
 
+  const user = useContext(UserContext)
+  if (user) {
+    var dashboardWelcome = (
+      <div><span className={styles.Welcome}>Welcome</span> {user.displayName}</div>
+    );
+  } else {
+    {/* TODO: Remove when dashboard/editor is inaccessible without logging in */}
+    var dashboardWelcome = (
+      <div><span className={styles.Welcome}>Welcome</span> to your Dashboard</div>
+    );
+  }
+
 	const setProjectActive = (index) => {
 		const newProjects = [...projects];
 		newProjects[index] = {
@@ -232,7 +245,7 @@ const DashboardPage = () => {
 			<div className={styles.Container}>
 				<Column style={{width: "100%"}}>
 					<div className={styles.WelcomeContainer}>
-						<div><span className={styles.Welcome}>Welcome</span> to your Dashboard</div>
+            {dashboardWelcome}
 						<div className={styles.NewProject}>
 							<Button dark={state.darkMode} style={{paddingLeft: "40px", "paddingRight": "40px", borderRadius: "10px"}}>New Project</Button>
 						</div>

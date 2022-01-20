@@ -1,12 +1,15 @@
 import React from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import {HeaderLink} from '../';
+import { UserContext } from '../../providers/UserProvider';
 import styles from './LinkBar.module.scss';
 
 const LinkBar = (props) => {
 	var links = [];
+  const user = useContext(UserContext);
 	
-	if (!props.loggedIn) {
+	if (!user) {
 		var linkTitles = ["Price", "Learn", "Company", "Community"];
 	} else {
 		var linkTitles = ["Dashboard", "Editor", "Community"];
