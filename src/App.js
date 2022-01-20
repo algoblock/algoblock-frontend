@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 import {LandingPage, SignInPage, SignUpPage, DashboardPage, EditorPage} from './pages';
+import UserProvider from './providers/UserProvider';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -37,26 +38,27 @@ function App() {
 	        	dispatch
 	      	}}
 		>
-			<Router>
-				
-				<Switch>
-          <Route path="/editor">
-            <EditorPage/>
-          </Route>
-					<Route path="/dashboard">
-						<DashboardPage/>
-					</Route>
-					<Route path="/login">
-						<SignInPage/>
-					</Route>
-					<Route path="/signup">
-						<SignUpPage/>
-					</Route>
-					<Route path="/">
-						<LandingPage/>
-					</Route>
-				</Switch>
-			</Router>
+      <UserProvider>
+        <Router>
+          <Switch>
+            <Route path="/editor">
+              <EditorPage/>
+            </Route>
+            <Route path="/dashboard">
+              <DashboardPage/>
+            </Route>
+            <Route path="/login">
+              <SignInPage/>
+            </Route>
+            <Route path="/signup">
+              <SignUpPage/>
+            </Route>
+            <Route path="/">
+              <LandingPage/>
+            </Route>
+          </Switch>
+        </Router>
+      </UserProvider>
 		</Context.Provider>
 	);
 }

@@ -10,6 +10,7 @@ import Logo from './Logo/Logo';
 import Row from './Row/Row';
 import ScrollingDivider from './ScrollingDivider/ScrollingDivider';
 import SignInLink from './SignInLink/SignInLink';
+import SignOutLink from './SignOutLink/SignOutLink';
 import SignIn from './SignIn/SignIn';
 import Splash from './Splash/Splash';
 import SignInInput from './SignInInput/SignInInput';
@@ -46,6 +47,7 @@ export {
 	ScrollingDivider,
 	SignIn,
 	SignInLink,
+  SignOutLink,
 	Splash,
 	SignInInput,
 	LogInButton,
