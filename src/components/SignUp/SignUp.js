@@ -9,6 +9,11 @@ const SignUp = () => (
   <div className={styles.SignUp}>
     <img src={AlgoblockOnelineSvg} width={230}/>
     <div className={styles.Title}>Let's get started</div>
+    <div className={styles.UserInfo}>
+      <SignInInput type="first_name" placeholder="First Name"/>
+      <div style={{paddingRight: 7}}/>
+      <SignInInput type="last_name" placeholder = "Last Name"/>
+    </div>
     <div className={styles.Login}>
     	<SignInInput type="email" placeholder="Email"/>
     	<div className={styles.InputSpacer}/>
