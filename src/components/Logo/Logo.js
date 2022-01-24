@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Logo.module.scss';
-import {AlgoblockNoOverlapSvg, AlgoblockNoOverlapDarkmodeSvg} from '../../img';
+import {AlgocubeSvg, AlgocubeDarkmodeSvg} from '../../img';
 
 const Logo = (props) => (
-  <img className={styles.Logo} src={props.darkMode ? AlgoblockNoOverlapDarkmodeSvg : AlgoblockNoOverlapSvg} width={120}/>
+  <img className={styles.Logo} src={props.darkMode ? AlgocubeDarkmodeSvg : AlgocubeSvg} width={120}/>
 );
 
 Logo.propTypes = {};

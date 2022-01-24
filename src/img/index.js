@@ -19,6 +19,8 @@ import ProfileSvg from './vector/profile.svg';
 import HeadshotPng from './raster/headshot.png';
 import DownArrowSvg from './vector/down-arrow.svg';
 import CheckSvg from './vector/check.svg';
+import AlgocubeSvg from './vector/algocube.svg';
+import AlgocubeDarkmodeSvg from './vector/algocube-darkmode.svg';
 
 export {
 	AlgoblockPng,
@@ -42,4 +44,6 @@ export {
 	HeadshotPng,
 	DownArrowSvg,
 	CheckSvg,
+	AlgocubeSvg,
+	AlgocubeDarkmodeSvg,
 }
