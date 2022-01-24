@@ -4,7 +4,7 @@ import styles from './Logo.module.scss';
 import {AlgocubeSvg, AlgocubeDarkmodeSvg} from '../../img';
 
 const Logo = (props) => (
-  <img className={styles.Logo} src={props.darkMode ? AlgocubeDarkmodeSvg : AlgocubeSvg} width={120}/>
+  <img className={styles.Logo} src={props.darkMode ? AlgocubeDarkmodeSvg : AlgocubeSvg} width={108}/>
 );
 
 Logo.propTypes = {};
