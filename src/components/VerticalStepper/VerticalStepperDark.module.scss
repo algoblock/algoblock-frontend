@@ -24,28 +24,59 @@
 	width: 100%;
 }
 
-.Line {
-	width: 30px;
-	box-sizing: border-box;
-	height: 10vh;
-	border-left: 2px solid $white;
-	margin-top: 6px;
-	margin-bottom: 6px;
+.NotClickable {
+	width: 100%;
 }
 
-.SmallCircle {
+.Line {
+	position: absolute;
+	right: 0px;
+	z-index: 0;
+	width: 30px;
+	box-sizing: border-box;
+	height: calc(100% - 114px);
+	margin-top: 69px;
+	border-left: 2px solid $white;
+}
+
+.Circle {
+	transition: min-height 0.3s ease, width 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease, height 0.3s ease;
 	width: 20px;
+	// min-height: 20px;
+	height: 20px;
 	min-height: 20px;
 	box-sizing: border-box;
 	border: 2px solid $white;
 	border-radius: 20px;
 }
 
-.LargeCircle {
+.Circle:hover {
+	height: 57px;
 	width: 57px;
+	border-radius: 57px;
+}
+
+.SmallCircle {
+	width: 20px;
+	// min-height: 20px;
+	height: 20px;
+	max-height: 20px;
+	box-sizing: border-box;
+	border: 2px solid $white;
+	border-radius: 20px;
+}
+
+.LargeCircle {
+	// z-index: 1;
+	width: 57px;
+	// min-height: 57px;
+	height: 57px;
 	min-height: 57px;
 	box-sizing: border-box;
 	border: 2px solid $white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	border-radius: 57px;
 }
 
@@ -54,6 +85,12 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: $dark;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	z-index: 1;
+	box-sizing: border-box;
+	transition: all 0.3s ease, flex-grow 0.3s;
 }
 
 
@@ -66,4 +103,27 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border: none;
+}
+
+@keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+@keyframes fadeOut {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+.Check {
+	animation: fadeIn 0.3s ease;
+}
+
+.Uncheck {
+	animation: fadeOut 0.3s ease forwards;
+}
+
+.NotChecked {
+	opacity: 0;
 }

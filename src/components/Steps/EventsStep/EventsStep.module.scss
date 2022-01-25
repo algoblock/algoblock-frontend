@@ -1,0 +1,11 @@
+@import "../../../utilities/_colors";
+@import "../../../utilities/_fonts";
+
+.EventsStep {
+	font-family: $Poppins;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30vh;
+	flex-direction: column;
+}

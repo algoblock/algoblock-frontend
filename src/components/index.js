@@ -27,7 +27,7 @@ import Toggle from './Toggle/Toggle';
 import TeamMember from './TeamMember/TeamMember';
 import CurrencyTable from './CurrencyTable/CurrencyTable';
 import VerticalStepper from './VerticalStepper/VerticalStepper';
-import {SymbolsStep} from './Steps';
+import {SymbolsStep, EventsStep} from './Steps';
 import StepContainer from './StepContainer/StepContainer';
 import SearchableDropdown from './SearchableDropdown/SearchableDropdown';
 
@@ -67,6 +67,7 @@ export {
 	CurrencyTable,
 	VerticalStepper,
 	SymbolsStep,
+	EventsStep,
 	StepContainer,
 	SearchableDropdown,
 	StepNextButton,

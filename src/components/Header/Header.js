@@ -3,7 +3,7 @@ import {useState, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {LinkBar, SignInLink, SignOutLink, Button, Logo, ScrollingDivider, Link, Row} from '../';
 import {useScrollPosition} from '../../utilities/useScrollPosition';
-import {AlgoblockPng, ProfileSvg, DownArrowSvg} from '../../img';
+import {ProfileSvg, DownArrowSvg} from '../../img';
 import lightModestyles from './Header.module.scss';
 import darkModeStyles from './HeaderDark.module.scss';
 import { Context } from '../../App';

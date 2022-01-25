@@ -9,7 +9,7 @@ const SignUpPage = () => (
 		<div className={styles.SignUpWrapper}>
 			<SignUp/>
 			<div className={styles.Terms}>
-				By signing up, you agree to AlgoBlock's&nbsp;<Link><span className={styles.Link}>Terms Of Use</span></Link>&nbsp;and&nbsp;<Link><span className={styles.Link}>Privacy Policy</span></Link>
+				By signing up, you agree to AlgoCube's&nbsp;<Link><span className={styles.Link}>Terms Of Use</span></Link>&nbsp;and&nbsp;<Link><span className={styles.Link}>Privacy Policy</span></Link>
 			</div>
 		</div>
 	</div>
