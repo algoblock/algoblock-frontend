@@ -34,7 +34,10 @@ const EditorPage = (props) => {
   }
 
   const nextStep = () => {
-    setLatest(step + 1);
+    if (step + 1 > latest) {
+      setLatest(step + 1);
+    }
+    
     setStep(step + 1);
 
   }
