@@ -1,0 +1,71 @@
+@import "../../../utilities/_colors";
+@import "../../../utilities/_fonts";
+
+.FrequencyStep {
+	font-family: $Poppins;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30vh;
+	flex-direction: column;
+}
+
+.NumberInput {
+	font-family: $Poppins;
+	font-size: 16px;
+	font-weight: 500;
+	color: $white;
+	background-color: $dark;
+	padding-left: 27px;
+	padding-right: 27px;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	box-sizing: border-box;
+	border: 1px solid $white;
+	width: 180px;
+	overflow: hidden;
+	caret-color: $white;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.NumberInput::-webkit-outer-spin-button,
+.NumberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.NumberInput[type=number] {
+  -moz-appearance: textfield;
+}
+
+.Amount {
+	font-family: $Poppins;
+	font-size: 16px;
+	font-weight: 500;
+	color: $white;
+}
+
+.Divider {
+	width: 75%;
+	background-color: $white;
+	height: 1px;
+	margin-top: 32px;
+	margin-bottom: 32px;
+}
+
+.SelectInput {
+	font-family: $Poppins;
+	font-size: 16px;
+	font-weight: 500;
+	color: $white;
+	background-color: $dark;
+	padding-left: 27px;
+	padding-right: 27px;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	box-sizing: border-box;
+	border: 1px solid $white;
+	width: 180px;
+	margin-left: 24px;
+}

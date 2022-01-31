@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {SearchableDropdown, StepNextButton} from '../../';
 import styles from './SymbolsStep.module.scss';
 
-const SymbolsStep = ({nextStep, setCompleted, symbol, setSymbol}) => {
+const SymbolsStep = ({nextStep, setCompleted, symbol, setSymbol, choices}) => {
   
 
   const handleSymbolChange = (newSymbol) => {
@@ -12,7 +12,6 @@ const SymbolsStep = ({nextStep, setCompleted, symbol, setSymbol}) => {
     setCompleted(choices.includes(newSymbol));
   }
 
-  let choices = ["BTC", "ETH", "BNB", "USDT", "SOL", "USDC", "LTC", "ADA", "XRP"];
   return (
     <div className={styles.SymbolsStep}>
       

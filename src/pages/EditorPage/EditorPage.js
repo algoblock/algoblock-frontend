@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useContext } from 'react';
 import { Context } from '../../App';
 import PropTypes from 'prop-types';
-import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer} from '../../components';
+import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, QuantityLimitStep, FrequencyStep} from '../../components';
 import lightModeStyles from './EditorPage.module.scss';
 import darkModeStyles from './EditorPageDark.module.scss';
 
@@ -13,7 +13,11 @@ const EditorPage = (props) => {
   const [completed, setCompleted] = useState([false, false, false, false, false]);
   const [symbol, setSymbol] = useState("");
   const [selectedEvents, setSelectedEvents] = useState([]);
-  const events = []
+  const [quantity, setQuantity] = useState("");
+  const [frequency, setFrequency] = useState("");
+  const [frequencyUnit, setFrequencyUnit] = useState("hour");
+  const events = [];
+  const symbols = ["BTC", "ETH", "BNB", "USDT", "SOL", "USDC", "LTC", "ADA", "XRP"];
 
   const setCurrentComplete = (complete) => {
     console.log(complete);
@@ -42,7 +46,7 @@ const EditorPage = (props) => {
 
   }
   let styles = state.darkMode ? darkModeStyles : lightModeStyles;
-  let steps = [<SymbolsStep nextStep={nextStep} setCompleted={setCurrentComplete} symbol={symbol} setSymbol={setSymbol}/>, <EventsStep toggleEventSelected={toggleEventSelected} setCompleted={setCurrentComplete} nextStep={nextStep}/>];
+  let steps = [<SymbolsStep nextStep={nextStep} setCompleted={setCurrentComplete} symbol={symbol} setSymbol={setSymbol} choices={symbols}/>, <EventsStep toggleEventSelected={toggleEventSelected} setCompleted={setCurrentComplete} nextStep={nextStep}/>, <QuantityLimitStep nextStep={nextStep} quantity={quantity} setQuantity={setQuantity} symbol={symbol} setCompleted={setCurrentComplete}/>, <FrequencyStep nextStep={nextStep} quantity={quantity} symbol={symbol} frequency={frequency} setFrequency={setFrequency} frequencyUnit={frequencyUnit} setFrequencyUnit={setFrequencyUnit} setCompleted={setCurrentComplete}/>];
   const stepNames = ["Symbols", "Events", "Quantity limit", "Frequency", "Results"];
   return (
     <div className={styles.EditorPage}>

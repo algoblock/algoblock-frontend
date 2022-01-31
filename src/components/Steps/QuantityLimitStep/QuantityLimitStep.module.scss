@@ -1,0 +1,48 @@
+@import "../../../utilities/_colors";
+@import "../../../utilities/_fonts";
+
+.QuantityLimitStep {
+	font-family: $Poppins;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30vh;
+	flex-direction: column;
+}
+
+.NumberInput {
+	font-family: $Poppins;
+	font-size: 16px;
+	font-weight: 500;
+	color: $white;
+	background-color: $dark;
+	padding-left: 27px;
+	padding-right: 27px;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	box-sizing: border-box;
+	border: 1px solid $white;
+	width: 180px;
+	overflow: hidden;
+	caret-color: $white;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.NumberInput::-webkit-outer-spin-button,
+.NumberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.NumberInput[type=number] {
+  -moz-appearance: textfield;
+}
+
+.Symbol {
+	font-family: $Poppins;
+	font-size: 16px;
+	font-weight: 500;
+	color: $white;
+	margin-left: 16px;
+}
