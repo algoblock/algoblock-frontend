@@ -1,4 +1,4 @@
-import {Button, BigButton, InvertedButton, LogInButton, GoogleSignInButton, MessageButton, StepNextButton} from './Buttons';
+import {Button, BigButton, InvertedButton, LogInButton, GoogleSignInButton, MessageButton, StepNextButton, BuySellButton} from './Buttons';
 import Card from './Card/Card';
 import Column from './Column/Column';
 import Divider from './Divider/Divider';
@@ -27,7 +27,7 @@ import Toggle from './Toggle/Toggle';
 import TeamMember from './TeamMember/TeamMember';
 import CurrencyTable from './CurrencyTable/CurrencyTable';
 import VerticalStepper from './VerticalStepper/VerticalStepper';
-import {SymbolsStep, EventsStep, QuantityLimitStep, FrequencyStep} from './Steps';
+import {SymbolsStep, EventsStep, QuantityLimitStep, FrequencyStep, ResultStep} from './Steps';
 import StepContainer from './StepContainer/StepContainer';
 import SearchableDropdown from './SearchableDropdown/SearchableDropdown';
 
@@ -70,7 +70,9 @@ export {
 	EventsStep,
 	QuantityLimitStep,
 	FrequencyStep,
+	ResultStep,
 	StepContainer,
 	SearchableDropdown,
 	StepNextButton,
+	BuySellButton,
 }

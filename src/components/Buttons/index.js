@@ -5,6 +5,7 @@ import LogInButton from './LogInButton/LogInButton';
 import GoogleSignInButton from './GoogleSignInButton/GoogleSignInButton';
 import MessageButton from './MessageButton/MessageButton';
 import StepNextButton from './StepNextButton/StepNextButton';
+import BuySellButton from './BuySellButton/BuySellButton';
 
 export {
 	BigButton,
@@ -14,4 +15,5 @@ export {
 	GoogleSignInButton,
 	MessageButton,
 	StepNextButton,
+	BuySellButton,
 }
