@@ -11,6 +11,7 @@ const FrequencyStep = ({nextStep, setCompleted, quantity, symbol, frequency, set
   }
 
   const handleFrequencyUnitChange = (newFrequencyUnit) => {
+    console.log(newFrequencyUnit);
     setFrequencyUnit(newFrequencyUnit);
   }
 
@@ -20,7 +21,7 @@ const FrequencyStep = ({nextStep, setCompleted, quantity, symbol, frequency, set
       <div className={styles.Divider}/>
       <Row style={{justifyContent: 'center', alignItems: 'center'}}>
         <input className={styles.NumberInput} value={frequency} onChange={(e) => handleFrequencyChange(e.target.value)} type="number" min={1} max={99} step={1} placeholder="Enter period"/>
-        <select className={styles.SelectInput} value={frequencyUnit} onChange={(e) => handleFrequencyChange(e.target.value)} placeholder="Enter period">
+        <select className={styles.SelectInput} value={frequencyUnit} onChange={(e) => handleFrequencyUnitChange(e.target.value)} placeholder="Enter period">
           <option value="hour">Hours</option>
           <option value="day">Days</option>
           <option value="week">Weeks</option>
@@ -30,7 +31,7 @@ const FrequencyStep = ({nextStep, setCompleted, quantity, symbol, frequency, set
       <StepNextButton onClick={() => {
         nextStep();
         setCompleted(true);
-      }} style={{position: "absolute", bottom: "127px"}} disabled={frequency === 0 || frequency === ""}/>
+      }} style={{position: "absolute", bottom: "127px"}} disabled={frequency === "0" || frequency === ""}/>
     </div>
   );
 };
