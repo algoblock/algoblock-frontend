@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {Button} from '../';
 import styles from './LogInButton.module.scss';
+import {signInWithEmailPass} from "../../../firebase";
 
 const LogInButton = (props) => (
-	<div className={styles.LogInButton} style={{...props.style}}>
-			{props.children}
-	</div>
+  <button className={styles.LogInButton} onClick={() => signInWithEmailPass(props.email, props.pass)}>
+    {props.children}
+  </button>
 );
 
 LogInButton.propTypes = {};

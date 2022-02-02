@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect, useContext, useState } from 'react';
-import PropTypes from 'prop-types';
 import { UserContext } from '../../providers/UserProvider';
 import { Redirect } from 'react-router-dom';
 import styles from './SignIn.module.scss';
@@ -8,7 +7,14 @@ import {SignInInput, Link, LogInButton, GoogleSignInButton} from '../';
 import {AlgoblockOnelineSvg} from '../../img';
 
 function SignIn() {
+  // User object containing information about authentication status
   const user = useContext(UserContext);
+
+  // Stateful collection of user information shared between components
+  const [email, setemail] = useState('');
+  const [pass, setpass] = useState('');
+
+  // After successful authentication
   const [redirect, setredirect] = useState(null);
   useEffect(() => {
     if (user) {
@@ -24,16 +30,16 @@ function SignIn() {
       <img src={AlgoblockOnelineSvg} width={230}/>
       <div className={styles.Title}>Welcome back!</div>
       <div className={styles.Login}>
-        <SignInInput type="email" placeholder="Email"/>
+        <SignInInput type="email" placeholder="Email" setvalue={setemail}/>
         <div className={styles.InputSpacer}/>
-        <SignInInput type="password" placeholder="Password"/>
+        <SignInInput type="password" placeholder="Password" setvalue={setpass}/>
         <div className={styles.ForgotPasswordSpacer}/>
         <Link>
           <span className={styles.ForgotPassword}>Forgot password?</span>
         </Link>
         <div className={styles.LogInSpacer}/>
         <div className={styles.CenterWrapper}>
-          <LogInButton>
+          <LogInButton email={email} pass={pass}>
             Log In
           </LogInButton>
         </div>
