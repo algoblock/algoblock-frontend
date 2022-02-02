@@ -1,4 +1,4 @@
-import {Button, BigButton, InvertedButton, LogInButton, GoogleSignInButton, MessageButton, StepNextButton, BuySellButton} from './Buttons';
+import {Button, BigButton, InvertedButton, LogInButton, SignUpButton, GoogleSignInButton, MessageButton, StepNextButton, BuySellButton} from './Buttons';
 import Card from './Card/Card';
 import Column from './Column/Column';
 import Divider from './Divider/Divider';
@@ -51,6 +51,7 @@ export {
 	Splash,
 	SignInInput,
 	LogInButton,
+  SignUpButton,
 	GoogleSignInButton,
 	SignUp,
 	Squiggle,

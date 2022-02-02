@@ -1,0 +1,24 @@
+@import "../../../utilities/_colors";
+@import "../../../utilities/_fonts";
+
+.SignUpButton {
+	font-family: $Poppins, sans-serif;
+	font-weight: 600;
+	font-size: 16px;
+	cursor: pointer;
+	width: fit-content;
+	color: $white;
+	background: $accent;
+	box-sizing: border-box;
+	border: 2px solid $accent;
+	transition: background 0.3s ease 0s;
+	border-radius: 10px;
+	display: inline-block;
+	white-space: nowrap;
+	padding: 21px 61px;
+}
+
+.SignUpButton:hover {
+	color: $accent;
+	background: $transparent;
+}
