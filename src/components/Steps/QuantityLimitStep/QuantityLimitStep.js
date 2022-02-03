@@ -7,7 +7,7 @@ const QuantityLimitStep = ({nextStep, symbol, quantity, setQuantity, setComplete
 
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
-    setCompleted(newQuantity >= 0);
+    setCompleted(newQuantity > 0);
   }
 
   return (
