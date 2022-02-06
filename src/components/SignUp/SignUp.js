@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import styles from './SignUp.module.scss';
 import {SignInInput, Link, SignUpButton, GoogleSignInButton} from '../';
-import {AlgoblockOnelineSvg} from '../../img';
+import {AlgocubeOnelineSvg} from '../../img';
 import {UserContext} from "../../providers/UserProvider";
 import {Redirect} from "react-router-dom";
 
@@ -28,7 +28,7 @@ const SignUp = () => {
 
   return(
     <div className={styles.SignUp}>
-      <img src={AlgoblockOnelineSvg} width={230}/>
+      <img src={AlgocubeOnelineSvg} width={230}/>
       <div className={styles.Title}>Let's get started</div>
       <div className={styles.UserInfo}>
         <SignInInput type="first_name" placeholder="First Name" setvalue={setfirst}/>

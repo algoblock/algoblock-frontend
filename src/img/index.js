@@ -21,6 +21,7 @@ import DownArrowSvg from './vector/down-arrow.svg';
 import CheckSvg from './vector/check.svg';
 import AlgocubeSvg from './vector/algocube.svg';
 import AlgocubeDarkmodeSvg from './vector/algocube-darkmode.svg';
+import AlgocubeOnelineSvg from './vector/algocube-oneline.svg';
 
 export {
 	AlgoblockPng,
@@ -46,4 +47,5 @@ export {
 	CheckSvg,
 	AlgocubeSvg,
 	AlgocubeDarkmodeSvg,
+	AlgocubeOnelineSvg,
 }

@@ -4,7 +4,7 @@ import { UserContext } from '../../providers/UserProvider';
 import { Redirect } from 'react-router-dom';
 import styles from './SignIn.module.scss';
 import {SignInInput, Link, LogInButton, GoogleSignInButton} from '../';
-import {AlgoblockOnelineSvg} from '../../img';
+import {AlgocubeOnelineSvg} from '../../img';
 
 function SignIn() {
   // User object containing information about authentication status
@@ -27,7 +27,7 @@ function SignIn() {
 
   return (
     <div className={styles.SignIn}>
-      <img src={AlgoblockOnelineSvg} width={230}/>
+      <img className={styles.Logo} src={AlgocubeOnelineSvg} width={200}/>
       <div className={styles.Title}>Welcome back!</div>
       <div className={styles.Login}>
         <SignInInput type="email" placeholder="Email" setvalue={setemail}/>
