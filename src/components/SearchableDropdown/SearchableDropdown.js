@@ -1,7 +1,10 @@
 import React from 'react';
+import {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {useState} from 'react';
-import styles from './SearchableDropdown.module.scss';
+import lightModeStyles from './SearchableDropdown.module.scss';
+import darkModeStyles from './SearchableDropdownDark.module.scss';
+import { Context } from '../../App';
 import SimpleBarReact from "simplebar-react";
 
 import "simplebar/src/simplebar.css";
@@ -9,6 +12,9 @@ import "simplebar/src/simplebar.css";
 
 
 const SearchableDropdown = ({choices, text, setText}) => {
+  const {state} = useContext(Context);
+  let styles = state.darkMode ? darkModeStyles : lightModeStyles;
+  
   let filtered = [];
   const handleBlur = (e) => {
     if (e.relatedTarget && e.relatedTarget.className === "simplebar-content-wrapper") {

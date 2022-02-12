@@ -3,8 +3,8 @@
 
 .StepContainer {
 	font-family: $Poppins;
-	color: $white;
-	border: 2px solid $dark;
+	color: $dark;
+	border: 2px solid $white;
 	border-radius: 30px;
 	width: 50vw;
 	height: 75vh;
@@ -32,7 +32,7 @@
 }
 
 .Title {
-	color: $dark;
+	color: $white;
 	margin-left: 40px;
 	font-weight: 700px;
 	font-size: 28px;

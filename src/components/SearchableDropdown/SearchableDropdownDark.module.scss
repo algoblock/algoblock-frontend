@@ -12,16 +12,16 @@
 	font-size: 16px;
 	font-weight: 500;
 	color: rgba(0,0,0,0);
-	background-color: $white;
+	background-color: $dark;
 	padding-left: 27px;
 	padding-right: 27px;
 	padding-top: 19px;
 	padding-bottom: 19px;
 	box-sizing: border-box;
-	border: 1px solid $dark;
+	border: 1px solid $white;
 	width: 480px;
 	overflow: hidden;
-	caret-color: $dark;
+	caret-color: $white;
 }
 
 .Input:focus-visible {
@@ -47,11 +47,11 @@
 }
 
 .UserInput {
-	color: $dark;
+	color: $white;
 }
 
 .AutoComplete {
-	color: $light-grey;
+	color: $outer-space;
 }
 
 .Choice {
