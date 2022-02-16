@@ -10,11 +10,24 @@
 .SignUpWrapper {
 	display: flex;
 	justify-content: flex-start;
-	margin-top: 20px;
+	background-color: $white;
+	padding-top: 20px;
 	flex: 1 1 auto;
     flex-direction: column;
     align-items: center;
 }
+
+
+.SignUpWrapperDark {
+	display: flex;
+	justify-content: flex-start;
+	background-color: $dark;
+	padding-top: 20px;
+	flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 .Terms {
 	margin-top: 23px;

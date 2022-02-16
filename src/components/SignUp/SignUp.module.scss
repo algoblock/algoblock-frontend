@@ -3,12 +3,16 @@
 
 .SignUp {
 	position: relative;
-	width: 506px;
-	height: 629px;
+	width: 36vw;
+	height: 80vh;
+	box-sizing: border-box;
 	background-color: $light;
 	box-shadow: 2px 2px 15px rgba(191, 192, 211, 0.7);
 	border-radius: 20px;
-	padding: 70px;
+	padding-left: 70px;
+	padding-right: 70px;
+	padding-top: 24px;
+	padding-bottom: 24px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -21,9 +25,14 @@
 	font-weight: 600;
 	font-size: 35px;
 	line-height: 52px;
-	color: $primary;
+	color: $dark;
 	text-align: center;
 }
+
+.Logo {
+	width: 14vw;
+}
+
 
 .Login {
 	width: 500px;
@@ -69,7 +78,10 @@
 }
 
 .Or {
-	margin: 32px;
+	margin-left: 24px;
+	margin-right: 24px;
+	margin-top: 12px;
+	margin-bottom: 12px;
 	color: $grey;
 	font-family: Poppins;
 	font-style: normal;

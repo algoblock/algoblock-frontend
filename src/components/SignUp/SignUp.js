@@ -28,7 +28,7 @@ const SignUp = () => {
 
   return(
     <div className={styles.SignUp}>
-      <img src={AlgocubeOnelineSvg} width={230}/>
+      <img className={styles.Logo} src={AlgocubeOnelineSvg} width={230}/>
       <div className={styles.Title}>Let's get started</div>
       <div className={styles.UserInfo}>
         <SignInInput type="first_name" placeholder="First Name" setvalue={setfirst}/>

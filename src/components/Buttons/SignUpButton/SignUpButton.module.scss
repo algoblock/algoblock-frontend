@@ -8,17 +8,17 @@
 	cursor: pointer;
 	width: fit-content;
 	color: $white;
-	background: $accent;
+	background: $primary;
 	box-sizing: border-box;
-	border: 2px solid $accent;
+	border: 2px solid $primary;
 	transition: background 0.3s ease 0s;
 	border-radius: 10px;
 	display: inline-block;
 	white-space: nowrap;
-	padding: 21px 61px;
+	padding: 16px 48px;
 }
 
 .SignUpButton:hover {
-	color: $accent;
+	color: $primary;
 	background: $transparent;
 }
