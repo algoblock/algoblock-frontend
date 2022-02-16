@@ -1,7 +1,7 @@
 @import "../../../utilities/_colors";
 @import "../../../utilities/_fonts";
 
-.ResultStep {
+.ActionStep {
 	font-family: $Poppins;
 	display: flex;
 	align-items: center;
@@ -19,4 +19,12 @@
 
 .Divider {
 	width: 25px;
+}
+
+.Wrapper {
+	width: 183px;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

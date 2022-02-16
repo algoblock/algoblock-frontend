@@ -27,7 +27,7 @@ import Toggle from './Toggle/Toggle';
 import TeamMember from './TeamMember/TeamMember';
 import CurrencyTable from './CurrencyTable/CurrencyTable';
 import VerticalStepper from './VerticalStepper/VerticalStepper';
-import {SymbolsStep, EventsStep, QuantityLimitStep, FrequencyStep, ResultStep} from './Steps';
+import {SymbolsStep, EventsStep, QuantityLimitStep, FrequencyStep, ActionStep} from './Steps';
 import StepContainer from './StepContainer/StepContainer';
 import SearchableDropdown from './SearchableDropdown/SearchableDropdown';
 
@@ -47,11 +47,11 @@ export {
 	ScrollingDivider,
 	SignIn,
 	SignInLink,
-  SignOutLink,
+	SignOutLink,
 	Splash,
 	SignInInput,
 	LogInButton,
-  SignUpButton,
+	SignUpButton,
 	GoogleSignInButton,
 	SignUp,
 	Squiggle,
@@ -71,7 +71,7 @@ export {
 	EventsStep,
 	QuantityLimitStep,
 	FrequencyStep,
-	ResultStep,
+	ActionStep,
 	StepContainer,
 	SearchableDropdown,
 	StepNextButton,

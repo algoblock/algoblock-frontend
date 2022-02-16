@@ -36,7 +36,12 @@ const VerticalStepper = (props) => {
       } else {
         step.push(<div className={styles.CircleContainer}><div className={`${styles.Circle} ${styles.LargeCircle}`}><img className={styles.NotChecked} src={CheckSvg}/></div></div>);
       }
-      steps.push(<div onClick={() => {props.setStep(i)}} className={styles.Clickable}><Row style={{alignItems: "center", justifyContent: "flex-end", height: "69px"}}>{step}</Row></div>);
+      if (props.completed[props.step] || i <= props.step) {
+        steps.push(<div onClick={() => {props.setStep(i)}} className={styles.Clickable}><Row style={{alignItems: "center", justifyContent: "flex-end", height: "69px"}}>{step}</Row></div>);
+      } else {
+        steps.push(<div className={styles.NotClickable}><Row style={{alignItems: "center", justifyContent: "flex-end", height: "69px"}}>{step}</Row></div>);
+      }
+      
     }
     
 
