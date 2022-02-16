@@ -7,15 +7,17 @@ import GoogleSignInButton from './GoogleSignInButton/GoogleSignInButton';
 import MessageButton from './MessageButton/MessageButton';
 import StepNextButton from './StepNextButton/StepNextButton';
 import BuySellButton from './BuySellButton/BuySellButton';
+import EventButton from './EventButton/EventButton';
 
 export {
 	BigButton,
 	Button,
 	InvertedButton,
 	LogInButton,
-  SignUpButton,
+	SignUpButton,
 	GoogleSignInButton,
 	MessageButton,
 	StepNextButton,
 	BuySellButton,
+	EventButton,
 }

@@ -17,7 +17,32 @@ const EditorPage = (props) => {
   const [frequency, setFrequency] = useState("");
   const [frequencyUnit, setFrequencyUnit] = useState("hour");
   const [action, setAction] = useState({"buy": false, "sell": false});
-  const events = [];
+  const events = [
+    {
+      name: "Overbought/oversold",
+      id: "overbought",
+    },
+    {
+      name: "Limit order",
+      id: "limit",
+    },
+    {
+      name: "Future outlook",
+      id: "future",
+    },
+    {
+      name: "Test",
+      id: "test0",
+    },
+    {
+      name: "Test",
+      id: "test0",
+    },
+    {
+      name: "Test",
+      id: "test0",
+    }
+  ];
   const symbols = ["BTC", "ETH", "BNB", "USDT", "SOL", "USDC", "LTC", "ADA", "XRP"];
 
   const setCurrentComplete = (complete) => {
@@ -47,7 +72,12 @@ const EditorPage = (props) => {
 
   }
   let styles = state.darkMode ? darkModeStyles : lightModeStyles;
-  let steps = [<SymbolsStep nextStep={nextStep} setCompleted={setCurrentComplete} symbol={symbol} setSymbol={setSymbol} choices={symbols}/>,  <ActionStep nextStep={nextStep} setCompleted={setCurrentComplete} action={action} setAction={setAction} symbol={symbol} quantity={quantity} frequency={frequency} frequencyUnit={frequencyUnit}/>, <EventsStep toggleEventSelected={toggleEventSelected} setCompleted={setCurrentComplete} nextStep={nextStep}/>, <QuantityLimitStep nextStep={nextStep} quantity={quantity} setQuantity={setQuantity} symbol={symbol} setCompleted={setCurrentComplete}/>, <FrequencyStep nextStep={nextStep} quantity={quantity} symbol={symbol} frequency={frequency} setFrequency={setFrequency} frequencyUnit={frequencyUnit} setFrequencyUnit={setFrequencyUnit} setCompleted={setCurrentComplete}/>];
+  let steps = [
+    <SymbolsStep nextStep={nextStep} setCompleted={setCurrentComplete} symbol={symbol} setSymbol={setSymbol} choices={symbols}/>,
+    <ActionStep nextStep={nextStep} setCompleted={setCurrentComplete} action={action} setAction={setAction} symbol={symbol} quantity={quantity} frequency={frequency} frequencyUnit={frequencyUnit}/>,
+    <EventsStep events={events} toggleEventSelected={toggleEventSelected} setCompleted={setCurrentComplete} nextStep={nextStep}/>,
+    <QuantityLimitStep nextStep={nextStep} quantity={quantity} setQuantity={setQuantity} symbol={symbol} setCompleted={setCurrentComplete}/>,
+    <FrequencyStep nextStep={nextStep} quantity={quantity} symbol={symbol} frequency={frequency} setFrequency={setFrequency} frequencyUnit={frequencyUnit} setFrequencyUnit={setFrequencyUnit} setCompleted={setCurrentComplete}/>];
   const stepNames = ["Symbols", "Actions", "Events", "Quantity limit", "Frequency"];
   return (
     <div className={styles.EditorPage}>

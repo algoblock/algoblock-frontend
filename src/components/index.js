@@ -1,4 +1,4 @@
-import {Button, BigButton, InvertedButton, LogInButton, SignUpButton, GoogleSignInButton, MessageButton, StepNextButton, BuySellButton} from './Buttons';
+import {Button, BigButton, InvertedButton, LogInButton, SignUpButton, GoogleSignInButton, MessageButton, StepNextButton, BuySellButton, EventButton} from './Buttons';
 import Card from './Card/Card';
 import Column from './Column/Column';
 import Divider from './Divider/Divider';
@@ -76,4 +76,5 @@ export {
 	SearchableDropdown,
 	StepNextButton,
 	BuySellButton,
+	EventButton,
 }
