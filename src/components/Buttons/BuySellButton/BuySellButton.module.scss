@@ -4,7 +4,7 @@
 .BuySellButton {
 	background: $white;
 	border-radius: 15px;
-	color: $black;
+	color: $dark;
 	font-size: 20px;
 	font-weight: 700;
 	font-family: $Poppins;
@@ -23,6 +23,7 @@
 
 .Selected {
 	background: $primary;
+	color: $white;
 	width: 137px;
 	height: 45px;
 	border-radius: 12px;
