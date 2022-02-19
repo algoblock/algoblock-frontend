@@ -2,7 +2,7 @@
 @import "../../../utilities/_fonts";
 
 .BuySellButton {
-	background: $light-pastel-purple;
+	background: $white;
 	border-radius: 15px;
 	color: $black;
 	font-size: 20px;
@@ -18,16 +18,16 @@
 }
 
 .BuySellButton:hover {
-	background: $primary;
+	background: $chinese-silver;
 }
 
 .Selected {
-	background: $white;
+	background: $primary;
 	width: 137px;
 	height: 45px;
 	border-radius: 12px;
 }
 
 .Selected:hover {
-	background: $chinese-silver;
+	background: $count-bg;
 }

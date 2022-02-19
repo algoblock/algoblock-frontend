@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import {StepNextButton, EventButton, Row} from '../../';
 import styles from './EventsStep.module.scss';
 
-const EventsStep = ({nextStep, setCompleted, events}) => {
+const EventsStep = ({nextStep, setCompleted, events, setVisibleModal}) => {
 
   let eventButtons = [];
 
   for (let i=0; i < events.length; i += 2) {
     eventButtons.push(<Row>
         <div className={styles.EventButtonWrapper}>
-          <EventButton>{events[i].name}</EventButton>
+          <EventButton onClick={() => setVisibleModal(events[i].id)}>{events[i].name}</EventButton>
         </div>
         <div className={styles.EventButtonWrapper}>
-          {i + 1 < events.length && <EventButton>{events[i + 1].name}</EventButton>}
+          {i + 1 < events.length && <EventButton onClick={() => setVisibleModal(events[i + 1].id)}>{events[i + 1].name}</EventButton>}
         </div>
       </Row>)
   }

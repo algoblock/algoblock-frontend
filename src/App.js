@@ -6,6 +6,8 @@ import {
 	Switch,
 	Route,
 } from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import colors from './utilities/_export.module.scss';
 
 import './App.css';
 
@@ -28,6 +30,27 @@ const reducer = (state, action) => {
   }
 };
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: colors.primary,
+    },
+    text: {
+      primary: colors.dark,
+    }
+  },
+});
+
+const darkTheme = createTheme({
+  palette: {
+    primary: {
+      main: colors.primary,
+    },
+    text: {
+      primary: colors.white,
+    }
+  },
+});
 
 function App() {
 	const [state, dispatch] = useReducer(reducer, initialState);
@@ -39,25 +62,27 @@ function App() {
 	      	}}
 		>
       <UserProvider>
-        <Router>
-          <Switch>
-            <Route path="/editor">
-              <EditorPage/>
-            </Route>
-            <Route path="/dashboard">
-              <DashboardPage/>
-            </Route>
-            <Route path="/login">
-              <SignInPage/>
-            </Route>
-            <Route path="/signup">
-              <SignUpPage/>
-            </Route>
-            <Route path="/">
-              <LandingPage/>
-            </Route>
-          </Switch>
-        </Router>
+        <ThemeProvider theme={state.darkMode ? darkTheme : theme}>
+          <Router>
+            <Switch>
+              <Route path="/editor">
+                <EditorPage/>
+              </Route>
+              <Route path="/dashboard">
+                <DashboardPage/>
+              </Route>
+              <Route path="/login">
+                <SignInPage/>
+              </Route>
+              <Route path="/signup">
+                <SignUpPage/>
+              </Route>
+              <Route path="/">
+                <LandingPage/>
+              </Route>
+            </Switch>
+          </Router>
+        </ThemeProvider>
       </UserProvider>
 		</Context.Provider>
 	);
