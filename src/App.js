@@ -14,7 +14,7 @@ import './App.css';
 export const Context = createContext();
 
 const initialState = {
-  darkMode: localStorage.getItem('darkMode') || false,
+  darkMode: localStorage.getItem('darkMode') || true,
 };
 
 const reducer = (state, action) => {
