@@ -17,7 +17,12 @@ const EditorPage = (props) => {
   const [completed, setCompleted] = useState([false, false, false, false, false]);
   const [symbol, setSymbol] = useState("");
   const [selectedEvents, setSelectedEvents] = useState([]);
-  const [eventParams, setEventParams] = useState({});
+  const [eventParams, setEventParams] = useState({
+    overbought: {
+      buy: 30,
+      sell: 70,
+    }
+  });
   const [visibleModal, setVisibleModal] = useState("");
   const [quantity, setQuantity] = useState("");
   const [frequency, setFrequency] = useState("");
@@ -81,6 +86,12 @@ const EditorPage = (props) => {
     setVisibleModal("");
   }
 
+  const setSpecificEventParams = (event, newParams) => {
+    const newEventParams = {...eventParams};
+    newEventParams[event] = newParams;
+    setEventParams(newEventParams);
+  }
+
   const nextStep = () => {
     if (step + 1 > latest) {
       setLatest(step + 1);
@@ -100,7 +111,7 @@ const EditorPage = (props) => {
   return (
     <div className={styles.EditorPage}>
       <Header selected={"Editor"} loggedIn={true}/>
-      <OverboughtModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent}/>
+      <OverboughtModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.overbought} setEventParams={(newParams) => setSpecificEventParams("overbought", newParams)}/>
       <Row style={{marginTop: "5vh", justifyContent: "center", alignItems: "center"}}>
         <VerticalStepper setStep={setStep} stepNames={stepNames} step={step} latest={latest} completed={completed} completed={completed}/>
         <StepContainer title={stepNames[step]} number={step + 1}>

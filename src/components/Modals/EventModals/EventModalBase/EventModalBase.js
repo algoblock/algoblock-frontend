@@ -1,10 +1,12 @@
 import React from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
+import {Row, InvertedButton, Button} from '../../../';
 import styles from './EventModalBase.module.scss';
+import commonStyles from '../EventModals.module.scss';
 import colors from '../../../../utilities/_export.module.scss';
 
-const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, eventName, children}) => {
+const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, eventName, children, cancelEvent, confirmEvent}) => {
   const modalStyles = {
     content: {
       top: '50%',
@@ -33,7 +35,14 @@ const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, event
         style={modalStyles}
         contentLabel={`${eventName} Modal`}
       >
-        {children}
+        <div className={commonStyles.ModalTitle}>{eventName}</div>
+        <div className={commonStyles.ModalContent}>
+          {children}
+        </div>
+        <Row style={{width: "100%", justifyContent: "center", marginTop: "24px"}}>
+          <InvertedButton cancel onClick={() => cancelEvent("overbought")}>Cancel</InvertedButton>
+          <Button darkBg onClick={() => confirmEvent("overbought")}>Confirm</Button>
+        </Row>
         
 
       </Modal>
