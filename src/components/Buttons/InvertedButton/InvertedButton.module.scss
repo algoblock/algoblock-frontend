@@ -48,3 +48,12 @@
 	padding: 18px 42px;
 	font-size: 16px;
 }
+
+.Cancel {
+	border: 2px solid $transparent;
+}
+
+.Cancel:hover {
+	color: $white;
+	background: $transparent;
+}

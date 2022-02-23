@@ -5,6 +5,7 @@ import styles from './Button.module.scss';
 const Button = (props) => {
   let className = `${styles.Button}`;
   className += props.dark ? ` ${styles.Dark}` : "";
+  className += props.darkBg ? ` ${styles.DarkBg}` : "";
   return (
     <div onClick={props.onClick || undefined} className={className} style={props.style}>
       {props.children}

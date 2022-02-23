@@ -14,6 +14,7 @@
 	width: 250px;
 	height: 50px;
 	transition: all 0.3s ease 0s;
+	position: relative;
 }
 
 .EventButton:hover {
@@ -26,4 +27,24 @@
 .Selected {
 	background-color: $white;
 	color: $dark;
+}
+
+.Selected:hover {
+	color: $outer-space;
+	width: 250px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+
+.EditButton {
+	color: $dark;
+	position: absolute;
+	right: 12px;
+}
+
+.EditButton:hover {
+	color: $outer-space;
+	position: absolute;
+	transition: all 0.3s ease 0s;
 }

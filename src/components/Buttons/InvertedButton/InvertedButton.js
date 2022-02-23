@@ -7,6 +7,7 @@ const InvertedButton = (props) => {
   className += props.dark ? ` ${styles.Dark}` : "";
   className += props.white ? ` ${styles.White}` : "";
   className += props.big ? ` ${styles.Big}` : "";
+  className += props.cancel ? ` ${styles.Cancel}` : "";
   return (
     <div onClick={props.onClick || undefined} className={className} style={props.style}>
       {props.children}

@@ -247,7 +247,7 @@ const DashboardPage = () => {
 					<div className={styles.WelcomeContainer}>
             {dashboardWelcome}
 						<div className={styles.NewProject}>
-							<Button dark={state.darkMode} style={{paddingLeft: "40px", "paddingRight": "40px", borderRadius: "10px"}}>New Project</Button>
+							<Button dark={state.darkMode} style={{paddingLeft: "40px", "paddingRight": "40px", borderRadius: "10px", fontSize: "16px", paddingTop: "8px", paddingBottom: "8px"}}>New Project</Button>
 						</div>
 					</div>
 					<DashboardPanel darkMode={state.darkMode} style={{marginTop: "45px"}} title="Projects">
