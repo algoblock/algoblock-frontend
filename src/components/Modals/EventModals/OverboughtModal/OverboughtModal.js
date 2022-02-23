@@ -8,7 +8,7 @@ import styles from './OverboughtModal.module.scss';
 import colors from '../../../../utilities/_export.module.scss';
 
 
-const OverboughtModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEvent, confirmEvent, eventParams, setEventParams}) => {
+const OverboughtModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEvent, confirmEvent, eventParams, setEventParams, selected}) => {
 
   const percentage = (n) => {
     return `${n}%`
@@ -51,7 +51,7 @@ const OverboughtModal = ({visibleModal, setVisibleModal, action, darkMode, cance
   }
 
   return (
-    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="overbought" eventName="Overbought/Oversold" cancelEvent={cancelEvent} confirmEvent={confirmEvent}>
+    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="overbought" eventName="Overbought/Oversold" cancelEvent={cancelEvent} confirmEvent={confirmEvent} selected={selected}>
       {action["buy"] && 
         <Row style={{justifyContent: "space-evenly"}}>
           <div className={commonStyles.SliderLabel}>

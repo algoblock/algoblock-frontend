@@ -6,7 +6,7 @@ import styles from './EventModalBase.module.scss';
 import commonStyles from '../EventModals.module.scss';
 import colors from '../../../../utilities/_export.module.scss';
 
-const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, eventName, children, cancelEvent, confirmEvent}) => {
+const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, eventName, children, cancelEvent, confirmEvent, selected}) => {
   const modalStyles = {
     content: {
       top: '50%',
@@ -40,7 +40,7 @@ const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, event
           {children}
         </div>
         <Row style={{width: "100%", justifyContent: "center", marginTop: "24px"}}>
-          <InvertedButton cancel onClick={() => cancelEvent(eventId)}>Cancel</InvertedButton>
+          {!selected && <InvertedButton cancel onClick={() => cancelEvent(eventId)}>Cancel</InvertedButton>}
           <Button darkBg onClick={() => confirmEvent(eventId)}>Confirm</Button>
         </Row>
         

@@ -5,7 +5,7 @@ import {Row} from '../../../';
 import commonStyles from '../EventModals.module.scss';
 import styles from './LimitModal.module.scss';
 
-const LimitModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEvent, confirmEvent, eventParams, setEventParams}) => {
+const LimitModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEvent, confirmEvent, eventParams, setEventParams, selected}) => {
 
   const handleChange = (param, newValue) => {
     const newEventParams = {...eventParams};
@@ -14,7 +14,7 @@ const LimitModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEven
   }
 
   return (
-    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="limit" eventName="Limit order" cancelEvent={cancelEvent} confirmEvent={confirmEvent}>
+    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="limit" eventName="Limit order" cancelEvent={cancelEvent} confirmEvent={confirmEvent} selected={selected}>
       {action["buy"] && 
         <Row style={{justifyContent: "space-evenly", alignItems: "center", marginBottom: action["sell"] ? "20px" : "0px"}}>
           <div className={commonStyles.InputLabel}>
