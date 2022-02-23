@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useState, useContext } from 'react';
 import { Context } from '../../App';
 import PropTypes from 'prop-types';
-import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, QuantityLimitStep, FrequencyStep, ActionStep, InvertedButton, Button, OverboughtModal} from '../../components';
+import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, QuantityLimitStep, FrequencyStep, ActionStep, InvertedButton, Button, OverboughtModal, LimitModal} from '../../components';
 import lightModeStyles from './EditorPage.module.scss';
 import darkModeStyles from './EditorPageDark.module.scss';
 import colors from '../../utilities/_export.module.scss';
@@ -21,6 +21,10 @@ const EditorPage = (props) => {
     overbought: {
       buy: 30,
       sell: 70,
+    },
+    limit: {
+      buy: 1500, // Should replace with current price of the selected crypto
+      sell: 1500, // Should replace with current price of the selected crypto
     }
   });
   const [visibleModal, setVisibleModal] = useState("");
@@ -112,6 +116,7 @@ const EditorPage = (props) => {
     <div className={styles.EditorPage}>
       <Header selected={"Editor"} loggedIn={true}/>
       <OverboughtModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.overbought} setEventParams={(newParams) => setSpecificEventParams("overbought", newParams)}/>
+      <LimitModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.limit} setEventParams={(newParams) => setSpecificEventParams("limit", newParams)}/>
       <Row style={{marginTop: "5vh", justifyContent: "center", alignItems: "center"}}>
         <VerticalStepper setStep={setStep} stepNames={stepNames} step={step} latest={latest} completed={completed} completed={completed}/>
         <StepContainer title={stepNames[step]} number={step + 1}>

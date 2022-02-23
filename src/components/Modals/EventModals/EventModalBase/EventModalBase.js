@@ -40,8 +40,8 @@ const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, event
           {children}
         </div>
         <Row style={{width: "100%", justifyContent: "center", marginTop: "24px"}}>
-          <InvertedButton cancel onClick={() => cancelEvent("overbought")}>Cancel</InvertedButton>
-          <Button darkBg onClick={() => confirmEvent("overbought")}>Confirm</Button>
+          <InvertedButton cancel onClick={() => cancelEvent(eventId)}>Cancel</InvertedButton>
+          <Button darkBg onClick={() => confirmEvent(eventId)}>Confirm</Button>
         </Row>
         
 

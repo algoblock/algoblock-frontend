@@ -23,8 +23,15 @@
 	box-sizing: border-box;
 	border: 1px solid $white;
 	width: 180px;
+	transition: all 0.3s ease;
+	border-radius: 8px;
 	overflow: hidden;
 	caret-color: $white;
+}
+
+.NumberInput:focus-visible {
+	outline: none;
+	border-radius: 0px;
 }
 
 /* Chrome, Safari, Edge, Opera */

@@ -21,12 +21,14 @@
 	border: 1px solid $white;
 	width: 480px;
 	overflow: hidden;
+	transition: all 0.3s ease;
 	caret-color: $white;
+	border-radius: 8px;
 }
 
 .Input:focus-visible {
 	outline: none;
-	border-radius:0;
+	border-radius: 0px;
 }
 
 .Text {
