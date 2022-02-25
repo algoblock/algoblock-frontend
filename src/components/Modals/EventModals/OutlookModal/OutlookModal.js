@@ -4,43 +4,23 @@ import {Row} from '../../../';
 import PropTypes from 'prop-types';
 import commonStyles from '../EventModals.module.scss';
 import Slider from '@mui/material/Slider';
-import styles from './OverboughtModal.module.scss';
+import styles from './OutlookModal.module.scss';
 import colors from '../../../../utilities/_export.module.scss';
 
-
-const OverboughtModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEvent, confirmEvent, eventParams, setEventParams, selected}) => {
+const OutlookModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEvent, confirmEvent, eventParams, setEventParams, selected}) => {
 
   const percentage = (n) => {
     return `${n}%`
-  }
+  } 
 
-  const rsiBuyMarks = [
+  const fundingRateBuyMarks = [
     {
       value: 0,
-      label: 'Oversold',
-    },
-    {
-      value: 30,
-      label: 'Default',
-    },
-    {
-      value: 50,
-      label: 'Neutral',
-    },
-  ];
-
-  const rsiSellMarks = [
-    {
-      value: 50,
       label: 'Neutral',
     },
     {
-      value: 70,
-      label: 'Default',
-    },
-    {
-      value: 100,
-      label: 'Overbought',
+      value: 1,
+      label: 'Positive',
     },
   ];
 
@@ -50,8 +30,19 @@ const OverboughtModal = ({visibleModal, setVisibleModal, action, darkMode, cance
     setEventParams(newEventParams);
   }
 
+  const fundingRateSellMarks = [
+    {
+      value: -1,
+      label: 'Negative',
+    },
+    {
+      value: 0,
+      label: 'Neutral',
+    },
+  ];
+
   return (
-    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="overbought" eventName="Overbought/Oversold" cancelEvent={cancelEvent} confirmEvent={confirmEvent} selected={selected}>
+    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="outlook" eventName="Future outlook" cancelEvent={cancelEvent} confirmEvent={confirmEvent} selected={selected}>
       {action["buy"] && 
         <Row style={{justifyContent: "space-evenly"}}>
           <div className={commonStyles.SliderLabel}>
@@ -60,15 +51,15 @@ const OverboughtModal = ({visibleModal, setVisibleModal, action, darkMode, cance
           <div className={commonStyles.SliderContainer}>
             <Slider
               aria-label="Buy slider"
-              defaultValue={30}
+              defaultValue={0}
               value={eventParams.buy}
               onChange={(event, newValue) => handleChange("buy", newValue)}
               getAriaValueText={percentage}
-              step={1}
+              step={0.02}
               min={0}
-              max={50}
+              max={1}
               valueLabelDisplay="auto"
-              marks={rsiBuyMarks}
+              marks={fundingRateBuyMarks}
               track={false}
               sx={{
                 width: 300,
@@ -94,15 +85,15 @@ const OverboughtModal = ({visibleModal, setVisibleModal, action, darkMode, cance
           <div className={commonStyles.SliderContainer}>
             <Slider
               aria-label="Sell slider"
-              defaultValue={70}
+              defaultValue={0}
               value={eventParams.sell}
               onChange={(event, newValue) => handleChange("sell", newValue)}
               getAriaValueText={percentage}
-              step={1}
-              min={50}
-              max={100}
+              step={0.02}
+              min={-1}
+              max={0}
               valueLabelDisplay="auto"
-              marks={rsiSellMarks}
+              marks={fundingRateSellMarks}
               track={false}
               sx={{
                 width: 300,
@@ -124,8 +115,8 @@ const OverboughtModal = ({visibleModal, setVisibleModal, action, darkMode, cance
   );
 };
 
-OverboughtModal.propTypes = {};
+OutlookModal.propTypes = {};
 
-OverboughtModal.defaultProps = {};
+OutlookModal.defaultProps = {};
 
-export default OverboughtModal;
+export default OutlookModal;

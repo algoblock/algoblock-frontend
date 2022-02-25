@@ -30,7 +30,7 @@ import VerticalStepper from './VerticalStepper/VerticalStepper';
 import {SymbolsStep, EventsStep, QuantityLimitStep, FrequencyStep, ActionStep} from './Steps';
 import StepContainer from './StepContainer/StepContainer';
 import SearchableDropdown from './SearchableDropdown/SearchableDropdown';
-import {OverboughtModal, LimitModal} from './Modals';
+import {OverboughtModal, LimitModal, OutlookModal} from './Modals';
 
 export {
 	BigButton,
@@ -80,4 +80,5 @@ export {
 	EventButton,
 	OverboughtModal,
 	LimitModal,
+	OutlookModal,
 }

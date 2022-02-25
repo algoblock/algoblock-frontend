@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useState, useContext } from 'react';
 import { Context } from '../../App';
 import PropTypes from 'prop-types';
-import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, QuantityLimitStep, FrequencyStep, ActionStep, InvertedButton, Button, OverboughtModal, LimitModal} from '../../components';
+import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, QuantityLimitStep, FrequencyStep, ActionStep, InvertedButton, Button, OverboughtModal, LimitModal, OutlookModal} from '../../components';
 import lightModeStyles from './EditorPage.module.scss';
 import darkModeStyles from './EditorPageDark.module.scss';
 import colors from '../../utilities/_export.module.scss';
@@ -25,7 +25,11 @@ const EditorPage = (props) => {
     limit: {
       buy: 1500, // Should replace with current price of the selected crypto
       sell: 1500, // Should replace with current price of the selected crypto
-    }
+    },
+    outlook: {
+      buy: 0,
+      sell: 0,
+    },
   });
   const [visibleModal, setVisibleModal] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -43,19 +47,7 @@ const EditorPage = (props) => {
     },
     {
       name: "Future outlook",
-      id: "future",
-    },
-    {
-      name: "Test",
-      id: "test0",
-    },
-    {
-      name: "Test",
-      id: "test0",
-    },
-    {
-      name: "Test",
-      id: "test0",
+      id: "outlook",
     }
   ];
   const symbols = ["BTC", "ETH", "BNB", "USDT", "SOL", "USDC", "LTC", "ADA", "XRP"];
@@ -93,6 +85,7 @@ const EditorPage = (props) => {
   const setSpecificEventParams = (event, newParams) => {
     const newEventParams = {...eventParams};
     newEventParams[event] = newParams;
+    console.log(newEventParams);
     setEventParams(newEventParams);
   }
 
@@ -117,6 +110,7 @@ const EditorPage = (props) => {
       <Header selected={"Editor"} loggedIn={true}/>
       <OverboughtModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.overbought} setEventParams={(newParams) => setSpecificEventParams("overbought", newParams)} selected={selectedEvents.includes("overbought")}/>
       <LimitModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.limit} setEventParams={(newParams) => setSpecificEventParams("limit", newParams)} selected={selectedEvents.includes("limit")}/>
+      <OutlookModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.outlook} setEventParams={(newParams) => setSpecificEventParams("outlook", newParams)} selected={selectedEvents.includes("outlook")}/>
       <Row style={{marginTop: "5vh", justifyContent: "center", alignItems: "center"}}>
         <VerticalStepper setStep={setStep} stepNames={stepNames} step={step} latest={latest} completed={completed} completed={completed}/>
         <StepContainer title={stepNames[step]} number={step + 1}>
