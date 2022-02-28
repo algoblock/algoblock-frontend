@@ -15,11 +15,11 @@ const LinkBar = (props) => {
 		var linkTitles = ["Dashboard", "Editor", "Community"];
 	}
 	for (var i=0; i < linkTitles.length - 1; i++) {
-		links.push(<HeaderLink to={linkTitles[i].toLowerCase()} key={2 * i} selected={linkTitles[i] == props.selected}>{linkTitles[i]}</HeaderLink>);
+		links.push(<HeaderLink to={`/${linkTitles[i].toLowerCase()}`} key={2 * i} selected={linkTitles[i] == props.selected}>{linkTitles[i]}</HeaderLink>);
 		links.push(<div key={2 * i + 1} className={styles.LinkWrapper}/>);
 	}
 	var i = linkTitles.length - 1;
-	links.push(<HeaderLink to={linkTitles[i].toLowerCase()} key={2 * i} selected={linkTitles[i] == props.selected}>{linkTitles[i]}</HeaderLink>);
+	links.push(<HeaderLink to={`/${linkTitles[i].toLowerCase()}`} key={2 * i} selected={linkTitles[i] == props.selected}>{linkTitles[i]}</HeaderLink>);
 	return (
 		<div className={styles.LinkBar}>
 			{links}

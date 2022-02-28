@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import {LandingPage, SignInPage, SignUpPage, DashboardPage, EditorPage} from './pages';
+import {LandingPage, SignInPage, SignUpPage, DashboardPage, EditorPage, ProjectPage} from './pages';
 import UserProvider from './providers/UserProvider';
 import {
 	BrowserRouter as Router,
@@ -70,6 +70,9 @@ function App() {
               </Route>
               <Route path="/dashboard">
                 <DashboardPage/>
+              </Route>
+              <Route path="/projects/:id">
+                <ProjectPage/>
               </Route>
               <Route path="/login">
                 <SignInPage/>
