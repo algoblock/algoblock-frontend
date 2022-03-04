@@ -10,7 +10,8 @@
   white-space: nowrap;
 	color: $white;
 	width: fit-content;
-	filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0)); /* This drop shadow is invisible, but removing it breaks the on-hover underline effect so leaving it here until we can find a fix */
+  position: relative;
+	// filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0)); // This drop shadow is invisible, but removing it breaks the on-hover underline effect so leaving it here until we can find a fix 
 }
 
 .HeaderLink:after {    
