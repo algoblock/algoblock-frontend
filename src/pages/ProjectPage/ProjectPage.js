@@ -3,13 +3,15 @@ import { useState, useContext } from 'react';
 import { Context } from '../../App';
 import { UserContext } from '../../providers/UserProvider';
 import PropTypes from 'prop-types';
+import {useParams} from 'react-router-dom';
 import {DashboardPanel, DashboardCard, Header} from '../../components';
 
 import styles from './ProjectPage.module.scss';
 
 const ProjectPage = (props) => {
   const {state} = useContext(Context);
-
+  let { id } = useParams();
+  console.log(`id: ${id}`)
   const initialBacktests = [
       {
           "id": 0,
