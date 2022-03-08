@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import QuantityLimitStep from './QuantityLimitStep';
+import TradeQuantityStep from './TradeQuantityStep';
 
-describe('<QuantityLimitStep />', () => {
+describe('<TradeQuantityStep />', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<QuantityLimitStep />);
+    component = shallow(<TradeQuantityStep />);
   });
 
   test('It should mount', () => {

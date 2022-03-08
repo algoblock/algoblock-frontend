@@ -1,13 +1,13 @@
 import SymbolsStep from './SymbolsStep/SymbolsStep';
 import EventsStep from './EventsStep/EventsStep';
-import QuantityLimitStep from './QuantityLimitStep/QuantityLimitStep';
-import FrequencyStep from './FrequencyStep/FrequencyStep';
+import TradeQuantityStep from './TradeQuantityStep/TradeQuantityStep';
+import TradeIntervalStep from './TradeIntervalStep/TradeIntervalStep';
 import ActionStep from './ActionStep/ActionStep';
 
 export {
 	SymbolsStep,
 	EventsStep,
-	QuantityLimitStep,
-	FrequencyStep,
+	TradeQuantityStep,
+	TradeIntervalStep,
 	ActionStep,
 }

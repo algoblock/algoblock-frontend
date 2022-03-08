@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FrequencyStep from './FrequencyStep';
+import TradeIntervalStep from './TradeIntervalStep';
 
-describe('<FrequencyStep />', () => {
+describe('<TradeIntervalStep />', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<FrequencyStep />);
+    component = shallow(<TradeIntervalStep />);
   });
 
   test('It should mount', () => {

@@ -27,7 +27,7 @@ import Toggle from './Toggle/Toggle';
 import TeamMember from './TeamMember/TeamMember';
 import CurrencyTable from './CurrencyTable/CurrencyTable';
 import VerticalStepper from './VerticalStepper/VerticalStepper';
-import {SymbolsStep, EventsStep, QuantityLimitStep, FrequencyStep, ActionStep} from './Steps';
+import {SymbolsStep, EventsStep, TradeQuantityStep, TradeIntervalStep, ActionStep} from './Steps';
 import StepContainer from './StepContainer/StepContainer';
 import SearchableDropdown from './SearchableDropdown/SearchableDropdown';
 import {OverboughtModal, LimitModal, OutlookModal} from './Modals';
@@ -70,8 +70,8 @@ export {
 	VerticalStepper,
 	SymbolsStep,
 	EventsStep,
-	QuantityLimitStep,
-	FrequencyStep,
+	TradeQuantityStep,
+	TradeIntervalStep,
 	ActionStep,
 	StepContainer,
 	SearchableDropdown,

@@ -1,7 +1,7 @@
 @import "../../../utilities/_colors";
 @import "../../../utilities/_fonts";
 
-.QuantityLimitStep {
+.TradeIntervalStep {
 	font-family: $Poppins;
 	display: flex;
 	align-items: center;
@@ -22,10 +22,10 @@
 	padding-bottom: 19px;
 	box-sizing: border-box;
 	border: 1px solid $white;
-	width: 180px;
 	transition: all 0.3s ease;
-	border-radius: 8px;
+	width: 180px;
 	overflow: hidden;
+	border-radius: 8px;
 	caret-color: $white;
 }
 
@@ -46,10 +46,43 @@
   -moz-appearance: textfield;
 }
 
-.Symbol {
+.Amount {
 	font-family: $Poppins;
 	font-size: 16px;
 	font-weight: 500;
 	color: $white;
+}
+
+.Divider {
+	width: 75%;
+	background-color: $white;
+	height: 1px;
+	margin-top: 32px;
+	margin-bottom: 32px;
+}
+
+.SelectInput {
+	font-family: $Poppins;
+	font-size: 16px;
+	font-weight: 500;
+	color: $white;
+	background-color: $dark;
+	padding-left: 27px;
+	padding-right: 27px;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	box-sizing: border-box;
+	border: 1px solid $white;
+	width: 180px;
 	margin-left: 16px;
+	margin-right: 16px;
+	border-radius: 8px;
+}
+
+.SelectInput:focus-visible {
+	outline: none;
+}
+
+.Interval {
+	color: $white;
 }

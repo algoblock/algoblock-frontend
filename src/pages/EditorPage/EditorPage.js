@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useState, useContext } from 'react';
 import { Context } from '../../App';
 import PropTypes from 'prop-types';
-import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, QuantityLimitStep, FrequencyStep, ActionStep, InvertedButton, Button, OverboughtModal, LimitModal, OutlookModal} from '../../components';
+import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, TradeQuantityStep, TradeIntervalStep, ActionStep, InvertedButton, Button, OverboughtModal, LimitModal, OutlookModal} from '../../components';
 import lightModeStyles from './EditorPage.module.scss';
 import darkModeStyles from './EditorPageDark.module.scss';
 import colors from '../../utilities/_export.module.scss';
@@ -33,8 +33,8 @@ const EditorPage = (props) => {
   });
   const [visibleModal, setVisibleModal] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [frequency, setFrequency] = useState("");
-  const [frequencyUnit, setFrequencyUnit] = useState("hour");
+  const [tradeInterval, setTradeInterval] = useState("");
+  const [tradeIntervalUnit, setTradeIntervalUnit] = useState("hour");
   const [action, setAction] = useState({"buy": false, "sell": false});
   const events = [
     {
@@ -100,11 +100,11 @@ const EditorPage = (props) => {
   let styles = state.darkMode ? darkModeStyles : lightModeStyles;
   let steps = [
     <SymbolsStep nextStep={nextStep} setCompleted={setCurrentComplete} symbol={symbol} setSymbol={setSymbol} choices={symbols}/>,
-    <ActionStep nextStep={nextStep} setCompleted={setCurrentComplete} action={action} setAction={setAction} symbol={symbol} quantity={quantity} frequency={frequency} frequencyUnit={frequencyUnit}/>,
+    <ActionStep nextStep={nextStep} setCompleted={setCurrentComplete} action={action} setAction={setAction} symbol={symbol} quantity={quantity} tradeInterval={tradeInterval} tradeIntervalUnit={tradeIntervalUnit}/>,
     <EventsStep events={events} setVisibleModal={setVisibleModal} selectedEvents={selectedEvents} toggleEventSelected={toggleEventSelected} setCompleted={setCurrentComplete} nextStep={nextStep}/>,
-    <QuantityLimitStep nextStep={nextStep} quantity={quantity} setQuantity={setQuantity} symbol={symbol} setCompleted={setCurrentComplete}/>,
-    <FrequencyStep nextStep={nextStep} quantity={quantity} symbol={symbol} frequency={frequency} setFrequency={setFrequency} frequencyUnit={frequencyUnit} setFrequencyUnit={setFrequencyUnit} setCompleted={setCurrentComplete}/>];
-  const stepNames = ["Symbols", "Actions", "Events", "Quantity limit", "Frequency"];
+    <TradeQuantityStep nextStep={nextStep} quantity={quantity} setQuantity={setQuantity} symbol={symbol} setCompleted={setCurrentComplete}/>,
+    <TradeIntervalStep nextStep={nextStep} quantity={quantity} symbol={symbol} tradeInterval={tradeInterval} setTradeInterval={setTradeInterval} tradeIntervalUnit={tradeIntervalUnit} setTradeIntervalUnit={setTradeIntervalUnit} setCompleted={setCurrentComplete}/>];
+  const stepNames = ["Symbols", "Actions", "Events", "Trade Quantity", "Trade Interval"];
   return (
     <div className={styles.EditorPage}>
       <Header selected={"Editor"} loggedIn={true}/>
