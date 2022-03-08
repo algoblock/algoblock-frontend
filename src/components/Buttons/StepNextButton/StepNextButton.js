@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './StepNextButton.module.scss';
 
-const StepNextButton = ({onClick, style, disabled}) => {
+const StepNextButton = ({onClick, style, disabled, confirm}) => {
   return (
     <div style={style} onClick={disabled ? null : onClick} className={`${styles.StepNextButton} ${disabled ? styles.Disabled : ''}`}>
-      Next
+      {confirm ? "Confirm" : "Next"}
     </div>
   );
 };

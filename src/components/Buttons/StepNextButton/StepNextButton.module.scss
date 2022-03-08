@@ -4,7 +4,11 @@
 .StepNextButton {
 	background: $lavender-mist;
 	border-radius: 10px;
-	padding: 16px 106px 16px 106px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 260px;
+	height: 60px;
 	color: $black;
 	font-size: 22px;
 	font-weight: 600;
