@@ -5,7 +5,9 @@ import styles from './BuySellButton.module.scss';
 const BuySellButton = ({onClick, children, selected}) => {
   return (
     <div className={`${styles.BuySellButton} ${selected ? styles.Selected : ""}`} onClick={onClick || undefined}>
-      {children}
+      <div>
+        {children}
+      </div>
     </div>
   );
 };

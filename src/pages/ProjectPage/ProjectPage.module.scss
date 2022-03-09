@@ -18,6 +18,14 @@
 	box-sizing: border-box;
 }
 
+.ProjectBox {
+	width: 100%;
+	border: 2px solid $white;
+	border-radius: 30px;
+	padding: 35px 70px 35px 70px;
+	box-sizing: border-box;
+}
+
 .ProjectOverview {
 	font-family: $Poppins;
 	font-size: 35px;
@@ -29,10 +37,97 @@
 	padding-right: 75px;
 	border-radius: 30px;
 	box-sizing: border-box;
+	border-bottom: 2px solid $dark;
 	position: relative;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+}
 
+.ProjectName {
+	font-size: 28px;
+	font-weight: 700;
+	margin-left: 50px;
+}
+
+.EditButton {
+	color: $white;
+	margin-left: 8px;
+}
+
+.EditButton:hover {
+	cursor: pointer;
+	color: $chinese-silver;
+	transition: all 0.3s ease 0s;
+}
+
+.ProjectNameInput {
+	font-family: $Poppins;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	border-bottom: 2px solid $white;
+	outline: none;
+	min-width: 6em;
+	width: fit-content;
+	color: $white;
+	background-color: $dark;
+	font-size: 28px;
+	font-weight: 700;
+}
+
+.Hidden {
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+	white-space: pre;
+}
+
+.Shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.Label {
+	font-size: 16px;
+	font-weight: 700;
+	width: 100%;
+	height: 65px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-bottom: 24px;
+}
+
+.Wrapper {
+	width: 183px;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Divider {
+	width: 32px;
 }

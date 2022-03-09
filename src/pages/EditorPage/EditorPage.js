@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useState, useContext } from 'react';
 import { Context } from '../../App';
 import PropTypes from 'prop-types';
-import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, TradeQuantityStep, TradeIntervalStep, ActionStep, InvertedButton, Button, OverboughtModal, LimitModal, OutlookModal} from '../../components';
+import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, TradeQuantityStep, TradeIntervalStep, ActionStep, InvertedButton, Button, OverboughtModal, LimitModal, OutlookModal, StepNextButton} from '../../components';
 import lightModeStyles from './EditorPage.module.scss';
 import darkModeStyles from './EditorPageDark.module.scss';
 import colors from '../../utilities/_export.module.scss';
@@ -67,6 +67,7 @@ const EditorPage = (props) => {
     } else {
       newEvents.push(event);
     }
+    setCurrentComplete(newEvents.length > 0);
     setSelectedEvents(newEvents);
   }
 
@@ -89,22 +90,29 @@ const EditorPage = (props) => {
     setEventParams(newEventParams);
   }
 
+
+  let styles = state.darkMode ? darkModeStyles : lightModeStyles;
+  
+  const stepNames = ["Symbols", "Actions", "Events", "Trade Quantity", "Trade Interval"];
+
   const nextStep = () => {
+    if (step === stepNames.length - 1) {
+      return; // TODO: Should send data to backend in this case
+    }
     if (step + 1 > latest) {
       setLatest(step + 1);
     }
     
     setStep(step + 1);
-
   }
-  let styles = state.darkMode ? darkModeStyles : lightModeStyles;
+
   let steps = [
     <SymbolsStep nextStep={nextStep} setCompleted={setCurrentComplete} symbol={symbol} setSymbol={setSymbol} choices={symbols}/>,
     <ActionStep nextStep={nextStep} setCompleted={setCurrentComplete} action={action} setAction={setAction} symbol={symbol} quantity={quantity} tradeInterval={tradeInterval} tradeIntervalUnit={tradeIntervalUnit}/>,
     <EventsStep events={events} setVisibleModal={setVisibleModal} selectedEvents={selectedEvents} toggleEventSelected={toggleEventSelected} setCompleted={setCurrentComplete} nextStep={nextStep}/>,
     <TradeQuantityStep nextStep={nextStep} quantity={quantity} setQuantity={setQuantity} symbol={symbol} setCompleted={setCurrentComplete}/>,
     <TradeIntervalStep nextStep={nextStep} quantity={quantity} symbol={symbol} tradeInterval={tradeInterval} setTradeInterval={setTradeInterval} tradeIntervalUnit={tradeIntervalUnit} setTradeIntervalUnit={setTradeIntervalUnit} setCompleted={setCurrentComplete}/>];
-  const stepNames = ["Symbols", "Actions", "Events", "Trade Quantity", "Trade Interval"];
+
   return (
     <div className={styles.EditorPage}>
       <Header selected={"Editor"} loggedIn={true}/>
@@ -115,6 +123,12 @@ const EditorPage = (props) => {
         <VerticalStepper setStep={setStep} stepNames={stepNames} step={step} latest={latest} completed={completed} completed={completed}/>
         <StepContainer title={stepNames[step]} number={step + 1}>
           {steps[step]}
+          <div className={styles.Center}>
+            <StepNextButton confirm={step === stepNames.length - 1} onClick={() => {
+              nextStep();
+              setCurrentComplete(true);
+            }} style={{position: "absolute", bottom: "127px"}} disabled={!completed[step]}/>
+          </div>
         </StepContainer>
       </Row>
     </div>

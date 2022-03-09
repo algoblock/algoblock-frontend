@@ -25,7 +25,6 @@ const ActionStep = ({nextStep, setCompleted, action, setAction, symbol, quantity
           <BuySellButton onClick={() => handleActionChange("sell")} selected={action["sell"]}>SELL</BuySellButton>
         </div>
       </Row>
-      <StepNextButton onClick={nextStep} style={{position: "absolute", bottom: "127px"}} disabled={!action["buy"] && !action["sell"]}/>
     </div>
   );
 };

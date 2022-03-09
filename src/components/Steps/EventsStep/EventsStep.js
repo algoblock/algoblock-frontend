@@ -36,11 +36,6 @@ const EventsStep = ({nextStep, setCompleted, events, setVisibleModal, toggleEven
       <div className={styles.ButtonsSection}>
         {eventButtons}
       </div>
-      
-      <StepNextButton onClick={() => {
-        nextStep();
-        setCompleted(true);
-      }} style={{position: "absolute", bottom: "127px"}} disabled={selectedEvents.length === 0}/>
     </div>
   );
 };

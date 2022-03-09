@@ -26,11 +26,6 @@ const TradeIntervalStep = ({nextStep, setCompleted, quantity, symbol, tradeInter
         </select>
         <div className={styles.Interval}>between trades</div>
       </Row>
-      
-      <StepNextButton confirm onClick={() => {
-        nextStep();
-        setCompleted(true);
-      }} style={{position: "absolute", bottom: "127px"}} disabled={tradeInterval === "0" || tradeInterval === ""}/>
     </div>
   );
 };

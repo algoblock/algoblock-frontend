@@ -16,7 +16,6 @@ const TradeQuantityStep = ({nextStep, symbol, quantity, setQuantity, setComplete
         <input className={styles.NumberInput} value={quantity} onChange={(e) => handleQuantityChange(e.target.value)} type="number" min={0} step={0.001} placeholder="Enter amount"/>
         <div className={styles.Symbol}>{symbol} per trade</div>
       </Row>
-      <StepNextButton onClick={nextStep} style={{position: "absolute", bottom: "127px"}} disabled={quantity === "" || quantity <= 0}/>
     </div>
   );
 };

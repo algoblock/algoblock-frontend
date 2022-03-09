@@ -13,10 +13,8 @@ const SymbolsStep = ({nextStep, setCompleted, symbol, setSymbol, choices}) => {
   }
 
   return (
-    <div className={styles.SymbolsStep}>
-      
+    <div className={styles.SymbolsStep}>      
       <SearchableDropdown text={symbol} setText={handleSymbolChange} choices={choices}/>
-      <StepNextButton onClick={nextStep} style={{position: "absolute", bottom: "127px"}} disabled={!choices.includes(symbol)}/>
     </div>
   );
 };
