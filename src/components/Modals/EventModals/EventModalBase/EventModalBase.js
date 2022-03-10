@@ -24,7 +24,7 @@ const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, event
       overflow: "hidden",
     },
     overlay: {
-      zIndex: 1,
+      zIndex: 2,
       backgroundColor: darkMode ? "rgb(24, 24, 24, 0.75)" : "rgb(255, 255, 255, 0.75)",
     }
   };

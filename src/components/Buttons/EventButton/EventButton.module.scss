@@ -19,8 +19,7 @@
 
 .EventButton:hover {
 	cursor: pointer;
-	width: 275px;
-	height: 55px;
+	background-color: $ford-gunmetal;
 	border-radius: 11px;
 }
 
@@ -31,6 +30,7 @@
 
 .Selected:hover {
 	color: $outer-space;
+	background-color: $light-grey;
 	width: 250px;
 	height: 50px;
 	border-radius: 10px;
@@ -47,4 +47,9 @@
 	color: $outer-space;
 	position: absolute;
 	transition: all 0.3s ease 0s;
+}
+
+.Small {
+	font-size: 14px;
+	width: 192px;
 }

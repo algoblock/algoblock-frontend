@@ -19,6 +19,7 @@ const Header = (props) => {
   const user = useContext(UserContext);
   let styles = state.darkMode ? darkModeStyles : lightModestyles;
 	if (user) {
+		console.log(user);
 		var headerRight = (
       <div className={styles.HeaderSection}>
         {/* TODO: Put inside of profile dropdown */}
@@ -27,7 +28,7 @@ const Header = (props) => {
         </SignOutLink>
         <Link to="profile">
           <Row style={{alignItems: "center"}}>
-            <div className={styles.UserProfile}>JS</div>
+            <div className={styles.UserProfile}>{user.displayName.split(" ")[0][0] + user.displayName.split(" ")[1][0]}</div>
             <ExpandMore sx={{fontSize: 24, color: state.darkMode ? colors.white : colors.dark}}/>
           </Row>
         </Link>

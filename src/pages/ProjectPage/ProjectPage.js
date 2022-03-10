@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import {Check} from '@mui/icons-material';
-import {DashboardPanel, DashboardCard, Header, Column, Row, SearchableDropdown, BuySellButton, EventButton} from '../../components';
+import {DashboardPanel, DashboardCard, Header, Column, Row, SearchableDropdown, BuySellButton, EventButton, OverboughtModal, LimitModal, OutlookModal} from '../../components';
 import colors from '../../utilities/_export.module.scss';
 
 
@@ -42,7 +42,7 @@ const ProjectPage = (props) => {
   const [action, setAction] = useState({"buy": false, "sell": false});
   const events = [
     {
-      name: "Overbought/oversold",
+      name: "Overbought/sold",
       id: "overbought",
     },
     {
@@ -199,11 +199,11 @@ const ProjectPage = (props) => {
   for (let i=0; i < events.length; i += 2) {
     eventButtons.push(
       <Row>
-        <div className={styles.EventButtonWrapper}>
-          <EventButton selected={selectedEvents.includes(events[i].id)} onClick={() => handleEventButtonClick(events[i].id)} onEdit={() => setVisibleModal(events[i].id)}>{events[i].name}</EventButton>
+        <div className={styles.EventButtonWrapperLeft}>
+          <EventButton small selected={selectedEvents.includes(events[i].id)} onClick={() => handleEventButtonClick(events[i].id)} onEdit={() => setVisibleModal(events[i].id)}>{events[i].name}</EventButton>
         </div>
-        <div className={styles.EventButtonWrapper}>
-          {i + 1 < events.length && <EventButton selected={selectedEvents.includes(events[i + 1].id)} onClick={() => handleEventButtonClick(events[i + 1].id)} onEdit={() => setVisibleModal(events[i + 1].id)}>{events[i + 1].name}</EventButton>}
+        <div className={styles.EventButtonWrapperRight}>
+          {i + 1 < events.length && <EventButton small selected={selectedEvents.includes(events[i + 1].id)} onClick={() => handleEventButtonClick(events[i + 1].id)} onEdit={() => setVisibleModal(events[i + 1].id)}>{events[i + 1].name}</EventButton>}
         </div>
       </Row>)
   }
@@ -231,6 +231,9 @@ const ProjectPage = (props) => {
   return (
     <div className={styles.ProjectPage}>
       <Header selected={"Dashboard"} loggedIn={true}/>
+      <OverboughtModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.overbought} setEventParams={(newParams) => setSpecificEventParams("overbought", newParams)} selected={selectedEvents.includes("overbought")}/>
+      <LimitModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.limit} setEventParams={(newParams) => setSpecificEventParams("limit", newParams)} selected={selectedEvents.includes("limit")}/>
+      <OutlookModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.outlook} setEventParams={(newParams) => setSpecificEventParams("outlook", newParams)} selected={selectedEvents.includes("outlook")}/>
       <div className={styles.Container}>
         <div className={styles.ProjectBox}>
           {editingName ? 
@@ -258,29 +261,58 @@ const ProjectPage = (props) => {
           }
           {/* TODO: Switch rows and columns */}
           <Row style={{marginTop: "30px", justifyContent: "center"}}>
-            <Column style={{flex: "1", justifyContent: "flex-start"}}>
-              <div className={styles.Label}>
-                Symbol
+            <div className={styles.Label}>
+              Symbol
+            </div>
+            <SearchableDropdown style={{flex: "2", width: "400px"}} text={symbol} setText={setSymbol} choices={symbols}/>
+          </Row>
+          <Row style={{marginTop: "20px", justifyContent: "center"}}>
+            <div className={styles.Label}>
+              Action
+            </div>
+            <Row style={{flex: "2", justifyContent: "flex-start", alignItems: "center", height: "65px", width: "400px"}}>
+              <div className={styles.Wrapper}>
+                <BuySellButton onClick={() => handleActionChange("buy")} selected={action["buy"]}>BUY</BuySellButton>
               </div>
-              <div className={styles.Label}>
-                Action
+              <div className={styles.Divider}/>
+              <div className={styles.Wrapper}>
+                <BuySellButton onClick={() => handleActionChange("sell")} selected={action["sell"]}>SELL</BuySellButton>
               </div>
-            </Column>
-            <div className={styles.Divider}/>
+            </Row>
+          </Row>
+          <Row style={{marginTop: "20px", alignItems: "center", justifyContent: "center"}}>
+            <div className={styles.Label}>
+              Events
+            </div>
             <Column style={{flex: "2", justifyContent: "flex-start"}}>
-              <SearchableDropdown style={{width: "400px", marginBottom: "24px"}} text={symbol} setText={setSymbol} choices={symbols}/>
-              <Row style={{justifyContent: "center", alignItems: "center", height: "65px", width: "400px"}}>
-                <div className={styles.Wrapper}>
-                  <BuySellButton onClick={() => handleActionChange("buy")} selected={action["buy"]}>BUY</BuySellButton>
-                </div>
-                <div className={styles.Divider}/>
-                <div className={styles.Wrapper}>
-                  <BuySellButton onClick={() => handleActionChange("sell")} selected={action["sell"]}>SELL</BuySellButton>
-                </div>
-              </Row>
+              
+              
               {eventButtons}
             </Column>
           </Row>
+          <Row style={{marginTop: "20px", alignItems: "center", justifyContent: "center"}}>
+            <div className={styles.Label}>
+              Trade Quantity
+            </div>
+            <div className={styles.RightSide}>
+              <input className={styles.NumberInput} value={quantity} onChange={(e) => setQuantity(e.target.value)} type="number" min={0} step={0.001} placeholder="Enter amount"/>
+              <div className={styles.Symbol}>{symbol} per trade</div>
+            </div>
+          </Row>
+          <Row style={{marginTop: "20px", alignItems: "center", justifyContent: "center"}}>
+            <div className={styles.Label}>
+              Trade Interval
+            </div>
+            <div className={styles.RightSide}>
+              <input className={styles.NumberInput} value={tradeInterval} onChange={(e) => setTradeInterval(e.target.value)} type="number" min={1} max={99} step={1} placeholder="Enter period"/>
+              <select className={styles.SelectInput} value={tradeIntervalUnit} onChange={(e) => setTradeIntervalUnit(e.target.value)} placeholder="Enter period">
+                <option value="hour">Hours</option>
+                <option value="day">Days</option>
+                <option value="week">Weeks</option>
+              </select>
+            </div>
+          </Row>
+            
         </div>
 
         {/*<div className={styles.ProjectOverview}>

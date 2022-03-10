@@ -117,17 +117,110 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	margin-bottom: 24px;
+	flex: 1;
+	margin-right: 24px;
 }
 
 .Wrapper {
-	width: 183px;
+	width: 192px;
 	height: 60px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
+.EventButtonWrapperLeft {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 16px;
+	margin-bottom: 8px;
+	margin-top: 8px;
+}
+
+.EventButtonWrapperRight {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 8px;
+	margin-top: 8px;
+}
+
+.RightSide {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex: 2;
+}
+
+.NumberInput {
+	font-family: $Poppins;
+	font-size: 16px;
+	font-weight: 500;
+	color: $white;
+	background-color: $dark;
+	padding-left: 27px;
+	padding-right: 27px;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	box-sizing: border-box;
+	border: 1px solid $white;
+	width: 192px;
+	transition: all 0.3s ease;
+	border-radius: 8px;
+	overflow: hidden;
+	caret-color: $white;
+}
+
+.NumberInput:focus-visible {
+	outline: none;
+	border-radius: 0px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.NumberInput::-webkit-outer-spin-button,
+.NumberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.NumberInput[type=number] {
+  -moz-appearance: textfield;
+}
+
+.Symbol {
+	font-family: $Poppins;
+	font-size: 16px;
+	font-weight: 500;
+	color: $white;
+	margin-left: 16px;
+}
+
+
 .Divider {
-	width: 32px;
+	width: 16px;
+}
+
+
+.SelectInput {
+	font-family: $Poppins;
+	font-size: 16px;
+	font-weight: 500;
+	color: $white;
+	background-color: $dark;
+	padding-left: 27px;
+	padding-right: 27px;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	box-sizing: border-box;
+	border: 1px solid $white;
+	width: 192px;
+	margin-left: 16px;
+	margin-right: 16px;
+	border-radius: 8px;
+}
+
+.SelectInput:focus-visible {
+	outline: none;
 }

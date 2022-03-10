@@ -38,7 +38,7 @@ const EditorPage = (props) => {
   const [action, setAction] = useState({"buy": false, "sell": false});
   const events = [
     {
-      name: "Overbought/oversold",
+      name: "Overbought/sold",
       id: "overbought",
     },
     {

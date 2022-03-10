@@ -3,18 +3,19 @@
 
 .BuySellButton {
 	background: $white;
-	border-radius: 15px;
+	border-radius: 16px;
 	color: $dark;
 	font-size: 20px;
 	font-weight: 700;
 	font-family: $Poppins;
-	width: 183px;
+	width: 192px;
 	height: 60px;
 	cursor: pointer;
 	transition: all 0.3s ease 0s;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	box-sizing: border-box;
 }
 
 .BuySellButton:hover {
@@ -24,7 +25,7 @@
 .Selected {
 	background: $primary;
 	color: $white;
-	width: 137px;
+	width: 144px;
 	height: 45px;
 	border-radius: 12px;
 }
