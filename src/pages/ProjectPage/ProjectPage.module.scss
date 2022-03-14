@@ -225,3 +225,114 @@
 .SelectInput:focus-visible {
 	outline: none;
 }
+
+.Start {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.BacktestInput {
+	font-family: $Poppins;
+	font-size: 14px;
+	font-weight: 500;
+	color: $white;
+	background-color: $transparent;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	box-sizing: border-box;
+	border: 1px solid $white;
+	transition: all 0.3s ease;
+	width: 80px;
+	border-radius: 4px;
+}
+
+.BacktestInput:focus-visible {
+	outline: none;
+	border-radius: 0px;
+}
+
+.BacktestDateInput {
+	font-family: $Poppins;
+	font-size: 14px;
+	font-weight: 500;
+	color: $white;
+	background-color: $transparent;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	box-sizing: border-box;
+	border: 1px solid $white;
+	transition: all 0.3s ease;
+	width: 100px;
+	border-radius: 4px;
+}
+
+.BacktestDateInput:focus-visible {
+	outline: none;
+	border-radius: 0px;
+}
+
+.DateDay {
+	border-radius: 4px;
+}
+
+.DateDay:hover {
+	background-color: $primary-light;
+}
+
+.DateDaySelected {
+	background-color: $primary;
+	border-radius: 4px;
+}
+
+
+
+.DateDaySelected:hover {
+	background-color: $primary-darker;
+}
+
+
+
+
+
+.End {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.StartingQuantity {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.BacktestSetup {
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	background-color: $gunmetal;
+	padding: 20px 40px 20px 40px;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.StartLabel {
+	margin-right: 8px;
+}
+
+.EndLabel {
+	margin-right: 8px;
+}
+
+.QuantityLabel {
+	margin-right: 8px;
+}

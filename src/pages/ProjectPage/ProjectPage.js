@@ -1,12 +1,14 @@
 import React from 'react';
-import { useState, useContext, useRef, useEffect } from 'react';
+import { useState, useContext, useRef, useEffect, forwardRef } from 'react';
 import { Context } from '../../App';
 import { UserContext } from '../../providers/UserProvider';
 import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import {Check} from '@mui/icons-material';
-import {DashboardPanel, DashboardCard, Header, Column, Row, SearchableDropdown, BuySellButton, EventButton, OverboughtModal, LimitModal, OutlookModal} from '../../components';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import {DashboardPanel, DashboardCard, Header, Column, Row, SearchableDropdown, BuySellButton, EventButton, OverboughtModal, LimitModal, OutlookModal, Button} from '../../components';
 import colors from '../../utilities/_export.module.scss';
 
 
@@ -40,6 +42,9 @@ const ProjectPage = (props) => {
   const [tradeInterval, setTradeInterval] = useState("");
   const [tradeIntervalUnit, setTradeIntervalUnit] = useState("hour");
   const [action, setAction] = useState({"buy": false, "sell": false});
+  const [startTime, setStartTime] = useState(null);
+  const [endTime, setEndTime] = useState(null);
+  const [startingQuantity, setStartingQuantity] = useState(null);
   const events = [
     {
       name: "Overbought/sold",
@@ -90,6 +95,15 @@ const ProjectPage = (props) => {
     let newAction = {...action};
     newAction[changedAction] = !newAction[changedAction];
     setAction(newAction);
+  }
+
+  const renderDayContents = (day, date, selected) => {
+    console.log(day);
+    console.log(date);
+    selected = selected || new Date();
+    console.log(selected);
+    let isSelected = selected.getDate() === date.getDate() && selected.getMonth() === date.getMonth() && selected.getYear() === date.getYear();
+    return <div className={isSelected ? styles.DateDaySelected : styles.DateDay}>{day}</div>
   }
 
 
@@ -221,12 +235,19 @@ const ProjectPage = (props) => {
     // input.current.style.animation = null; 
   }
 
+  const BacktestInput = forwardRef(({ value, onClick }, ref) => (
+    <input className={styles.BacktestDateInput} onClick={onClick} ref={ref} placeholder={new Date().toLocaleDateString('en-US', {month: "2-digit", day: "2-digit", year: "numeric"})} value={value}/>
+  ));
+
+
   useEffect(() => {
     if (!span.current) {
       return;
     }
     setWidth(span.current.offsetWidth);
   }, [name, editingName]);
+
+
 
   return (
     <div className={styles.ProjectPage}>
@@ -312,6 +333,30 @@ const ProjectPage = (props) => {
               </select>
             </div>
           </Row>
+
+          <div className={styles.BacktestSetup}>
+            <div className={styles.Start}>
+              <div className={styles.StartLabel}>
+                Start:
+              </div>
+              <DatePicker customInput={<BacktestInput/>} className={styles.BacktestInput} selected={startTime} onChange={(date) => setStartTime(date)} renderDayContents={(day, date) =>renderDayContents(day, date, startTime)} />
+            </div>
+            <div className={styles.End}>
+              <div className={styles.StartLabel}>
+                End:
+              </div>
+              <DatePicker customInput={<BacktestInput/>} className={styles.BacktestInput} selected={endTime} onChange={(date) => setEndTime(date)} renderDayContents={(day, date) =>renderDayContents(day, date, endTime)} />
+            </div>
+            <div className={styles.StartingQuantity}>
+              <div className={styles.QuantityLabel}>
+                Starting Quantity:
+              </div>
+              <input className={styles.BacktestInput} placeholder={symbol} value={startingQuantity} onChange={(quantity) => setStartingQuantity(quantity)}/>
+            </div>
+            <Button transparent>
+              Run
+            </Button>
+          </div>
             
         </div>
 
