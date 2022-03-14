@@ -351,12 +351,13 @@ const ProjectPage = (props) => {
               <div className={styles.QuantityLabel}>
                 Starting Quantity:
               </div>
-              <input className={styles.BacktestInput} placeholder={symbol} value={startingQuantity} onChange={(quantity) => setStartingQuantity(quantity)}/>
+              <input className={styles.BacktestInput} placeholder={symbol} value={startingQuantity} onChange={(e) => setStartingQuantity(e.target.value)}/>
             </div>
             <Button transparent>
               Run
             </Button>
           </div>
+          {backtestCards}
             
         </div>
 
@@ -366,6 +367,7 @@ const ProjectPage = (props) => {
         <DashboardPanel darkMode={state.darkMode} style={{marginTop: "45px"}} title="Backtests">
           {backtestCards}
         </DashboardPanel>*/}
+          
       </div>
     </div>
   );

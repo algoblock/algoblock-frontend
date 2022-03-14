@@ -17,16 +17,38 @@
 	cursor: pointer;
 }
 
+.BacktestDashboardCard {
+	position: relative;
+	padding: 20px 50px 20px 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: $white;
+	color: $black;
+	margin-top: 18px;
+	border-radius: 20px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
 .Chart {
 	width: 15%;
 }
 
-.BacktestRow, .ProjectRow {
+.ProjectRow {
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	margin-right: 50px;
+}
+
+.BacktestRow {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 
