@@ -2,7 +2,7 @@ const sassPlugin = require('esbuild-sass-plugin');
 
 
 require('esbuild').build({
-  entryPoints: ['src/App.js'],
+  entryPoints: ['src/index.js'],
   bundle: true,
   outdir: 'build',
   minify: true,
