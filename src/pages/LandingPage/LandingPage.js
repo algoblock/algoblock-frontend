@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { Context } from '../../App';
-import {Header, Splash, BackgroundGraph, Divider, Row, Column, Card, BigButton, InvertedButton, Squiggle, Link, LandingTitle, Demo} from '../../components';
+import {Header, Splash, Divider, Row, Column, Card, BigButton, InvertedButton, Squiggle, Link, LandingTitle, Demo} from '../../components';
 import PropTypes from 'prop-types';
 import lightModeStyles from './LandingPage.module.scss';
 import darkModeStyles from './LandingPageDark.module.scss';
