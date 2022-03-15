@@ -1,3 +1,4 @@
+import React from 'react';
 import { createContext, useReducer } from "react";
 import {LandingPage, SignInPage, SignUpPage, DashboardPage, EditorPage, ProjectPage} from './pages';
 import UserProvider from './providers/UserProvider';
