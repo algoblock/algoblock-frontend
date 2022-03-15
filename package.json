@@ -18,6 +18,8 @@
     "@visx/scale": "^1.14.0",
     "@visx/shape": "^1.17.1",
     "d3": "^6.7.0",
+    "esbuild": "^0.14.27",
+    "esbuild-sass-plugin": "^2.2.4",
     "firebase": "^9.3.0",
     "generate-react-cli": "^7.0.0",
     "gh-pages": "^3.1.0",
@@ -38,7 +40,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "node build.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -63,5 +65,8 @@
   "devDependencies": {
     "sass-loader": "^11.1.1"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.1.1",
+  "resolutions": {
+    "react-scripts/eslint-webpack-plugin": "2.3.0"
+  }
 }
