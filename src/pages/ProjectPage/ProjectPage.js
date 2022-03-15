@@ -44,7 +44,7 @@ const ProjectPage = (props) => {
   const [action, setAction] = useState({"buy": false, "sell": false});
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
-  const [startingQuantity, setStartingQuantity] = useState(null);
+  const [startingQuantity, setStartingQuantity] = useState("");
   const events = [
     {
       name: "Overbought/sold",
@@ -87,7 +87,7 @@ const ProjectPage = (props) => {
   const setSpecificEventParams = (event, newParams) => {
     const newEventParams = {...eventParams};
     newEventParams[event] = newParams;
-    console.log(newEventParams);
+    // console.log(newEventParams);
     setEventParams(newEventParams);
   }
 
@@ -98,10 +98,10 @@ const ProjectPage = (props) => {
   }
 
   const renderDayContents = (day, date, selected) => {
-    console.log(day);
-    console.log(date);
+    // console.log(day);
+    // console.log(date);
     selected = selected || new Date();
-    console.log(selected);
+    // console.log(selected);
     let isSelected = selected.getDate() === date.getDate() && selected.getMonth() === date.getMonth() && selected.getYear() === date.getYear();
     return <div className={isSelected ? styles.DateDaySelected : styles.DateDay}>{day}</div>
   }
@@ -235,6 +235,39 @@ const ProjectPage = (props) => {
     // input.current.style.animation = null; 
   }
 
+  const startBacktest = () => {
+    if (startTime === null || endTime === null || startingQuantity === null) {
+      console.log('empty fields')
+      return;
+    }
+    if (startingQuantity <= 0) {
+      console.log('no quantity')
+      return;
+    }
+    if (startTime > endTime || endTime > new Date()) {
+      console.log('invalid date range')
+      return;
+    } 
+    fetch(`https://transcoder-owoupooupa-uc.a.run.app/backtests`, 
+    {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        algorithm_id: id,
+        start_time: startTime.getTime(),
+        end_time: endTime.getTime(),
+        starting_quantity: startingQuantity
+      })
+    })
+    .then(res => res.json())
+    .then((result) => {
+      console.log(result);
+    })
+  }
+
   const BacktestInput = forwardRef(({ value, onClick }, ref) => (
     <input className={styles.BacktestDateInput} onClick={onClick} ref={ref} placeholder={new Date().toLocaleDateString('en-US', {month: "2-digit", day: "2-digit", year: "numeric"})} value={value}/>
   ));
@@ -351,9 +384,9 @@ const ProjectPage = (props) => {
               <div className={styles.QuantityLabel}>
                 Starting Quantity:
               </div>
-              <input className={styles.BacktestInput} placeholder={symbol} value={startingQuantity} onChange={(e) => setStartingQuantity(e.target.value)}/>
+              <input className={styles.BacktestInput} placeholder="USD" value={startingQuantity} onChange={(e) => setStartingQuantity(e.target.value)} type="number" min={0} step={1} />
             </div>
-            <Button transparent>
+            <Button onClick={startBacktest} transparent>
               Run
             </Button>
           </div>

@@ -254,6 +254,19 @@
 	border-radius: 0px;
 }
 
+
+/* Chrome, Safari, Edge, Opera */
+.BacktestInput::-webkit-outer-spin-button,
+.BacktestInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.BacktestInput[type=number] {
+  -moz-appearance: textfield;
+}
+
 .BacktestDateInput {
 	font-family: $Poppins;
 	font-size: 14px;
@@ -270,6 +283,8 @@
 	width: 100px;
 	border-radius: 4px;
 }
+
+
 
 .BacktestDateInput:focus-visible {
 	outline: none;
