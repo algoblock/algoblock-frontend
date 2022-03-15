@@ -6,6 +6,7 @@ require('esbuild').build({
   bundle: true,
   outdir: 'public/build',
   minify: true,
+  sourcemap: true,
   plugins: [sassPlugin.sassPlugin()],
   loader: {'.js': 'jsx', '.png': 'file', '.svg': 'file'},
 }).catch(() => process.exit(1))
