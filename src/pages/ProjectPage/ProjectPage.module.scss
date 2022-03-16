@@ -226,11 +226,6 @@
 	outline: none;
 }
 
-.Start {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
 
 .BacktestInput {
 	font-family: $Poppins;
@@ -313,14 +308,12 @@
 }
 
 
-
-
-
-.End {
+.StartEnd {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
+
 
 .StartingQuantity {
 	display: flex;

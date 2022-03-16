@@ -9,10 +9,27 @@ import {Check} from '@mui/icons-material';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {DashboardPanel, DashboardCard, Header, Column, Row, SearchableDropdown, BuySellButton, EventButton, OverboughtModal, LimitModal, OutlookModal, Button} from '../../components';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import colors from '../../utilities/_export.module.scss';
 
 
 import styles from './ProjectPage.module.scss';
+
+dayjs.extend(customParseFormat);
+
+const BacktestInput = forwardRef((props, ref) => (
+  <input 
+    {...props}
+    onClick={(e) => {
+      props.containerRef.current.className = styles.StartEnd;
+      props.onClick(e);
+    }}
+    className={styles.BacktestDateInput}
+    ref={ref}
+    placeholder={new Date().toLocaleDateString('en-US', {month: "2-digit", day: "2-digit", year: "numeric"})}
+    />
+));
 
 const ProjectPage = (props) => {
   const {state} = useContext(Context);
@@ -42,8 +59,10 @@ const ProjectPage = (props) => {
   const [tradeInterval, setTradeInterval] = useState("");
   const [tradeIntervalUnit, setTradeIntervalUnit] = useState("hour");
   const [action, setAction] = useState({"buy": false, "sell": false});
-  const [startTime, setStartTime] = useState(null);
-  const [endTime, setEndTime] = useState(null);
+  const [startTime, setStartTime] = useState("");
+  const [startTimeString, setStartTimeString] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [endTimeString, setEndTimeString] = useState("");
   const [startingQuantity, setStartingQuantity] = useState("");
   const events = [
     {
@@ -103,9 +122,8 @@ const ProjectPage = (props) => {
     selected = selected || new Date();
     // console.log(selected);
     let isSelected = selected.getDate() === date.getDate() && selected.getMonth() === date.getMonth() && selected.getYear() === date.getYear();
-    return <div className={isSelected ? styles.DateDaySelected : styles.DateDay}>{day}</div>
+    return <div style={{color: isSelected ? colors.white : colors.black}} className={isSelected ? styles.DateDaySelected : styles.DateDay}>{day}</div>
   }
-
 
   const initialBacktests = [
       {
@@ -206,6 +224,11 @@ const ProjectPage = (props) => {
 
   const span = useRef();
   const input = useRef();
+  const startTimeRow = useRef();
+  const startTimeInput = useRef();
+  const endTimeRow = useRef();
+  const endTimeInput = useRef();
+  const startingQuantityInput = useRef();
   const [width, setWidth] = useState(0);
 
   let eventButtons = [];
@@ -222,32 +245,54 @@ const ProjectPage = (props) => {
       </Row>)
   }
 
-  const shake = () => {
-    if (input.current.className === styles.ProjectNameInput) {
+  const shake = (el) => {
+    console.log(el);
+    if (!el.current) {
+      return;
+    }
+    let classes = el.current.className ? el.current.className.split(' ') : [];
+    if (!classes.includes(styles.Shake)) {
       setTimeout(() => {
-        input.current.className = styles.ProjectNameInput;
+        el.current.className = classes.join(' ');
       }, 900)
+      el.current.className += ` ${styles.Shake}`;
     }
     // input.current.style.animation = 'none';
-    input.current.className = `${styles.ProjectNameInput} ${styles.Shake}`;
+    
     // input.current.style.animation = 'none';
     // input.current.offsetHeight; /* trigger reflow */
     // input.current.style.animation = null; 
   }
 
   const startBacktest = () => {
-    if (startTime === null || endTime === null || startingQuantity === null) {
+    if (startTime === "") {
+      shake(startTimeRow);
+    }
+    if (endTime === "") {
+      shake(endTimeRow);
+    }
+    if (startingQuantity === "") {
+      shake(startingQuantityInput);
+    }
+    if (startTime === "" || endTime === "" || startingQuantity === "") {
       console.log('empty fields')
       return;
     }
     if (startingQuantity <= 0) {
       console.log('no quantity')
+      shake(startingQuantityInput);
       return;
     }
-    if (startTime > endTime || endTime > new Date()) {
+    if (startTime > endTime) {
       console.log('invalid date range')
+      shake(startTimeRow);
       return;
-    } 
+    }
+    if (endTime > new Date()) {
+      console.log('date in the future')
+      shake(endTimeRow);
+      return;
+    }
     fetch(`https://transcoder-owoupooupa-uc.a.run.app/backtests`, 
     {
       method: 'POST',
@@ -268,9 +313,7 @@ const ProjectPage = (props) => {
     })
   }
 
-  const BacktestInput = forwardRef(({ value, onClick }, ref) => (
-    <input className={styles.BacktestDateInput} onClick={onClick} ref={ref} placeholder={new Date().toLocaleDateString('en-US', {month: "2-digit", day: "2-digit", year: "numeric"})} value={value}/>
-  ));
+  
 
 
   useEffect(() => {
@@ -284,7 +327,7 @@ const ProjectPage = (props) => {
 
   return (
     <div className={styles.ProjectPage}>
-      <Header selected={"Dashboard"} loggedIn={true}/>
+      <Header selected={""} loggedIn={true}/>
       <OverboughtModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.overbought} setEventParams={(newParams) => setSpecificEventParams("overbought", newParams)} selected={selectedEvents.includes("overbought")}/>
       <LimitModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.limit} setEventParams={(newParams) => setSpecificEventParams("limit", newParams)} selected={selectedEvents.includes("limit")}/>
       <OutlookModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.outlook} setEventParams={(newParams) => setSpecificEventParams("outlook", newParams)} selected={selectedEvents.includes("outlook")}/>
@@ -298,7 +341,7 @@ const ProjectPage = (props) => {
                   if (name) {
                     setEditingName(false);
                   } else {
-                    shake();
+                    shake(input);
                   }
                 }} className={styles.EditButton}/>
             </div>
@@ -368,19 +411,27 @@ const ProjectPage = (props) => {
           </Row>
 
           <div className={styles.BacktestSetup}>
-            <div className={styles.Start}>
+            <div ref={startTimeRow} className={styles.StartEnd}>
               <div className={styles.StartLabel}>
                 Start:
               </div>
-              <DatePicker customInput={<BacktestInput/>} className={styles.BacktestInput} selected={startTime} onChange={(date) => setStartTime(date)} renderDayContents={(day, date) =>renderDayContents(day, date, startTime)} />
+              <DatePicker 
+                customInput={<BacktestInput containerRef={startTimeRow} ref={startTimeInput}/>}
+                selected={startTime}
+                onChange={(date) => setStartTime(date)}
+                renderDayContents={(day, date) => renderDayContents(day, date, startTime)} />
             </div>
-            <div className={styles.End}>
+            <div ref={endTimeRow} className={styles.StartEnd}>
               <div className={styles.StartLabel}>
                 End:
               </div>
-              <DatePicker customInput={<BacktestInput/>} className={styles.BacktestInput} selected={endTime} onChange={(date) => setEndTime(date)} renderDayContents={(day, date) =>renderDayContents(day, date, endTime)} />
+              <DatePicker 
+                customInput={<BacktestInput containerRef={endTimeRow} ref={endTimeInput}/>}
+                selected={endTime}
+                onChange={(date) => setEndTime(date)}
+                renderDayContents={(day, date) => renderDayContents(day, date, endTime)} />
             </div>
-            <div className={styles.StartingQuantity}>
+            <div ref={startingQuantityInput} className={styles.StartingQuantity}>
               <div className={styles.QuantityLabel}>
                 Starting Quantity:
               </div>

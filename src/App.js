@@ -18,6 +18,8 @@ const initialState = {
   darkMode: localStorage.getItem('darkMode') || true,
 };
 
+console.log(colors.primary);
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "DARKMODE":
@@ -41,6 +43,8 @@ const theme = createTheme({
     }
   },
 });
+
+console.log(theme);
 
 const darkTheme = createTheme({
   palette: {
