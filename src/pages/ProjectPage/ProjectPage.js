@@ -33,8 +33,8 @@ const BacktestInput = forwardRef((props, ref) => (
 
 const ProjectPage = (props) => {
   const {state} = useContext(Context);
-  let { id } = useParams();
-  console.log(`id: ${id}`)
+  let { project_id } = useParams();
+  console.log(`project_id: ${project_id}`)
 
   const [name, setName] = useState("Project Name");
   const [editingName, setEditingName] = useState(false);
@@ -293,7 +293,7 @@ const ProjectPage = (props) => {
       shake(endTimeRow);
       return;
     }
-    fetch(`https://transcoder-owoupooupa-uc.a.run.app/backtests`, 
+    fetch(`https://transcoder-owoupooupa-uc.a.run.app/backtest`, 
     {
       method: 'POST',
       headers: {
@@ -301,7 +301,7 @@ const ProjectPage = (props) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        algorithm_id: id,
+        algorithm_id: project_id,
         start_time: startTime.getTime(),
         end_time: endTime.getTime(),
         starting_quantity: startingQuantity

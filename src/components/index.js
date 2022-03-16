@@ -31,6 +31,7 @@ import {SymbolsStep, EventsStep, TradeQuantityStep, TradeIntervalStep, ActionSte
 import StepContainer from './StepContainer/StepContainer';
 import SearchableDropdown from './SearchableDropdown/SearchableDropdown';
 import {OverboughtModal, LimitModal, OutlookModal} from './Modals';
+import Chart from './Chart/Chart';
 
 export {
 	BigButton,
@@ -81,4 +82,5 @@ export {
 	OverboughtModal,
 	LimitModal,
 	OutlookModal,
+	Chart,
 }
