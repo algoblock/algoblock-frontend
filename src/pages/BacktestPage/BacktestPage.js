@@ -16,7 +16,7 @@ const BacktestPage = (props) => {
               {name}
             </div>
           </div>
-          <Chart/>
+          <Chart width={800} height={450}/>
             
         </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createContext, useReducer } from "react";
-import {LandingPage, SignInPage, SignUpPage, DashboardPage, EditorPage, ProjectPage} from './pages';
+import {LandingPage, SignInPage, SignUpPage, DashboardPage, EditorPage, ProjectPage, BacktestPage} from './pages';
 import UserProvider from './providers/UserProvider';
 import {
 	BrowserRouter as Router,
@@ -76,7 +76,10 @@ function App() {
               <Route path="/dashboard">
                 <DashboardPage/>
               </Route>
-              <Route path="/projects/:id">
+              <Route path="/projects/:projectId/backtests/:backtestId">
+                <BacktestPage/>
+              </Route>
+              <Route path="/projects/:projectId">
                 <ProjectPage/>
               </Route>
               <Route path="/login">

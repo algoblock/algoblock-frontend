@@ -33,8 +33,8 @@ const BacktestInput = forwardRef((props, ref) => (
 
 const ProjectPage = (props) => {
   const {state} = useContext(Context);
-  let { project_id } = useParams();
-  console.log(`project_id: ${project_id}`)
+  let { projectId } = useParams();
+  console.log(`projectId: ${projectId}`)
 
   const [name, setName] = useState("Project Name");
   const [editingName, setEditingName] = useState(false);
@@ -212,7 +212,7 @@ const ProjectPage = (props) => {
 
   const [backtests, setBacktests] = useState(initialBacktests);
 
-  const backtestCards = backtests.map((backtest, index) => (<DashboardCard backtest key={index} {...backtest}/>));
+  const backtestCards = backtests.map((backtest, index) => (<DashboardCard projectId={projectId} backtest key={index} {...backtest}/>));
 
   const handleEventButtonClick = (event) => {
     if (selectedEvents.includes(event)) {

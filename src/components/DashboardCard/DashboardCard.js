@@ -38,7 +38,7 @@ const DashboardCard = (props) => {
     );
   } else if (props.backtest) {
     return (
-      <div onClick={() => history.push(`/backtests/${props.id}`)} className={styles.BacktestDashboardCard}>
+      <div onClick={() => history.push(`/projects/${props.projectId}/backtests/${props.id}`)} className={styles.BacktestDashboardCard}>
         <div className={styles.BacktestRow}>
           <div className={styles.CardData}>
             Ran {timeSince(props.date_ran)}
