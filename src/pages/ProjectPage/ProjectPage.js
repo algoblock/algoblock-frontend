@@ -347,7 +347,7 @@ const ProjectPage = (props) => {
             </div>
             :
             <div className={styles.ProjectName}>
-              <div style={{marginBottom: "2px"}}>
+              <div style={{borderBottom: `2px solid ${colors.transparent}`}}>
                 {name}
                 <EditIcon sx={{fontSize: 20, color: state.darkMode ? colors.white : colors.dark}} onClick={() => {
                     setEditingName(true);
