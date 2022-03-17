@@ -275,7 +275,7 @@ const Chart = ({width, height, margin=defaultMargin }) => {
           <AxisLeft 
           scale={yScale}
           label="USD"
-          labelOffset={44}
+          labelOffset={48}
           labelProps={{
             fill: "#ffffff",
             fontSize: 11,
