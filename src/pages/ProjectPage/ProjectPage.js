@@ -365,7 +365,7 @@ const ProjectPage = (props) => {
           </Row>
           <Row style={{marginTop: "20px", justifyContent: "center"}}>
             <div className={styles.Label}>
-              Action
+              Actions
             </div>
             <Row style={{flex: "2", justifyContent: "flex-start", alignItems: "center", height: "65px", width: "400px"}}>
               <div className={styles.Wrapper}>

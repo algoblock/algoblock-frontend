@@ -82,7 +82,7 @@ const Chart = ({width, height, margin=defaultMargin }) => {
 
   const onBrushChange = (domain) => {
     if (!domain) return;
-    console.log(domain)
+    // console.log(domain)
     const { x0, x1, y0, y1 } = domain;
     const dataCopy = data.filter((s) => {
       const curX = x(s);
@@ -149,8 +149,8 @@ const Chart = ({width, height, margin=defaultMargin }) => {
 
   
 
-  console.log(Math.max(...data.map(y)))
-  console.log(Math.min(...data.map(y)))
+  // console.log(Math.max(...data.map(y)))
+  // console.log(Math.min(...data.map(y)))
 
   // let scaledData = []
 
