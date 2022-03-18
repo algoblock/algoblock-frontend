@@ -12,6 +12,7 @@ dayjs.extend(relativeTime);
 
 const BacktestPage = (props) => {
   const location = useLocation();
+  
   const initialParams = location.state || {
     name: "Untitled",
     symbol: "",
@@ -62,6 +63,7 @@ const BacktestPage = (props) => {
   const [finalCryptoPrice, setFinalCryptoPrice] = useState(0);
   const [finalCrypto, setFinalCrypto] = useState(0);
   const [completed, setCompleted] = useState(false);
+  const [priceData, setPriceData] = useState([]);
   const events = [
     {
       name: "Overbought/sold",
@@ -127,6 +129,7 @@ const BacktestPage = (props) => {
     .then(res => res.json())
     .then((result) => {
       console.log(result)
+      setPriceData(result.prices);
 
 
 
@@ -157,7 +160,7 @@ const BacktestPage = (props) => {
               {lastEdited.fromNow()}
             </div>
           </div>
-          <Chart width={800} height={450}/>
+          {priceData.length > 0 ? <Chart data={priceData} x={(d) => dayjs(d.time)} y={(d) => d.price} width={800} height={450}/> : null}
           <Row style={{width: "100%", marginTop: "32px", justifyContent: "space-around", alignItems: "stretch"}}>
             <Column style={{flex: "1", width: "100%", justifyContent: "center"}}>
               <div className={styles.ParamTitle}>

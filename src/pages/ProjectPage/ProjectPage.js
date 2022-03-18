@@ -3,7 +3,7 @@ import { useState, useContext, useRef, useEffect, forwardRef } from 'react';
 import { Context } from '../../App';
 import { UserContext } from '../../providers/UserProvider';
 import PropTypes from 'prop-types';
-import {useParams, useLocation} from 'react-router-dom';
+import {useParams, useLocation, useHistory} from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import {Check} from '@mui/icons-material';
 import DatePicker from "react-datepicker";
@@ -37,6 +37,7 @@ const BacktestInput = forwardRef((props, ref) => {
 const ProjectPage = (props) => {
   const {state} = useContext(Context);
   const location = useLocation();
+  const history = useHistory();
   const initialParams = location.state || {
     name: "Untitled",
     symbol: "",
@@ -114,6 +115,61 @@ const ProjectPage = (props) => {
     setSelectedEvents(newEvents);
   }
 
+  const serializeParams = () => {
+    let activeEvents = {};
+    for (let eventId of selectedEvents) {
+      activeEvents[eventId] = eventParams[eventId];
+    }
+    // console.log(activeEvents);
+    return JSON.stringify({
+      project_id: projectId,
+      parameters: {
+        action: action,
+        symbol: symbol,
+        events: activeEvents,
+        frequency: tradeInterval,
+        frequencyUnit: tradeIntervalUnit,
+        tradeQuantity: quantity,
+      },
+      name: name,
+    });
+  }
+
+  const [serializedParams, setSerializedParams] = useState(serializeParams());
+  const [currentTimeout, setCurrentTimeout] = useState(null);
+
+  useEffect(() => {
+    clearTimeout(currentTimeout);
+    let timeout = setTimeout(() => {
+      console.log(name);
+      let curParams = serializeParams();
+      console.log(curParams);
+      if (curParams != serializedParams) {
+        setSerializedParams(serializeParams());
+        fetch(`https://transcoder-owoupooupa-uc.a.run.app/project`, 
+        {
+          method: 'PUT',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: curParams
+        })
+        .then(res => res.json())
+        .then((result) => {
+          // console.log(result);
+          console.log("Updated!")
+        })
+      }
+      
+    }, 5000);
+    return () => {
+      clearTimeout(timeout);
+    };
+    setCurrentTimeout(timeout);
+  }, [projectId, action, symbol, selectedEvents, eventParams, tradeInterval, tradeIntervalUnit, quantity, name])
+  
+
   useEffect(() => {
     if (location.state) {
       return;
@@ -140,7 +196,10 @@ const ProjectPage = (props) => {
       setTradeIntervalUnit(parameters.frequencyUnit);
       setSymbol(parameters.symbol);
       setQuantity(parameters.tradeQuantity);
-
+      let timeout = setTimeout(() => setSerializedParams(serializeParams()), 1000);
+      return () => {
+        clearTimeout(timeout);
+      }
 
     })
   }, [])
@@ -390,6 +449,7 @@ const ProjectPage = (props) => {
     .then(res => res.json())
     .then((result) => {
       console.log(result);
+      history.push(`/projects/${projectId}/backtests/${result.backtestId}`);
     })
   }
 

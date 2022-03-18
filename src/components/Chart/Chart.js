@@ -25,28 +25,28 @@ import colors from '../../utilities/_export.module.scss';
 
 const width = 500;
 const height = 75;
-const data = []
-let last = 10000
-let initialDate = dayjs().subtract(7, 'day');
-let date = dayjs(initialDate);
-for (let i=0; i < 1440 * 7; i++) {
+// const data = []
+// let last = 10000
+// let initialDate = dayjs().subtract(7, 'day');
+// let date = dayjs(initialDate);
+// for (let i=0; i < 1440 * 7; i++) {
   
-  let newPrice = Math.max(0, last + (Math.random() * 8  - 3.5) * Math.pow((Math.random() * 8  - 3.5), 5));
+//   let newPrice = Math.max(0, last + (Math.random() * 8  - 3.5) * Math.pow((Math.random() * 8  - 3.5), 5));
   
-  // console.log(initialDate.date());
+//   // console.log(initialDate.date());
   
-  data.push([date, newPrice]);
-  last = data[data.length - 1][1]
-  date = date.add(1, 'minute')
-}
+//   data.push([date, newPrice]);
+//   last = data[data.length - 1][1]
+//   date = date.add(1, 'minute')
+// }
 
 
 
-// console.log(data)
-const x = d => d[0];
-const y = d => d[1];
+// // console.log(data)
+// const x = d => d[0];
+// const y = d => d[1];
 
-const bisectDate = bisector((d) => x(d)).left;
+
 
 
 
@@ -70,7 +70,12 @@ const selectedBrushStyle = {
 };
 
 
-const Chart = ({width, height, margin=defaultMargin }) => {
+const Chart = ({width, height, margin=defaultMargin, data, x, y }) => {
+  if (!data || data.length === 0) {
+    return null;
+  }
+  const bisectDate = bisector((d) => x(d)).left;
+  // console.log(data);
   const {showTooltip, hideTooltip, tooltipData, tooltipLeft, tooltipTop} = useTooltip();
   const brushHeight = 40;
   const separation = -10;
@@ -123,6 +128,15 @@ const Chart = ({width, height, margin=defaultMargin }) => {
 
   useEffect(() => {
     onBrushChange({x0: 0, x1: Math.max(...filteredData.map(x)), y0: 0, y1: Math.max(...data.map(y))});
+  }, [])
+
+  useEffect(() => {
+    let timeout = setTimeout(() => {
+      setFilteredData(data);
+    }, 500);
+    return () => {
+      clearTimeout(timeout);
+    }
   }, [])
 
 
