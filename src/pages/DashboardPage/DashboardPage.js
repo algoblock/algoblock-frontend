@@ -106,43 +106,43 @@ const DashboardPage = () => {
 	//         "period": 22
 	//     }
 	// ];
-	const initialProjects = [
-	    {
-	        "id": 0,
-	        "name": "Project #0",
-	        "active": true,
-	        "last_modified": 1645672934,
-	        "currency": "USDT",
-	    },
-	    {
-	        "id": 1,
-	        "name": "Project #1",
-	        "active": true,
-	        "last_modified": 1644873734,
-	        "currency": "BNB",
-	    },
-	    {
-	        "id": 2,
-	        "name": "Project #2",
-	        "active": false,
-	        "last_modified": 1644978134,
-	        "currency": "BNB",
-	    },
-	    {
-	        "id": 3,
-	        "name": "Project #3",
-	        "active": true,
-	        "last_modified": 1645122134,
-	        "currency": "ADA",
-	    },
-	    {
-	        "id": 4,
-	        "name": "Project #4",
-	        "active": true,
-	        "last_modified": 1644952934,
-	        "currency": "BTC",
-	    }
-	];
+	// const initialProjects = [
+	//     {
+	//         "id": 0,
+	//         "name": "Project #0",
+	//         "active": true,
+	//         "last_modified": 1645672934,
+	//         "currency": "USDT",
+	//     },
+	//     {
+	//         "id": 1,
+	//         "name": "Project #1",
+	//         "active": true,
+	//         "last_modified": 1644873734,
+	//         "currency": "BNB",
+	//     },
+	//     {
+	//         "id": 2,
+	//         "name": "Project #2",
+	//         "active": false,
+	//         "last_modified": 1644978134,
+	//         "currency": "BNB",
+	//     },
+	//     {
+	//         "id": 3,
+	//         "name": "Project #3",
+	//         "active": true,
+	//         "last_modified": 1645122134,
+	//         "currency": "ADA",
+	//     },
+	//     {
+	//         "id": 4,
+	//         "name": "Project #4",
+	//         "active": true,
+	//         "last_modified": 1644952934,
+	//         "currency": "BTC",
+	//     }
+	// ];
 
 	const users = [
 		{
@@ -195,14 +195,15 @@ const DashboardPage = () => {
 			lastWeekChange: 1.92,
 		}
 	]
-	initialProjects.sort((first, second) => second.last_modified - first.last_modified);
+	// initialProjects.sort((first, second) => second.last_modified - first.last_modified);
 	// const [backtests, setBacktests] = useState(initialBacktests);
-	const [projects, setProjects] = useState(initialProjects);
+	const [projects, setProjects] = useState([]);
 
 	
 
   const user = useContext(UserContext)
   if (user) {
+  	// console.log(user);
     var dashboardWelcome = (
       <div><span className={styles.Welcome}>Welcome</span> {user.displayName}</div>
     );
@@ -212,6 +213,25 @@ const DashboardPage = () => {
       <div><span className={styles.Welcome}>Welcome</span> to your Dashboard</div>
     );
   }
+
+  useEffect(() => {
+  	if (!user) {
+  		return;
+  	}
+		fetch(`https://transcoder-owoupooupa-uc.a.run.app/projects?user_id=${user.email}`, 
+    {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then((result) => {
+      console.log(result);
+      // .sort((first, second) => second.last_modified - first.last_modified)
+    })
+	}, [user])
 
 	const setProjectActive = (e, index) => {
 		e.stopPropagation();

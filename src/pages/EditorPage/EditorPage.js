@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import { useState, useContext } from 'react';
 import { Context } from '../../App';
+import { UserContext } from '../../providers/UserProvider';
 import PropTypes from 'prop-types';
 import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, TradeQuantityStep, TradeIntervalStep, ActionStep, InvertedButton, Button, OverboughtModal, LimitModal, OutlookModal, StepNextButton} from '../../components';
 import lightModeStyles from './EditorPage.module.scss';
@@ -52,6 +53,8 @@ const EditorPage = (props) => {
   ];
   const symbols = ["BTC", "ETH", "BNB", "USDT", "SOL", "USDC", "LTC", "ADA", "XRP"];
 
+  const user = useContext(UserContext);
+
   const setCurrentComplete = (complete) => {
     console.log(complete);
     let newCompleted = [...completed];
@@ -90,6 +93,25 @@ const EditorPage = (props) => {
     setEventParams(newEventParams);
   }
 
+  const serializeParams = () => {
+    let activeEvents = {};
+    for (let eventId of selectedEvents) {
+      activeEvents[eventId] = eventParams[eventId];
+    }
+    return JSON.stringify({
+      user_id: user.email,
+      parameters: JSON.stringify({
+        action: action,
+        symbol: symbol,
+        events: activeEvents,
+        frequency: tradeInterval,
+        frequencyUnit: tradeIntervalUnit,
+        tradeQuantity: quantity,
+      }),
+      name: "Untitled",
+    });
+  } 
+
 
   let styles = state.darkMode ? darkModeStyles : lightModeStyles;
   
@@ -125,9 +147,25 @@ const EditorPage = (props) => {
           {steps[step]}
           <div className={styles.Center}>
             <StepNextButton confirm={step === stepNames.length - 1} onClick={() => {
-              nextStep();
-              setCurrentComplete(true);
-            }} style={{position: "absolute", bottom: "127px"}} disabled={!completed[step]}/>
+                if (step === stepNames.length - 1) {
+                  fetch(`https://transcoder-owoupooupa-uc.a.run.app/project`, 
+                  {
+                    method: 'POST',
+                    headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json'
+                    },
+                    body: serializeParams()
+                  })
+                  .then(res => res.json())
+                  .then((result) => {
+                    console.log(result);
+                  })
+                } else {
+                  nextStep();
+                  setCurrentComplete(true);
+                }
+              }} style={{position: "absolute", bottom: "127px"}} disabled={!completed[step]}/>
           </div>
         </StepContainer>
       </Row>
