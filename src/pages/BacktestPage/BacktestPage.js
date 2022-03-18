@@ -129,7 +129,7 @@ const BacktestPage = (props) => {
     .then(res => res.json())
     .then((result) => {
       console.log(result)
-      setPriceData(result.prices);
+      setPriceData(result.prices || []);
 
 
 
