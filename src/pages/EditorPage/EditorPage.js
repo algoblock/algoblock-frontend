@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { useState, useContext } from 'react';
+import {useHistory } from 'react-router-dom';
 import { Context } from '../../App';
 import { UserContext } from '../../providers/UserProvider';
 import PropTypes from 'prop-types';
@@ -54,6 +55,7 @@ const EditorPage = (props) => {
   const symbols = ["BTC", "ETH", "BNB", "USDT", "SOL", "USDC", "LTC", "ADA", "XRP"];
 
   const user = useContext(UserContext);
+  const history = useHistory();
 
   const setCurrentComplete = (complete) => {
     console.log(complete);
@@ -98,19 +100,33 @@ const EditorPage = (props) => {
     for (let eventId of selectedEvents) {
       activeEvents[eventId] = eventParams[eventId];
     }
+    console.log(activeEvents);
     return JSON.stringify({
       user_id: user.email,
-      parameters: JSON.stringify({
+      parameters: {
         action: action,
         symbol: symbol,
         events: activeEvents,
         frequency: tradeInterval,
         frequencyUnit: tradeIntervalUnit,
         tradeQuantity: quantity,
-      }),
+      },
       name: "Untitled",
     });
-  } 
+  }
+
+  const getParams = () => {
+    return {
+      action,
+      symbol,
+      selectedEvents,
+      eventParams,
+      tradeInterval,
+      tradeIntervalUnit,
+      quantity,
+      name: "Untitled",
+    };
+  }
 
 
   let styles = state.darkMode ? darkModeStyles : lightModeStyles;
@@ -159,7 +175,8 @@ const EditorPage = (props) => {
                   })
                   .then(res => res.json())
                   .then((result) => {
-                    console.log(result);
+                    // console.log(result);
+                    history.push(`/projects/${result.projectId}/`, getParams());
                   })
                 } else {
                   nextStep();

@@ -20,7 +20,7 @@ const LimitModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEven
           <div className={commonStyles.InputLabel}>
             Buy:
           </div>
-          <input className={commonStyles.NumberInput} value={eventParams.buy} onChange={(event, newValue) => handleChange("buy", newValue)} type="number" min={0.01} step={0.01} placeholder="Enter price"/>
+          <input className={commonStyles.NumberInput} value={eventParams.buy} onChange={(e) => handleChange("buy", e.target.value)} type="number" min={0.01} step={0.01} placeholder="Enter price"/>
         </Row>
       }
       {action["sell"] && 
@@ -28,7 +28,7 @@ const LimitModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEven
           <div className={commonStyles.InputLabel}>
             Sell:
           </div>
-          <input className={commonStyles.NumberInput} value={eventParams.sell} onChange={(event, newValue) => handleChange("sell", newValue)} type="number" min={0.01} step={0.01} placeholder="Enter price"/>
+          <input className={commonStyles.NumberInput} value={eventParams.sell} onChange={(e) => handleChange("sell", e.target.value)} type="number" min={0.01} step={0.01} placeholder="Enter price"/>
         </Row>
       }             
     </EventModalBase>

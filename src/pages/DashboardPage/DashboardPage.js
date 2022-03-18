@@ -9,6 +9,7 @@ import lightModeStyles from './DashboardPage.module.scss';
 import darkModeStyles from './DashboardPageDark.module.scss';
 import {HeadshotPng} from '../../img';
 import colors from '../../utilities/_export.module.scss';
+import dayjs from 'dayjs';
 
 
 const DashboardPage = () => {
@@ -228,8 +229,16 @@ const DashboardPage = () => {
     })
     .then(res => res.json())
     .then((result) => {
-      console.log(result);
-      // .sort((first, second) => second.last_modified - first.last_modified)
+      let newProjects = result.projects || [];
+      newProjects = newProjects.map(project => ({
+      	last_modified: dayjs(project.activationTime),
+      	name: project.name,
+      	parameters: JSON.parse(JSON.parse(project.parameters)),
+      	id: project.projectId,
+      }));
+      newProjects.sort((first, second) => second.last_modified - first.last_modified);
+      setProjects(newProjects);
+      // console.log(newProjects[0].parameters.action);
     })
 	}, [user])
 

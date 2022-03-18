@@ -1,5 +1,6 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useParams, useLocation} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './BacktestPage.module.scss';
 import {Chart, Header, Row, Column} from '../../components';
@@ -10,12 +11,30 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 
 const BacktestPage = (props) => {
-  const [name, setName] = useState("Backtest #1");
-  let [lastEdited, setLastEdited] = useState(dayjs().subtract(Math.floor(Math.random() * 250), 'hours'));
-  let [symbol, setSymbol] = useState("BTC");
-  let [action, setAction] = useState({buy: true, sell: true});
-  const [selectedEvents, setSelectedEvents] = useState(["overbought", "limit"]);
-  const [eventParams, setEventParams] = useState({
+  const location = useLocation();
+  const initialParams = location.state || {
+    name: "Untitled",
+    symbol: "",
+    selectedEvents: [],
+    eventParams: {},
+    quantity: "",
+    tradeInterval: "",
+    tradeIntervalUnit: "hour",
+    action: {
+      buy: false,
+      sell: false,
+    },
+    startTime: dayjs('2017-12-27'),
+    endTime: dayjs('2017-12-27'),
+    startingQuantity: 1000,
+    dateRan: dayjs('2017-12-27'),
+  };
+  const [name, setName] = useState(initialParams.name);
+  let [lastEdited, setLastEdited] = useState(initialParams.dateRan);
+  let [symbol, setSymbol] = useState(initialParams.symbol);
+  let [action, setAction] = useState(initialParams.action);
+  const [selectedEvents, setSelectedEvents] = useState(initialParams.selectedEvents);
+  const defaultEventParams = {
     overbought: {
       buy: 30,
       sell: 70,
@@ -28,20 +47,21 @@ const BacktestPage = (props) => {
       buy: 0,
       sell: 0,
     },
-  });
+  };
+  const [eventParams, setEventParams] = useState({...defaultEventParams, ...initialParams.eventParams});
 
-  const delta = Math.floor((Math.random() * 500 - 250) * 100) / 100;
 
-  const [quantity, setQuantity] = useState(2.3);
-  const [tradeInterval, setTradeInterval] = useState(2);
-  const [tradeIntervalUnit, setTradeIntervalUnit] = useState("hour");
-  const [startTime, setStartTime] = useState(dayjs('2017-12-27'));
-  const [endTime, setEndTime] = useState(dayjs('2018-05-14'));
-  const [startingQuantity, setStartingQuantity] = useState(1000);
-  const [finalValue, setFinalValue] = useState(1000 + delta);
-  const [finalUsd, setFinalUsd] = useState(500)
-  const [finalCryptoPrice, setFinalCryptoPrice] = useState(513);
-  const [finalCrypto, setFinalCrypto] = useState((500 + delta) / finalCryptoPrice);
+  const [quantity, setQuantity] = useState(initialParams.quantity);
+  const [tradeInterval, setTradeInterval] = useState(initialParams.tradeInterval);
+  const [tradeIntervalUnit, setTradeIntervalUnit] = useState(initialParams.tradeIntervalUnit);
+  const [startTime, setStartTime] = useState(initialParams.startTime);
+  const [endTime, setEndTime] = useState(initialParams.endTime);
+  const [startingQuantity, setStartingQuantity] = useState(initialParams.startingQuantity);
+  const [finalValue, setFinalValue] = useState(initialParams.startingQuantity);
+  const [finalUsd, setFinalUsd] = useState(initialParams.startingQuantity);
+  const [finalCryptoPrice, setFinalCryptoPrice] = useState(0);
+  const [finalCrypto, setFinalCrypto] = useState(0);
+  const [completed, setCompleted] = useState(false);
   const events = [
     {
       name: "Overbought/sold",
@@ -56,6 +76,62 @@ const BacktestPage = (props) => {
       id: "outlook",
     }
   ];
+
+  let { projectId, backtestId } = useParams();
+
+  useEffect(() => {
+    if (location.state) {
+      return;
+    }
+    fetch(`https://transcoder-owoupooupa-uc.a.run.app/backtest?algorithm_id=${projectId}&backtest_id=${backtestId}`, 
+    {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then((result) => {
+      console.log(result);
+      setCompleted(result.backtestComplete);
+      setEndTime(dayjs(result.endTime));
+      let parameters = JSON.parse(JSON.parse(result.parameters));
+      setAction(parameters.action);
+      setSelectedEvents(Object.keys(parameters.events));
+      setEventParams({...eventParams, ...parameters.events});
+      setTradeInterval(parameters.frequency);
+      setTradeIntervalUnit(parameters.frequencyUnit);
+      setSymbol(parameters.symbol);
+      setQuantity(parameters.tradeQuantity);
+      setName(result.projectName);
+      setStartTime(dayjs(result.startTime));
+      setStartingQuantity(result.startingQuantity);
+      setLastEdited(dayjs(result.timestamp));
+
+    })
+  }, [])
+
+  useEffect(() => {
+    if (location.state) {
+      return;
+    }
+    fetch(`https://transcoder-owoupooupa-uc.a.run.app/backtest_graph?algorithm_id=${projectId}&backtest_id=${backtestId}&limit=${100}`, 
+    {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then((result) => {
+      console.log(result)
+
+
+
+    })
+  }, [])
 
   const formatEvent = (eventId) => {
     return (

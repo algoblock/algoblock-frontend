@@ -3,7 +3,7 @@ import { useState, useContext, useRef, useEffect, forwardRef } from 'react';
 import { Context } from '../../App';
 import { UserContext } from '../../providers/UserProvider';
 import PropTypes from 'prop-types';
-import {useParams} from 'react-router-dom';
+import {useParams, useLocation} from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import {Check} from '@mui/icons-material';
 import DatePicker from "react-datepicker";
@@ -18,29 +18,51 @@ import styles from './ProjectPage.module.scss';
 
 dayjs.extend(customParseFormat);
 
-const BacktestInput = forwardRef((props, ref) => (
-  <input 
-    {...props}
-    onClick={(e) => {
-      props.containerRef.current.className = styles.StartEnd;
-      props.onClick(e);
-    }}
-    className={styles.BacktestDateInput}
-    ref={ref}
-    placeholder={new Date().toLocaleDateString('en-US', {month: "2-digit", day: "2-digit", year: "numeric"})}
-    />
-));
+const BacktestInput = forwardRef((props, ref) => {
+  let {containerRef, ...restProps} = props;
+  return (
+    <input 
+      {...restProps}
+      onClick={(e) => {
+        props.containerRef.current.className = styles.StartEnd;
+        props.onClick(e);
+      }}
+      className={styles.BacktestDateInput}
+      ref={ref}
+      placeholder={new Date().toLocaleDateString('en-US', {month: "2-digit", day: "2-digit", year: "numeric"})}
+      />
+  );
+});
 
 const ProjectPage = (props) => {
   const {state} = useContext(Context);
-  let { projectId } = useParams();
-  console.log(`projectId: ${projectId}`)
+  const location = useLocation();
+  const initialParams = location.state || {
+    name: "Untitled",
+    symbol: "",
+    selectedEvents: [],
+    eventParams: {},
+    quantity: "",
+    tradeInterval: "",
+    tradeIntervalUnit: "hour",
+    action: {
+      buy: false,
+      sell: false,
+    }
+  };
 
-  const [name, setName] = useState("Project Name");
+  let { projectId } = useParams();
+
+
+
+  
+  // console.log(`projectId: ${projectId}`)
+
+  const [name, setName] = useState(initialParams.name);
   const [editingName, setEditingName] = useState(false);
-  const [symbol, setSymbol] = useState("");
-  const [selectedEvents, setSelectedEvents] = useState([]);
-  const [eventParams, setEventParams] = useState({
+  const [symbol, setSymbol] = useState(initialParams.symbol);
+  const [selectedEvents, setSelectedEvents] = useState(initialParams.selectedEvents);
+  const defaultEventParams = {
     overbought: {
       buy: 30,
       sell: 70,
@@ -53,12 +75,13 @@ const ProjectPage = (props) => {
       buy: 0,
       sell: 0,
     },
-  });
+  };
+  const [eventParams, setEventParams] = useState({...defaultEventParams, ...initialParams.eventParams});
   const [visibleModal, setVisibleModal] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [tradeInterval, setTradeInterval] = useState("");
-  const [tradeIntervalUnit, setTradeIntervalUnit] = useState("hour");
-  const [action, setAction] = useState({"buy": false, "sell": false});
+  const [quantity, setQuantity] = useState(initialParams.quantity);
+  const [tradeInterval, setTradeInterval] = useState(initialParams.tradeInterval);
+  const [tradeIntervalUnit, setTradeIntervalUnit] = useState(initialParams.tradeIntervalUnit);
+  const [action, setAction] = useState(initialParams.action);
   const [startTime, setStartTime] = useState("");
   const [startTimeString, setStartTimeString] = useState("");
   const [endTime, setEndTime] = useState("");
@@ -90,6 +113,63 @@ const ProjectPage = (props) => {
     }
     setSelectedEvents(newEvents);
   }
+
+  useEffect(() => {
+    if (location.state) {
+      return;
+    }
+    fetch(`https://transcoder-owoupooupa-uc.a.run.app/project?project_id=${projectId}`, 
+    {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then((result) => {
+      setName(result.name)
+      let parameters = JSON.parse(JSON.parse(result.parameters));
+      // console.log(result.parameters);
+      // console.log(parameters);
+      // console.log({...eventParams, ...parameters.events});
+      setAction(parameters.action);
+      setSelectedEvents(Object.keys(parameters.events));
+      setEventParams({...eventParams, ...parameters.events});
+      setTradeInterval(parameters.frequency);
+      setTradeIntervalUnit(parameters.frequencyUnit);
+      setSymbol(parameters.symbol);
+      setQuantity(parameters.tradeQuantity);
+
+
+    })
+  }, [])
+
+  useEffect(() => {
+    fetch(`https://transcoder-owoupooupa-uc.a.run.app/backtests?algorithm_id=${projectId}`, 
+    {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then((result) => {
+      console.log(result);      
+      let newBacktests = result.backtests || [];
+      newBacktests = newBacktests.map((backtest) => ({
+        id: backtest.backtestId,
+        startTime: dayjs(backtest.startTime),
+        endTime: dayjs(backtest.endTime),
+        dateRan: dayjs(backtest.timestamp),
+        parameters: JSON.parse(JSON.parse(backtest.parameters)),
+        startingQuantity: backtest.startingQuantity,
+      }))
+      newBacktests.sort((first, second) => second.dateRan - first.dateRan);
+      setBacktests(newBacktests);
+    })
+  }, [])
 
   const cancelEvent = (event) => {
 
@@ -125,92 +205,92 @@ const ProjectPage = (props) => {
     return <div style={{color: isSelected ? colors.white : colors.black}} className={isSelected ? styles.DateDaySelected : styles.DateDay}>{day}</div>
   }
 
-  const initialBacktests = [
-      {
-          "id": 0,
-          "date_ran": 1645672934,
-          "pnl": -193.78739768240672,
-          "position": 2.087464427309367,
-          "currency": "BNB",
-          "period": 24
-      },
-      {
-          "id": 1,
-          "date_ran": 1645672934,
-          "pnl": -203.14029014725676,
-          "position": 2.102340856933121,
-          "currency": "ADA",
-          "period": 22
-      },
-      {
-          "id": 2,
-          "date_ran": 1645672934,
-          "pnl": -227.40048317111183,
-          "position": 1.0332454583303086,
-          "currency": "USDT",
-          "period": 12
-      },
-      {
-          "id": 3,
-          "date_ran": 1645672934,
-          "pnl": 93.15430104311883,
-          "position": 0.8069360321553631,
-          "currency": "BNB",
-          "period": 22
-      },
-      {
-          "id": 4,
-          "date_ran": 1645672934,
-          "pnl": 179.33849730760255,
-          "position": 0.711914926374394,
-          "currency": "ADA",
-          "period": 6
-      },
-      {
-          "id": 5,
-          "date_ran": 1645672934,
-          "pnl": -106.21883729536685,
-          "position": 2.1523815455733675,
-          "currency": "ADA",
-          "period": 3
-      },
-      {
-          "id": 6,
-          "date_ran": 1645672934,
-          "pnl": -65.57468448621927,
-          "position": 1.4262508606556423,
-          "currency": "ADA",
-          "period": 12
-      },
-      {
-          "id": 7,
-          "date_ran": 1645672934,
-          "pnl": 37.9264272588772,
-          "position": 0.9336841129534784,
-          "currency": "USDT",
-          "period": 9
-      },
-      {
-          "id": 8,
-          "date_ran": 1645672934,
-          "pnl": 214.83304478516573,
-          "position": 2.034428965364627,
-          "currency": "ADA",
-          "period": 16
-      },
-      {
-          "id": 9,
-          "date_ran": 1645672934,
-          "pnl": 182.68949519625022,
-          "position": 2.3180706342119373,
-          "currency": "ADA",
-          "period": 22
-      }
-  ];
+  // const initialBacktests = [
+  //     {
+  //         "id": 0,
+  //         "date_ran": 1645672934,
+  //         "pnl": -193.78739768240672,
+  //         "position": 2.087464427309367,
+  //         "currency": "BNB",
+  //         "period": 24
+  //     },
+  //     {
+  //         "id": 1,
+  //         "date_ran": 1645672934,
+  //         "pnl": -203.14029014725676,
+  //         "position": 2.102340856933121,
+  //         "currency": "ADA",
+  //         "period": 22
+  //     },
+  //     {
+  //         "id": 2,
+  //         "date_ran": 1645672934,
+  //         "pnl": -227.40048317111183,
+  //         "position": 1.0332454583303086,
+  //         "currency": "USDT",
+  //         "period": 12
+  //     },
+  //     {
+  //         "id": 3,
+  //         "date_ran": 1645672934,
+  //         "pnl": 93.15430104311883,
+  //         "position": 0.8069360321553631,
+  //         "currency": "BNB",
+  //         "period": 22
+  //     },
+  //     {
+  //         "id": 4,
+  //         "date_ran": 1645672934,
+  //         "pnl": 179.33849730760255,
+  //         "position": 0.711914926374394,
+  //         "currency": "ADA",
+  //         "period": 6
+  //     },
+  //     {
+  //         "id": 5,
+  //         "date_ran": 1645672934,
+  //         "pnl": -106.21883729536685,
+  //         "position": 2.1523815455733675,
+  //         "currency": "ADA",
+  //         "period": 3
+  //     },
+  //     {
+  //         "id": 6,
+  //         "date_ran": 1645672934,
+  //         "pnl": -65.57468448621927,
+  //         "position": 1.4262508606556423,
+  //         "currency": "ADA",
+  //         "period": 12
+  //     },
+  //     {
+  //         "id": 7,
+  //         "date_ran": 1645672934,
+  //         "pnl": 37.9264272588772,
+  //         "position": 0.9336841129534784,
+  //         "currency": "USDT",
+  //         "period": 9
+  //     },
+  //     {
+  //         "id": 8,
+  //         "date_ran": 1645672934,
+  //         "pnl": 214.83304478516573,
+  //         "position": 2.034428965364627,
+  //         "currency": "ADA",
+  //         "period": 16
+  //     },
+  //     {
+  //         "id": 9,
+  //         "date_ran": 1645672934,
+  //         "pnl": 182.68949519625022,
+  //         "position": 2.3180706342119373,
+  //         "currency": "ADA",
+  //         "period": 22
+  //     }
+  // ];
 
-  initialBacktests.sort((first, second) => second.date_ran - first.date_ran);
+  // initialBacktests.sort((first, second) => second.date_ran - first.date_ran);
 
-  const [backtests, setBacktests] = useState(initialBacktests);
+  const [backtests, setBacktests] = useState([]);
 
   const backtestCards = backtests.map((backtest, index) => (<DashboardCard projectId={projectId} backtest key={index} {...backtest}/>));
 
@@ -301,7 +381,7 @@ const ProjectPage = (props) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        algorithm_id: project_id,
+        algorithm_id: projectId,
         start_time: startTime.getTime(),
         end_time: endTime.getTime(),
         starting_quantity: startingQuantity
