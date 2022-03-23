@@ -236,7 +236,7 @@ const DashboardPage = () => {
       	parameters: JSON.parse(JSON.parse(project.parameters)),
       	id: project.projectId,
       }));
-      newProjects.sort((first, second) => second.last_modified - first.last_modified);
+      newProjects.sort((first, second) => second.last_modified.unix() - first.last_modified.unix());
       setProjects(newProjects);
       // console.log(newProjects[0].parameters.action);
     })

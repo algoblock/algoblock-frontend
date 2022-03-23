@@ -91,6 +91,7 @@ const ProjectPage = (props) => {
   const [loading, setLoading] = useState(true);
   const [gotBacktests, setGotBacktests] = useState(false);
   const [startingBacktest, setStartingBacktest] = useState(false);
+  const [backtests, setBacktests] = useState([]);
   const events = [
     {
       name: "Overbought/sold",
@@ -234,7 +235,7 @@ const ProjectPage = (props) => {
         parameters: JSON.parse(JSON.parse(backtest.parameters)),
         startingQuantity: backtest.startingQuantity,
       }))
-      newBacktests.sort((first, second) => second.dateRan - first.dateRan);
+      newBacktests.sort((first, second) => second.dateRan.unix() - first.dateRan.unix());
       setBacktests(newBacktests);
       setGotBacktests(true);
     })
@@ -274,7 +275,7 @@ const ProjectPage = (props) => {
     return <div style={{color: isSelected ? colors.white : colors.black}} className={isSelected ? styles.DateDaySelected : styles.DateDay}>{day}</div>
   }
 
-  const [backtests, setBacktests] = useState([]);
+  
 
   const backtestCards = backtests.map((backtest, index) => (<DashboardCard projectId={projectId} backtest key={index} {...backtest}/>));
 

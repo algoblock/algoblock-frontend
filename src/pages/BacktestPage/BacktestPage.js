@@ -100,6 +100,7 @@ const BacktestPage = (props) => {
     .then((result) => {
       console.log(result);
       let {backtest, prices} = result;
+      prices = prices || [];
       let tradesData = result.trades;
       let finalUsdValue = 0;
       let finalCryptoAmount = 0;
@@ -138,11 +139,11 @@ const BacktestPage = (props) => {
       setStartTime(dayjs(backtest.startTime));
       setStartingQuantity(backtest.startingQuantity);
       setLastEdited(dayjs(backtest.timestamp));
-      setPriceData(result.prices || []);
-      if (result.prices.length > 0) {
-        setFinalValue(result.prices[result.prices.length - 1].price);
+      setPriceData(prices);
+      if (prices.length > 0) {
+        setFinalValue(prices[prices.length - 1].price);
 
-        setFinalCryptoPrice(finalCryptoAmount === 0 ? 0 : (result.prices[result.prices.length - 1].price - finalUsdValue) / finalCryptoAmount);
+        setFinalCryptoPrice(finalCryptoAmount === 0 ? 0 : (prices[prices.length - 1].price - finalUsdValue) / finalCryptoAmount);
       } else {
         setFinalValue(backtest.startingQuantity);
         setFinalCryptoPrice(0);

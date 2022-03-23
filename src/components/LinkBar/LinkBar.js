@@ -10,9 +10,9 @@ const LinkBar = (props) => {
   const user = useContext(UserContext);
 	
 	if (props.loggedIn) {
-		var linkTitles = ["Price", "Learn", "Company", "Community"];
-	} else {
 		var linkTitles = ["Dashboard", "Editor", "Community"];
+	} else {
+		var linkTitles = ["Price", "Learn", "Company", "Community"];
 	}
 	for (var i=0; i < linkTitles.length - 1; i++) {
 		links.push(<HeaderLink to={`/${linkTitles[i].toLowerCase()}`} key={2 * i} selected={linkTitles[i] == props.selected}>{linkTitles[i]}</HeaderLink>);
