@@ -64,6 +64,7 @@ const BacktestPage = (props) => {
   const [finalCrypto, setFinalCrypto] = useState(0);
   const [completed, setCompleted] = useState(false);
   const [priceData, setPriceData] = useState([]);
+  const [trades, setTrades] = useState([]);
   const events = [
     {
       name: "Overbought/sold",
@@ -96,9 +97,15 @@ const BacktestPage = (props) => {
     .then(res => res.json())
     .then((result) => {
       console.log(result);
-      setCompleted(result.backtestComplete);
-      setEndTime(dayjs(result.endTime));
-      let parameters = JSON.parse(JSON.parse(result.parameters));
+      let {backtest, prices} = result;
+      let tradesData = result.trades;
+      setTrades(tradesData);
+      setFinalUsd(tradesData[tradesData.length - 1].usdQuantity);
+      setFinalCrypto(tradesData[tradesData.length - 1].cryptoQuantity);
+      setFinalCryptoPrice(tradesData[tradesData.length - 1].price);
+      setCompleted(backtest.backtestComplete);
+      setEndTime(dayjs(backtest.endTime));
+      let parameters = JSON.parse(JSON.parse(backtest.parameters));
       setAction(parameters.action);
       setSelectedEvents(Object.keys(parameters.events));
       setEventParams({...eventParams, ...parameters.events});
@@ -106,38 +113,68 @@ const BacktestPage = (props) => {
       setTradeIntervalUnit(parameters.frequencyUnit);
       setSymbol(parameters.symbol);
       setQuantity(parameters.tradeQuantity);
-      setName(result.projectName);
-      setStartTime(dayjs(result.startTime));
-      setStartingQuantity(result.startingQuantity);
-      setLastEdited(dayjs(result.timestamp));
-
-    })
-  }, [])
-
-  useEffect(() => {
-    if (location.state) {
-      return;
-    }
-    fetch(`https://transcoder-owoupooupa-uc.a.run.app/backtest_graph?algorithm_id=${projectId}&backtest_id=${backtestId}&limit=${100}`, 
-    {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then((result) => {
-      console.log(result)
+      setName(backtest.projectName);
+      setStartTime(dayjs(backtest.startTime));
+      setStartingQuantity(backtest.startingQuantity);
+      setLastEdited(dayjs(backtest.timestamp));
       setPriceData(result.prices || []);
       if (result.prices.length > 0) {
         setFinalValue(result.prices[result.prices.length - 1].price);
       }
 
 
-
     })
   }, [])
+
+  // useEffect(() => {
+  //   if (location.state) {
+  //     return;
+  //   }
+  //   fetch(`https://transcoder-owoupooupa-uc.a.run.app/backtest_graph?algorithm_id=${projectId}&backtest_id=${backtestId}&limit=${100}`, 
+  //   {
+  //     method: 'GET',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   .then(res => res.json())
+  //   .then((result) => {
+  //     console.log(result)
+  //     setPriceData(result.prices || []);
+  //     if (result.prices.length > 0) {
+  //       setFinalValue(result.prices[result.prices.length - 1].price);
+  //     }
+
+
+
+  //   })
+  // }, [])
+
+  // useEffect(() => {
+  //   if (location.state) {
+  //     return;
+  //   }
+  //   fetch(`https://transcoder-owoupooupa-uc.a.run.app/prices?start_time=${dayjs('2019-01-01').valueOf()}&end_time=${dayjs('2019-01-08').valueOf()}&symbol=${"BTC"}`, 
+  //   {
+  //     method: 'GET',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   .then(res => res.json())
+  //   .then((result) => {
+  //     console.log(result)
+  //     // setPriceData(result.prices || []);
+  //     // if (result.prices.length > 0) {
+  //     //   setFinalValue(result.prices[result.prices.length - 1].price);
+  //     // }
+
+
+
+  //   })
+  // }, [])
 
   const formatEvent = (eventId) => {
     return (

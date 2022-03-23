@@ -105,7 +105,7 @@ const Chart = ({width, height, margin=defaultMargin, data, x, y }) => {
   const yScale = scaleLinear({
     round: true,
     nice: true,
-    domain: [0, Math.max(...filteredData.map(y))],
+    domain: [Math.min(...filteredData.map(y)), Math.max(...filteredData.map(y))],
     range: [yMax, 0],
   });
 
@@ -117,7 +117,7 @@ const Chart = ({width, height, margin=defaultMargin, data, x, y }) => {
   const yScaleBrush = scaleLinear({
     round: true,
     nice: true,
-    domain: [0, Math.max(...data.map(y))],
+    domain: [Math.min(...data.map(y)), Math.max(...data.map(y))],
     range: [brushHeight, 0],
   });
 
