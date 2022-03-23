@@ -130,6 +130,9 @@ const BacktestPage = (props) => {
     .then((result) => {
       console.log(result)
       setPriceData(result.prices || []);
+      if (result.prices.length > 0) {
+        setFinalValue(result.prices[result.prices.length - 1].price);
+      }
 
 
 

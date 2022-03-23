@@ -24,7 +24,7 @@ const DashboardCard = (props) => {
     return (
       <div onClick={() => history.push(`/projects/${props.id}`)} className={styles.DashboardCard}>
         <div className={styles.ProjectRow}>
-          <div className={styles.ProjectName}>
+          <div style={{width: "calc(100% / 6)"}} className={styles.ProjectName}>
             {props.name || "Untitled"}
           </div>
           <div className={styles.CardData}>
