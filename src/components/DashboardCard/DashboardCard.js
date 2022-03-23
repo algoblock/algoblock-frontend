@@ -59,6 +59,22 @@ const DashboardCard = (props) => {
         </div>
       </div>
     );
+  } else if (props.trade) {
+    return (
+      <div className={styles.TradeDashboardCard}>
+        <div className={styles.BacktestRow}>
+          <div className={styles.TradeCardData}>
+            {props.buy1sell0 ? "Buy" : "Sell"}
+          </div>
+          <div className={styles.TradeCardData}>
+            {props.amount ? props.amount.toFixed(5) : 0} {props.symbol} @ ${props.price.toFixed(2)}
+          </div>
+          <div className={styles.TradeCardData}>
+            {dayjs(props.timestamp).toString()}
+          </div>
+        </div>
+      </div>
+    );
   }
 };
 

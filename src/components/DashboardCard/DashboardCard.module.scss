@@ -32,6 +32,20 @@
 	cursor: pointer;
 }
 
+.TradeDashboardCard {
+	position: relative;
+	padding: 20px 50px 20px 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: $white;
+	color: $black;
+	margin-top: 18px;
+	border-radius: 20px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
 .Chart {
 	width: 15%;
 }
@@ -53,7 +67,7 @@
 
 
 .BacktestRow > .CardData {
-	width: calc(100% / 6);
+	width: calc(100% / 3);
 	text-align: left;
 }
 
@@ -63,5 +77,9 @@
 }
 
 .Period {
-	width: calc(100% / 6);
+	width: calc(100% / 4);
+}
+
+.TradeCardData {
+	width: calc(100% / 3);
 }

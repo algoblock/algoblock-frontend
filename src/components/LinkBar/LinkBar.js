@@ -9,7 +9,7 @@ const LinkBar = (props) => {
 	var links = [];
   const user = useContext(UserContext);
 	
-	if (!user) {
+	if (props.loggedIn) {
 		var linkTitles = ["Price", "Learn", "Company", "Community"];
 	} else {
 		var linkTitles = ["Dashboard", "Editor", "Community"];

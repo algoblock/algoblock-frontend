@@ -8,7 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import {Check} from '@mui/icons-material';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {DashboardPanel, DashboardCard, Header, Column, Row, SearchableDropdown, BuySellButton, EventButton, OverboughtModal, LimitModal, OutlookModal, Button} from '../../components';
+import {DashboardPanel, DashboardCard, Header, Column, Row, SearchableDropdown, BuySellButton, EventButton, OverboughtModal, LimitModal, OutlookModal, Button, LoadingAnimation} from '../../components';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import colors from '../../utilities/_export.module.scss';
@@ -88,6 +88,9 @@ const ProjectPage = (props) => {
   const [endTime, setEndTime] = useState("");
   const [endTimeString, setEndTimeString] = useState("");
   const [startingQuantity, setStartingQuantity] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [gotBacktests, setGotBacktests] = useState(false);
+  const [startingBacktest, setStartingBacktest] = useState(false);
   const events = [
     {
       name: "Overbought/sold",
@@ -135,7 +138,7 @@ const ProjectPage = (props) => {
     });
   }
 
-  const [serializedParams, setSerializedParams] = useState(serializeParams());
+  const [serializedParams, setSerializedParams] = useState(null);
   const [currentTimeout, setCurrentTimeout] = useState(null);
 
   useEffect(() => {
@@ -143,8 +146,11 @@ const ProjectPage = (props) => {
     let timeout = setTimeout(() => {
       console.log(name);
       let curParams = serializeParams();
-      console.log(curParams);
-      if (curParams != serializedParams) {
+      
+      if (serializedParams !== null && curParams != serializedParams) {
+        console.log("Are they different?");
+        console.log(curParams);
+        console.log(serializedParams);
         setSerializedParams(serializeParams());
         fetch(`https://transcoder-owoupooupa-uc.a.run.app/project`, 
         {
@@ -172,6 +178,7 @@ const ProjectPage = (props) => {
 
   useEffect(() => {
     if (location.state) {
+      setLoading(false);
       return;
     }
     fetch(`https://transcoder-owoupooupa-uc.a.run.app/project?project_id=${projectId}`, 
@@ -196,10 +203,12 @@ const ProjectPage = (props) => {
       setTradeIntervalUnit(parameters.frequencyUnit);
       setSymbol(parameters.symbol);
       setQuantity(parameters.tradeQuantity);
-      let timeout = setTimeout(() => setSerializedParams(serializeParams()), 1000);
+      setLoading(false);
+      let timeout = setTimeout(() => setSerializedParams(serializeParams()), 500);
       return () => {
         clearTimeout(timeout);
       }
+      
 
     })
   }, [])
@@ -227,6 +236,7 @@ const ProjectPage = (props) => {
       }))
       newBacktests.sort((first, second) => second.dateRan - first.dateRan);
       setBacktests(newBacktests);
+      setGotBacktests(true);
     })
   }, [])
 
@@ -263,91 +273,6 @@ const ProjectPage = (props) => {
     let isSelected = selected.getDate() === date.getDate() && selected.getMonth() === date.getMonth() && selected.getYear() === date.getYear();
     return <div style={{color: isSelected ? colors.white : colors.black}} className={isSelected ? styles.DateDaySelected : styles.DateDay}>{day}</div>
   }
-
-  // const initialBacktests = [
-  //     {
-  //         "id": 0,
-  //         "date_ran": 1645672934,
-  //         "pnl": -193.78739768240672,
-  //         "position": 2.087464427309367,
-  //         "currency": "BNB",
-  //         "period": 24
-  //     },
-  //     {
-  //         "id": 1,
-  //         "date_ran": 1645672934,
-  //         "pnl": -203.14029014725676,
-  //         "position": 2.102340856933121,
-  //         "currency": "ADA",
-  //         "period": 22
-  //     },
-  //     {
-  //         "id": 2,
-  //         "date_ran": 1645672934,
-  //         "pnl": -227.40048317111183,
-  //         "position": 1.0332454583303086,
-  //         "currency": "USDT",
-  //         "period": 12
-  //     },
-  //     {
-  //         "id": 3,
-  //         "date_ran": 1645672934,
-  //         "pnl": 93.15430104311883,
-  //         "position": 0.8069360321553631,
-  //         "currency": "BNB",
-  //         "period": 22
-  //     },
-  //     {
-  //         "id": 4,
-  //         "date_ran": 1645672934,
-  //         "pnl": 179.33849730760255,
-  //         "position": 0.711914926374394,
-  //         "currency": "ADA",
-  //         "period": 6
-  //     },
-  //     {
-  //         "id": 5,
-  //         "date_ran": 1645672934,
-  //         "pnl": -106.21883729536685,
-  //         "position": 2.1523815455733675,
-  //         "currency": "ADA",
-  //         "period": 3
-  //     },
-  //     {
-  //         "id": 6,
-  //         "date_ran": 1645672934,
-  //         "pnl": -65.57468448621927,
-  //         "position": 1.4262508606556423,
-  //         "currency": "ADA",
-  //         "period": 12
-  //     },
-  //     {
-  //         "id": 7,
-  //         "date_ran": 1645672934,
-  //         "pnl": 37.9264272588772,
-  //         "position": 0.9336841129534784,
-  //         "currency": "USDT",
-  //         "period": 9
-  //     },
-  //     {
-  //         "id": 8,
-  //         "date_ran": 1645672934,
-  //         "pnl": 214.83304478516573,
-  //         "position": 2.034428965364627,
-  //         "currency": "ADA",
-  //         "period": 16
-  //     },
-  //     {
-  //         "id": 9,
-  //         "date_ran": 1645672934,
-  //         "pnl": 182.68949519625022,
-  //         "position": 2.3180706342119373,
-  //         "currency": "ADA",
-  //         "period": 22
-  //     }
-  // ];
-
-  // initialBacktests.sort((first, second) => second.date_ran - first.date_ran);
 
   const [backtests, setBacktests] = useState([]);
 
@@ -404,6 +329,9 @@ const ProjectPage = (props) => {
   }
 
   const startBacktest = () => {
+    if (startingBacktest) {
+      return;
+    }
     if (startTime === "") {
       shake(startTimeRow);
     }
@@ -432,6 +360,7 @@ const ProjectPage = (props) => {
       shake(endTimeRow);
       return;
     }
+    setStartingBacktest(true);
     fetch(`https://transcoder-owoupooupa-uc.a.run.app/backtest`, 
     {
       method: 'POST',
@@ -473,115 +402,125 @@ const ProjectPage = (props) => {
       <OutlookModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.outlook} setEventParams={(newParams) => setSpecificEventParams("outlook", newParams)} selected={selectedEvents.includes("outlook")}/>
       <div className={styles.Container}>
         <div className={styles.ProjectBox}>
-          {editingName ? 
-            <div className={styles.ProjectName}>
-              <span className={styles.Hidden} ref={span}>{name}</span>
-              <input ref={input} autoFocus style={{width: width}} className={styles.ProjectNameInput} value={name} onChange={(e) => {setName(e.target.value)}} type="text"/>
-              <Check sx={{fontSize: 20, color: state.darkMode ? colors.white : colors.dark}} onClick={() => {
-                  if (name) {
-                    setEditingName(false);
-                  } else {
-                    shake(input);
-                  }
-                }} className={styles.EditButton}/>
+          {(!loading && !startingBacktest) ?
+            <div>
+              {editingName ? 
+                <div className={styles.ProjectName}>
+                  <span className={styles.Hidden} ref={span}>{name}</span>
+                  <input ref={input} autoFocus style={{width: width}} className={styles.ProjectNameInput} value={name} onChange={(e) => {setName(e.target.value)}} type="text"/>
+                  <Check sx={{fontSize: 20, color: state.darkMode ? colors.white : colors.dark}} onClick={() => {
+                      if (name) {
+                        setEditingName(false);
+                      } else {
+                        shake(input);
+                      }
+                    }} className={styles.EditButton}/>
+                </div>
+                :
+                <div className={styles.ProjectName}>
+                  <div style={{borderBottom: `2px solid ${colors.transparent}`}}>
+                    {name}
+                    <EditIcon sx={{fontSize: 20, color: state.darkMode ? colors.white : colors.dark}} onClick={() => {
+                        setEditingName(true);
+
+                      }} className={styles.EditButton}/>
+                  </div>
+                </div>
+              }
+              {/* TODO: Switch rows and columns */}
+              <Row style={{marginTop: "30px", justifyContent: "center"}}>
+                <div className={styles.Label}>
+                  Symbol
+                </div>
+                <SearchableDropdown style={{flex: "2", width: "400px"}} text={symbol} setText={setSymbol} choices={symbols}/>
+              </Row>
+              <Row style={{marginTop: "20px", justifyContent: "center"}}>
+                <div className={styles.Label}>
+                  Actions
+                </div>
+                <Row style={{flex: "2", justifyContent: "flex-start", alignItems: "center", height: "65px", width: "400px"}}>
+                  <div className={styles.Wrapper}>
+                    <BuySellButton onClick={() => handleActionChange("buy")} selected={action["buy"]}>BUY</BuySellButton>
+                  </div>
+                  <div className={styles.Divider}/>
+                  <div className={styles.Wrapper}>
+                    <BuySellButton onClick={() => handleActionChange("sell")} selected={action["sell"]}>SELL</BuySellButton>
+                  </div>
+                </Row>
+              </Row>
+              <Row style={{marginTop: "20px", alignItems: "center", justifyContent: "center"}}>
+                <div className={styles.Label}>
+                  Events
+                </div>
+                <Column style={{flex: "2", justifyContent: "flex-start"}}>
+                  
+                  
+                  {eventButtons}
+                </Column>
+              </Row>
+              <Row style={{marginTop: "20px", alignItems: "center", justifyContent: "center"}}>
+                <div className={styles.Label}>
+                  Trade Quantity
+                </div>
+                <div className={styles.RightSide}>
+                  <input className={styles.NumberInput} value={quantity} onChange={(e) => setQuantity(e.target.value)} type="number" min={0} step={0.001} placeholder="Enter amount"/>
+                  <div className={styles.Symbol}>{symbol} per trade</div>
+                </div>
+              </Row>
+              <Row style={{marginTop: "20px", alignItems: "center", justifyContent: "center"}}>
+                <div className={styles.Label}>
+                  Trade Interval
+                </div>
+                <div className={styles.RightSide}>
+                  <input className={styles.NumberInput} value={tradeInterval} onChange={(e) => setTradeInterval(e.target.value)} type="number" min={1} max={99} step={1} placeholder="Enter period"/>
+                  <select className={styles.SelectInput} value={tradeIntervalUnit} onChange={(e) => setTradeIntervalUnit(e.target.value)} placeholder="Enter period">
+                    <option value="hour">Hours</option>
+                    <option value="day">Days</option>
+                    <option value="week">Weeks</option>
+                  </select>
+                </div>
+              </Row>
+
+              <div className={styles.BacktestSetup}>
+                <div ref={startTimeRow} className={styles.StartEnd}>
+                  <div className={styles.StartLabel}>
+                    Start:
+                  </div>
+                  <DatePicker 
+                    customInput={<BacktestInput containerRef={startTimeRow} ref={startTimeInput}/>}
+                    selected={startTime}
+                    onChange={(date) => setStartTime(date)}
+                    renderDayContents={(day, date) => renderDayContents(day, date, startTime)} />
+                </div>
+                <div ref={endTimeRow} className={styles.StartEnd}>
+                  <div className={styles.StartLabel}>
+                    End:
+                  </div>
+                  <DatePicker 
+                    customInput={<BacktestInput containerRef={endTimeRow} ref={endTimeInput}/>}
+                    selected={endTime}
+                    onChange={(date) => setEndTime(date)}
+                    renderDayContents={(day, date) => renderDayContents(day, date, endTime)} />
+                </div>
+                <div ref={startingQuantityInput} className={styles.StartingQuantity}>
+                  <div className={styles.QuantityLabel}>
+                    Starting Quantity:
+                  </div>
+                  <input className={styles.BacktestInput} placeholder="USD" value={startingQuantity} onChange={(e) => setStartingQuantity(e.target.value)} type="number" min={0} step={1} />
+                </div>
+                <Button onClick={startBacktest} transparent>
+                  Run
+                </Button>
+              </div>
+              {gotBacktests ? 
+                backtestCards
+                :
+                <LoadingAnimation text="Loading..." />
+              }
             </div>
             :
-            <div className={styles.ProjectName}>
-              <div style={{borderBottom: `2px solid ${colors.transparent}`}}>
-                {name}
-                <EditIcon sx={{fontSize: 20, color: state.darkMode ? colors.white : colors.dark}} onClick={() => {
-                    setEditingName(true);
-
-                  }} className={styles.EditButton}/>
-              </div>
-            </div>
+            <LoadingAnimation text={startingBacktest ? "Starting backtest..." : "Loading..."} />
           }
-          {/* TODO: Switch rows and columns */}
-          <Row style={{marginTop: "30px", justifyContent: "center"}}>
-            <div className={styles.Label}>
-              Symbol
-            </div>
-            <SearchableDropdown style={{flex: "2", width: "400px"}} text={symbol} setText={setSymbol} choices={symbols}/>
-          </Row>
-          <Row style={{marginTop: "20px", justifyContent: "center"}}>
-            <div className={styles.Label}>
-              Actions
-            </div>
-            <Row style={{flex: "2", justifyContent: "flex-start", alignItems: "center", height: "65px", width: "400px"}}>
-              <div className={styles.Wrapper}>
-                <BuySellButton onClick={() => handleActionChange("buy")} selected={action["buy"]}>BUY</BuySellButton>
-              </div>
-              <div className={styles.Divider}/>
-              <div className={styles.Wrapper}>
-                <BuySellButton onClick={() => handleActionChange("sell")} selected={action["sell"]}>SELL</BuySellButton>
-              </div>
-            </Row>
-          </Row>
-          <Row style={{marginTop: "20px", alignItems: "center", justifyContent: "center"}}>
-            <div className={styles.Label}>
-              Events
-            </div>
-            <Column style={{flex: "2", justifyContent: "flex-start"}}>
-              
-              
-              {eventButtons}
-            </Column>
-          </Row>
-          <Row style={{marginTop: "20px", alignItems: "center", justifyContent: "center"}}>
-            <div className={styles.Label}>
-              Trade Quantity
-            </div>
-            <div className={styles.RightSide}>
-              <input className={styles.NumberInput} value={quantity} onChange={(e) => setQuantity(e.target.value)} type="number" min={0} step={0.001} placeholder="Enter amount"/>
-              <div className={styles.Symbol}>{symbol} per trade</div>
-            </div>
-          </Row>
-          <Row style={{marginTop: "20px", alignItems: "center", justifyContent: "center"}}>
-            <div className={styles.Label}>
-              Trade Interval
-            </div>
-            <div className={styles.RightSide}>
-              <input className={styles.NumberInput} value={tradeInterval} onChange={(e) => setTradeInterval(e.target.value)} type="number" min={1} max={99} step={1} placeholder="Enter period"/>
-              <select className={styles.SelectInput} value={tradeIntervalUnit} onChange={(e) => setTradeIntervalUnit(e.target.value)} placeholder="Enter period">
-                <option value="hour">Hours</option>
-                <option value="day">Days</option>
-                <option value="week">Weeks</option>
-              </select>
-            </div>
-          </Row>
-
-          <div className={styles.BacktestSetup}>
-            <div ref={startTimeRow} className={styles.StartEnd}>
-              <div className={styles.StartLabel}>
-                Start:
-              </div>
-              <DatePicker 
-                customInput={<BacktestInput containerRef={startTimeRow} ref={startTimeInput}/>}
-                selected={startTime}
-                onChange={(date) => setStartTime(date)}
-                renderDayContents={(day, date) => renderDayContents(day, date, startTime)} />
-            </div>
-            <div ref={endTimeRow} className={styles.StartEnd}>
-              <div className={styles.StartLabel}>
-                End:
-              </div>
-              <DatePicker 
-                customInput={<BacktestInput containerRef={endTimeRow} ref={endTimeInput}/>}
-                selected={endTime}
-                onChange={(date) => setEndTime(date)}
-                renderDayContents={(day, date) => renderDayContents(day, date, endTime)} />
-            </div>
-            <div ref={startingQuantityInput} className={styles.StartingQuantity}>
-              <div className={styles.QuantityLabel}>
-                Starting Quantity:
-              </div>
-              <input className={styles.BacktestInput} placeholder="USD" value={startingQuantity} onChange={(e) => setStartingQuantity(e.target.value)} type="number" min={0} step={1} />
-            </div>
-            <Button onClick={startBacktest} transparent>
-              Run
-            </Button>
-          </div>
-          {backtestCards}
             
         </div>
 

@@ -5,7 +5,7 @@ import {useHistory } from 'react-router-dom';
 import { Context } from '../../App';
 import { UserContext } from '../../providers/UserProvider';
 import PropTypes from 'prop-types';
-import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, TradeQuantityStep, TradeIntervalStep, ActionStep, InvertedButton, Button, OverboughtModal, LimitModal, OutlookModal, StepNextButton} from '../../components';
+import {Header, VerticalStepper, Row, SymbolsStep, EventsStep, StepContainer, TradeQuantityStep, TradeIntervalStep, ActionStep, InvertedButton, Button, OverboughtModal, LimitModal, OutlookModal, StepNextButton, LoadingAnimation} from '../../components';
 import lightModeStyles from './EditorPage.module.scss';
 import darkModeStyles from './EditorPageDark.module.scss';
 import colors from '../../utilities/_export.module.scss';
@@ -38,6 +38,7 @@ const EditorPage = (props) => {
   const [tradeInterval, setTradeInterval] = useState("");
   const [tradeIntervalUnit, setTradeIntervalUnit] = useState("hour");
   const [action, setAction] = useState({"buy": false, "sell": false});
+  const [loading, setLoading] = useState(false);
   const events = [
     {
       name: "Overbought/sold",
@@ -135,7 +136,21 @@ const EditorPage = (props) => {
 
   const nextStep = () => {
     if (step === stepNames.length - 1) {
-      return; // TODO: Should send data to backend in this case
+      setLoading(true);
+      fetch(`https://transcoder-owoupooupa-uc.a.run.app/project`, 
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: serializeParams()
+      })
+      .then(res => res.json())
+      .then((result) => {
+        // console.log(result);
+        history.push(`/projects/${result.projectId}/`, getParams());
+      })
     }
     if (step + 1 > latest) {
       setLatest(step + 1);
@@ -157,35 +172,28 @@ const EditorPage = (props) => {
       <OverboughtModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.overbought} setEventParams={(newParams) => setSpecificEventParams("overbought", newParams)} selected={selectedEvents.includes("overbought")}/>
       <LimitModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.limit} setEventParams={(newParams) => setSpecificEventParams("limit", newParams)} selected={selectedEvents.includes("limit")}/>
       <OutlookModal visibleModal={visibleModal} setVisibleModal={setVisibleModal} action={action} darkMode={state.darkMode} cancelEvent={cancelEvent} confirmEvent={confirmEvent} eventParams={eventParams.outlook} setEventParams={(newParams) => setSpecificEventParams("outlook", newParams)} selected={selectedEvents.includes("outlook")}/>
-      <Row style={{marginTop: "5vh", justifyContent: "center", alignItems: "center"}}>
-        <VerticalStepper setStep={setStep} stepNames={stepNames} step={step} latest={latest} completed={completed} completed={completed}/>
-        <StepContainer title={stepNames[step]} number={step + 1}>
-          {steps[step]}
-          <div className={styles.Center}>
-            <StepNextButton confirm={step === stepNames.length - 1} onClick={() => {
-                if (step === stepNames.length - 1) {
-                  fetch(`https://transcoder-owoupooupa-uc.a.run.app/project`, 
-                  {
-                    method: 'POST',
-                    headers: {
-                      'Accept': 'application/json',
-                      'Content-Type': 'application/json'
-                    },
-                    body: serializeParams()
-                  })
-                  .then(res => res.json())
-                  .then((result) => {
-                    // console.log(result);
-                    history.push(`/projects/${result.projectId}/`, getParams());
-                  })
-                } else {
-                  nextStep();
-                  setCurrentComplete(true);
-                }
-              }} style={{position: "absolute", bottom: "127px"}} disabled={!completed[step]}/>
-          </div>
-        </StepContainer>
-      </Row>
+      {loading ? 
+        (
+          <Row style={{marginTop: "5vh", height: "75vh", justifyContent: "center", alignItems: "center"}}>
+            <LoadingAnimation text="Loading..."/>
+          </Row>
+        )
+        :
+        (
+          <Row style={{marginTop: "5vh", justifyContent: "center", alignItems: "center"}}>
+            <VerticalStepper setStep={setStep} stepNames={stepNames} step={step} latest={latest} completed={completed} completed={completed}/>
+            <StepContainer title={stepNames[step]} number={step + 1}>
+              {steps[step]}
+              <div className={styles.Center}>
+                <StepNextButton confirm={step === stepNames.length - 1} onClick={() => {
+                    nextStep();
+                    setCurrentComplete(true);
+                  }} style={{position: "absolute", bottom: "127px"}} disabled={!completed[step] || loading}/>
+              </div>
+            </StepContainer>
+          </Row>
+        )
+      }        
     </div>
   );
 };

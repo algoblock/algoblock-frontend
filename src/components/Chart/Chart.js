@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
 import styles from './Chart.module.scss';
 import colors from '../../utilities/_export.module.scss';
 
-
+// TODO: Add annotations to indicate when we traded (https://airbnb.io/visx/annotation)
 
 const width = 500;
 const height = 75;

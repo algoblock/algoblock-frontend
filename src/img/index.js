@@ -22,6 +22,9 @@ import CheckSvg from './vector/check.svg';
 import AlgocubeSvg from './vector/algocube.svg';
 import AlgocubeDarkmodeSvg from './vector/algocube-darkmode.svg';
 import AlgocubeOnelineSvg from './vector/algocube-oneline.svg';
+import BottomCubePng from './raster/bottom-cube.png';
+import MiddleCubePng from './raster/middle-cube.png';
+import TopCubePng from './raster/top-cube.png';
 
 export {
 	AlgoblockPng,
@@ -48,4 +51,7 @@ export {
 	AlgocubeSvg,
 	AlgocubeDarkmodeSvg,
 	AlgocubeOnelineSvg,
+	BottomCubePng,
+	MiddleCubePng,
+	TopCubePng,
 }

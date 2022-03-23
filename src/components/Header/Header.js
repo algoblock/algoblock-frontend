@@ -13,13 +13,13 @@ import colors from '../../utilities/_export.module.scss';
 
 
 const Header = (props) => {
-	console.log(props);
+	// console.log(props);
 
 	const {state, dispatch} = useContext(Context);
   const user = useContext(UserContext);
   let styles = state.darkMode ? darkModeStyles : lightModestyles;
 	if (user) {
-		console.log(user);
+		// console.log(user);
 		var headerRight = (
       <div className={styles.HeaderSection}>
         {/* TODO: Put inside of profile dropdown */}
@@ -50,7 +50,7 @@ const Header = (props) => {
 			</div>
 		);
 	}
-	console.log(headerRight);
+	// console.log(headerRight);
 	return (
 		<div className={styles.Header}>
 			<div className={styles.HeaderContents}>

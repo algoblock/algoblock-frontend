@@ -32,6 +32,7 @@ import StepContainer from './StepContainer/StepContainer';
 import SearchableDropdown from './SearchableDropdown/SearchableDropdown';
 import {OverboughtModal, LimitModal, OutlookModal} from './Modals';
 import Chart from './Chart/Chart';
+import LoadingAnimation from './LoadingAnimation/LoadingAnimation';
 
 export {
 	BigButton,
@@ -83,4 +84,5 @@ export {
 	LimitModal,
 	OutlookModal,
 	Chart,
+	LoadingAnimation,
 }

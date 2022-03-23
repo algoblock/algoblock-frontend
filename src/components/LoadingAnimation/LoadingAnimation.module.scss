@@ -1,0 +1,284 @@
+@import "../../utilities/_colors";
+@import "../../utilities/_fonts";
+
+
+.LoadingAnimation {
+	position: relative;
+	height: 200px;
+	width: 100%;
+}
+
+.LoadingText {
+	color: white;
+	font-family: $Poppins;
+	font-size: 16px;
+	font-weight: 600;
+	position: absolute;
+	top: 87%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.Image {
+	width: 64px;
+}
+
+@keyframes toBottom {
+  from {
+    transform: translate(-36%, -100%);
+    top: 0;
+    opacity: 0;
+  }
+
+  to {
+  	opacity: 1;
+  	top: 50%;
+    transform: translate(-36%, 20%);
+  }
+}
+
+@keyframes bottomLoop {
+  0%, 90%, 100% {
+  	z-index: 1;
+    transform: translate(-36%, 20%);
+  }
+
+  3%, 7% {
+  	z-index: 1;
+    transform: translate(75%, 20%);
+  }
+
+  10%{
+  	z-index: 3;
+    transform: translate(75%, -180%);
+  }
+
+  13% {
+  	z-index: 3;
+    transform: translate(-63%, -180%);
+  }
+
+  17%, 20% {
+  	z-index: 3;
+    transform: translate(-63%, -140%);
+  }
+
+  23%, 37% {
+  	z-index: 2;
+    transform: translate(-63%, -60%);
+  }
+
+  40%, 50% {
+  	z-index: 1;
+    transform: translate(-63%, 20%);
+  }
+
+  53%, 57% {
+  	z-index: 1;
+    transform: translate(75%, 20%);
+  }
+
+  60%{
+  	z-index: 3;
+    transform: translate(75%, -180%);
+  }
+
+  63% {
+  	z-index: 3;
+    transform: translate(-36%, -180%);
+  }
+
+  67%, 70% {
+  	z-index: 3;
+    transform: translate(-36%, -140%);
+  }
+
+  73%, 87% {
+  	z-index: 2;
+    transform: translate(-36%, -60%);
+  }
+}
+
+.ImageBottom {
+	z-index: 1;
+	position: absolute;
+	transform: translate(-36%, -100%);
+    top: 0;
+    left: 50%;
+    opacity: 0;
+	animation: toBottom 0.5s ease 0s normal 1 forwards running, bottomLoop 12s ease 1s normal infinite none running;
+}
+
+@keyframes toMiddle {
+  from {
+    transform: translate(-63%, -180%);
+    top: 0;
+    opacity: 0;
+  }
+
+  to {
+  	opacity: 1;
+  	top: 50%;
+    transform: translate(-63%, -60%);
+  }
+}
+
+@keyframes middleLoop {
+  90%, 3% {
+  	z-index: 2;
+    transform: translate(-63%, -60%);
+  }
+
+  7%, 17% {
+  	z-index: 1;
+    transform: translate(-63%, 20%);
+  }
+
+  20%, 23% {
+  	z-index: 1;
+    transform: translate(75%, 20%);
+  }
+
+  27% {
+  	z-index: 3;
+    transform: translate(75%, -180%);
+  }
+
+  30% {
+  	z-index: 3;
+    transform: translate(-36%, -180%);
+  }
+
+  33%, 37% {
+  	z-index: 3;
+    transform: translate(-36%, -140%);
+  }
+
+  40%, 53% {
+  	z-index: 2;
+    transform: translate(-36%, -60%);
+  }
+
+  57%, 67% {
+  	z-index: 1;
+    transform: translate(-36%, 20%);
+  }
+
+  70%, 73% {
+  	z-index: 1;
+    transform: translate(75%, 20%);
+  }
+
+  77% {
+  	z-index: 3;
+    transform: translate(75%, -180%);
+  }
+
+  80% {
+  	z-index: 3;
+    transform: translate(-63%, -180%);
+  }
+
+  83%, 87% {
+  	z-index: 3;
+    transform: translate(-63%, -140%);
+  }
+}
+
+.ImageMiddle {
+	z-index: 2;
+	position: absolute;
+	transform: translate(-63%, -180%);
+    top: 0;
+    left: 50%;
+    opacity: 0;
+	animation: toMiddle 0.5s ease 0.25s normal 1 forwards running, middleLoop 12s ease 1s normal infinite none running;
+	// bottomLoop 3s ease 3s normal infinite none running
+}
+
+@keyframes toTop {
+  from {
+    transform: translate(-36%, -260%);
+    top: 0;
+    opacity: 0;
+  }
+
+  to {
+  	opacity: 1;
+  	top: 50%;
+    transform: translate(-36%, -140%);
+  }
+}
+
+@keyframes topLoop {
+  0%, 3% {
+  	z-index: 3;
+    transform: translate(-36%, -140%);
+  }
+
+  7%, 20% {
+  	z-index: 2;
+    transform: translate(-36%, -60%);
+  }
+
+  23%, 33% {
+  	z-index: 1;
+    transform: translate(-36%, 20%);
+  }
+
+  37%, 40% {
+  	z-index: 1;
+    transform: translate(84%, 20%);
+  }
+
+  43% {
+  	z-index: 3;
+    transform: translate(84%, -180%);
+  }
+
+  47% {
+  	z-index: 3;
+    transform: translate(-63%, -180%);
+  }
+
+  50%, 53% {
+  	z-index: 3;
+    transform: translate(-63%, -140%);
+  }
+
+  57%, 70% {
+  	z-index: 2;
+    transform: translate(-63%, -60%);
+  }
+
+  73%, 83% {
+  	z-index: 1;
+    transform: translate(-63%, 20%);
+  }
+
+  87%, 90% {
+  	z-index: 1;
+    transform: translate(84%, 20%);
+  }
+
+  93% {
+  	z-index: 3;
+    transform: translate(84%, -180%);
+  }
+
+  97% {
+  	z-index: 3;
+    transform: translate(-36%, -180%);
+  }
+}
+
+.ImageTop {
+	z-index: 3;
+	position: absolute;
+	transform: translate(-36%, -260%);
+    top: 0;
+    left: 50%;
+    opacity: 0;
+	animation: toTop 0.5s ease 0.5s normal 1 forwards running, topLoop 12s ease 1s normal infinite none running;
+	// bottomLoop 3s ease 3s normal infinite none running
+}
