@@ -42,7 +42,7 @@ const OutlookModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEv
   ];
 
   return (
-    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="outlook" eventName="Future outlook" cancelEvent={cancelEvent} confirmEvent={confirmEvent} selected={selected}>
+    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="outlook" eventName="Future outlook" cancelEvent={cancelEvent} confirmEvent={confirmEvent} selected={selected} info={"Coming soon"}>
       {action["buy"] && 
         <Row style={{justifyContent: "space-evenly"}}>
           <div className={commonStyles.SliderLabel}>

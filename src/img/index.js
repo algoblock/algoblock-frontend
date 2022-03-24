@@ -25,6 +25,7 @@ import AlgocubeOnelineSvg from './vector/algocube-oneline.svg';
 import BottomCubePng from './raster/bottom-cube.png';
 import MiddleCubePng from './raster/middle-cube.png';
 import TopCubePng from './raster/top-cube.png';
+import RsiEquationPng from './raster/rsi-equation.png';
 
 export {
 	AlgoblockPng,
@@ -54,4 +55,5 @@ export {
 	BottomCubePng,
 	MiddleCubePng,
 	TopCubePng,
+	RsiEquationPng,
 }

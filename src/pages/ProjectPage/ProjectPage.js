@@ -10,6 +10,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {DashboardPanel, DashboardCard, Header, Column, Row, SearchableDropdown, BuySellButton, EventButton, OverboughtModal, LimitModal, OutlookModal, Button, LoadingAnimation} from '../../components';
 import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import colors from '../../utilities/_export.module.scss';
 
@@ -17,6 +18,7 @@ import colors from '../../utilities/_export.module.scss';
 import styles from './ProjectPage.module.scss';
 
 dayjs.extend(customParseFormat);
+dayjs.extend(duration)
 
 const BacktestInput = forwardRef((props, ref) => {
   let {containerRef, ...restProps} = props;
@@ -104,9 +106,10 @@ const ProjectPage = (props) => {
     {
       name: "Future outlook",
       id: "outlook",
+      notImplemented: true,
     }
   ];
-  const symbols = ["BTC", "ETH", "BNB", "USDT", "SOL", "USDC", "LTC", "ADA", "XRP"];
+  const symbols = ["BTC", "ETH"];
 
   const toggleEventSelected = (event) => {
     let newEvents = [...selectedEvents];
@@ -302,10 +305,10 @@ const ProjectPage = (props) => {
     eventButtons.push(
       <Row>
         <div className={styles.EventButtonWrapperLeft}>
-          <EventButton small selected={selectedEvents.includes(events[i].id)} onClick={() => handleEventButtonClick(events[i].id)} onEdit={() => setVisibleModal(events[i].id)}>{events[i].name}</EventButton>
+          <EventButton small selected={selectedEvents.includes(events[i].id)} onClick={() => handleEventButtonClick(events[i].id)} disabled={events[i].notImplemented} onEdit={() => setVisibleModal(events[i].id)}>{events[i].name}</EventButton>
         </div>
         <div className={styles.EventButtonWrapperRight}>
-          {i + 1 < events.length && <EventButton small selected={selectedEvents.includes(events[i + 1].id)} onClick={() => handleEventButtonClick(events[i + 1].id)} onEdit={() => setVisibleModal(events[i + 1].id)}>{events[i + 1].name}</EventButton>}
+          {i + 1 < events.length && <EventButton small selected={selectedEvents.includes(events[i + 1].id)} onClick={() => handleEventButtonClick(events[i + 1].id)} disabled={events[i + 1].notImplemented} onEdit={() => setVisibleModal(events[i + 1].id)}>{events[i + 1].name}</EventButton>}
         </div>
       </Row>)
   }
@@ -329,6 +332,9 @@ const ProjectPage = (props) => {
     // input.current.style.animation = null; 
   }
 
+
+  // TODO: Add popup to tell the user what's wrong
+  // TODO: Add verification that the project config is valid
   const startBacktest = () => {
     if (startingBacktest) {
       return;
@@ -358,6 +364,12 @@ const ProjectPage = (props) => {
     }
     if (endTime > new Date()) {
       console.log('date in the future')
+      shake(endTimeRow);
+      return;
+    }
+    if (dayjs.duration(dayjs(endTime).diff(dayjs(startTime))).asYears() > 1 + 1 / 365) {
+      console.log('date range too large');
+      shake(startTimeRow);
       shake(endTimeRow);
       return;
     }

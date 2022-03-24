@@ -1,12 +1,15 @@
 import React from 'react';
+import {useState} from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import {Row, InvertedButton, Button} from '../../../';
 import styles from './EventModalBase.module.scss';
 import commonStyles from '../EventModals.module.scss';
 import colors from '../../../../utilities/_export.module.scss';
+import {Info} from '@mui/icons-material';
 
-const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, eventName, children, cancelEvent, confirmEvent, selected}) => {
+
+const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, eventName, children, cancelEvent, confirmEvent, selected, info}) => {
   const modalStyles = {
     content: {
       top: '50%',
@@ -21,13 +24,15 @@ const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, event
       backgroundColor: darkMode ? colors.dark : colors.white,
       border: `2px solid ${darkMode ? colors.white : colors.dark}`,
       borderRadius: "20px",
-      overflow: "hidden",
+      overflow: "visible",
+      position: 'relative',
     },
     overlay: {
       zIndex: 2,
       backgroundColor: darkMode ? "rgb(24, 24, 24, 0.75)" : "rgb(255, 255, 255, 0.75)",
     }
   };
+  const [showInfo, setShowInfo] = useState(false);
   return (
     <Modal
         isOpen={visibleModal === eventId}
@@ -35,6 +40,16 @@ const EventModalBase = ({darkMode, visibleModal, setVisibleModal, eventId, event
         style={modalStyles}
         contentLabel={`${eventName} Modal`}
       >
+        {showInfo && 
+          <div className={commonStyles.Info}>
+            {info}
+          </div>
+        }
+        <div className={commonStyles.InfoIconContainer}>
+          <Info onClick={() => {
+            setShowInfo(!showInfo);
+          }} className={commonStyles.InfoIcon}/>
+        </div>
         <div className={commonStyles.ModalTitle}>{eventName}</div>
         <div className={commonStyles.ModalContent}>
           {children}

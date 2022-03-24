@@ -51,9 +51,10 @@ const EditorPage = (props) => {
     {
       name: "Future outlook",
       id: "outlook",
+      notImplemented: true,
     }
   ];
-  const symbols = ["BTC", "ETH", "BNB", "USDT", "SOL", "USDC", "LTC", "ADA", "XRP"];
+  const symbols = ["BTC", "ETH"];
 
   const user = useContext(UserContext);
   const history = useHistory();

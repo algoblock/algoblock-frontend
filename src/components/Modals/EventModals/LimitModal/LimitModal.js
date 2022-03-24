@@ -14,7 +14,7 @@ const LimitModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEven
   }
 
   return (
-    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="limit" eventName="Limit order" cancelEvent={cancelEvent} confirmEvent={confirmEvent} selected={selected}>
+    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="limit" eventName="Limit order" cancelEvent={cancelEvent} confirmEvent={confirmEvent} selected={selected} info={"Buying a cryptocurrency at or below a set price, or to sell a cryptocurrency at or above the indicated price. For example, if ‘Buy Price’ is set to 1000 dollars, it will buy a cryptocurrency whenever it is below 1000 dollars. If ‘Sell Price’ is set to 2000 dollars, it will sell a cryptocurrency whenever it is above 2000 dollars."}>
       {action["buy"] && 
         <Row style={{justifyContent: "space-evenly", alignItems: "center", marginBottom: action["sell"] ? "20px" : "0px"}}>
           <div className={commonStyles.InputLabel}>
@@ -30,7 +30,8 @@ const LimitModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEven
           </div>
           <input className={commonStyles.NumberInput} value={eventParams.sell} onChange={(e) => handleChange("sell", e.target.value)} type="number" min={0.01} step={0.01} placeholder="Enter price"/>
         </Row>
-      }             
+      }
+              
     </EventModalBase>
   );
 };

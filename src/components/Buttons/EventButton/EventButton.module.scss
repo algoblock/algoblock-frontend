@@ -20,7 +20,6 @@
 .EventButton:hover {
 	cursor: pointer;
 	background-color: $ford-gunmetal;
-	border-radius: 11px;
 }
 
 .Selected {
@@ -31,7 +30,6 @@
 .Selected:hover {
 	color: $outer-space;
 	background-color: $light-grey;
-	border-radius: 10px;
 }
 
 
@@ -50,4 +48,9 @@
 .Small {
 	font-size: 14px;
 	width: 192px;
+}
+
+.Disabled:hover {
+	cursor: not-allowed;
+	background-color: $outer-space;
 }

@@ -21,10 +21,10 @@ const EventsStep = ({nextStep, setCompleted, events, setVisibleModal, toggleEven
     eventButtons.push(
       <Row>
         <div className={styles.EventButtonWrapper}>
-          <EventButton selected={selectedEvents.includes(events[i].id)} onClick={() => handleEventButtonClick(events[i].id)} onEdit={() => setVisibleModal(events[i].id)}>{events[i].name}</EventButton>
+          <EventButton selected={selectedEvents.includes(events[i].id)} disabled={events[i].notImplemented} onClick={() => handleEventButtonClick(events[i].id)} onEdit={() => setVisibleModal(events[i].id)}>{events[i].name}</EventButton>
         </div>
         <div className={styles.EventButtonWrapper}>
-          {i + 1 < events.length && <EventButton selected={selectedEvents.includes(events[i + 1].id)} onClick={() => handleEventButtonClick(events[i + 1].id)} onEdit={() => setVisibleModal(events[i + 1].id)}>{events[i + 1].name}</EventButton>}
+          {i + 1 < events.length && <EventButton selected={selectedEvents.includes(events[i + 1].id)} disabled={events[i + 1].notImplemented} onClick={() => handleEventButtonClick(events[i + 1].id)} onEdit={() => setVisibleModal(events[i + 1].id)}>{events[i + 1].name}</EventButton>}
         </div>
       </Row>)
   }

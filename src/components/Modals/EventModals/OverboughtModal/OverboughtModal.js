@@ -1,12 +1,12 @@
 import React from 'react';
 import EventModalBase from '../EventModalBase/EventModalBase';
 import {Row} from '../../../';
+import {RsiEquationPng} from '../../../../img';
 import PropTypes from 'prop-types';
 import commonStyles from '../EventModals.module.scss';
 import Slider from '@mui/material/Slider';
 import styles from './OverboughtModal.module.scss';
 import colors from '../../../../utilities/_export.module.scss';
-
 
 const OverboughtModal = ({visibleModal, setVisibleModal, action, darkMode, cancelEvent, confirmEvent, eventParams, setEventParams, selected}) => {
 
@@ -51,7 +51,14 @@ const OverboughtModal = ({visibleModal, setVisibleModal, action, darkMode, cance
   }
 
   return (
-    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="overbought" eventName="Overbought/Oversold" cancelEvent={cancelEvent} confirmEvent={confirmEvent} selected={selected}>
+    <EventModalBase darkMode={darkMode} visibleModal={visibleModal} setVisibleModal={setVisibleModal} eventId="overbought" eventName="Overbought/Oversold" cancelEvent={cancelEvent} confirmEvent={confirmEvent} selected={selected} info={
+      <div>
+        Indication (Buy/Sell Signal) based on RSI (Relative Strength Index) – Momentum indicator that measures the magnitude of recent price changes. RSI values of 70 or above indicate that a security is becoming overbought or overvalued. An RSI reading of 30 or below indicates an oversold or undervalued condition. RSI is calculated as follows, where the average gain and loss are averaged over the previous 14 days.
+          <div className={commonStyles.EquationContainer}>
+            <img className={commonStyles.Equation} src={RsiEquationPng} width={300}/>
+          </div>
+      </div>
+    }>
       {action["buy"] && 
         <Row style={{justifyContent: "space-evenly"}}>
           <div className={commonStyles.SliderLabel}>
